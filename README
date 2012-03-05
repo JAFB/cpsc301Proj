@@ -7,3 +7,6 @@ If the original project is forked, forked project has to pull request to announc
 ## check out github repo (windows user)
 1. To download 'git' windows version from "http://git-scm.com/"
 2. To install git windows version on your computer, and to choose "bash" as terminal during installation.
+3. To run git bash, then to enter ~/.ssh with 'cd ~/.ssh'
+4. To generate ssh key with 'ssh-keygen -t rsa', then 'id_rsa' & 'id_rsa.pub' will be created by default.
+
