@@ -1,0 +1,21 @@
+## check out github repo (windows user)
+1.  To download 'git' windows version from "http://git-scm.com/"
+
+2.  To install git windows version on your computer, and to choose "bash" as terminal during installation.
+
+3.  To run git bash, then to enter ~/.ssh with 'cd ~/.ssh'
+
+4.  To generate ssh key with 'ssh-keygen -t rsa', after entering and confirming password,
+    'id_rsa' & 'id_rsa.pub' will be created by default.
+
+5.  To login in github.com with the team gmail account (jafbteam@gmail.com), then to open "~/.ssh/id_rsa.pub" and copy the ssh
+    public key, then to paste the ssh public key into 'SSH Keys' in 'Account setting' of the github.com account.
+
+6.  To test ssh key with 'ssh -T git@github.com'.
+
+7.  To check out the project "git clone git@github.com:JAFB/cpsc301Proj.git', then directory 'cpsc301Proj' is created
+    on your local hard drive.
+
+8.  To create branch & checkout the created branch with command 'git checkout -b <make a branch name>', and to check the
+    branches with 'git branch', then you wil see a '*' on the left of the current branch.
+
