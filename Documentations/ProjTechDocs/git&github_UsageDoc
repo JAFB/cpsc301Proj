@@ -19,3 +19,8 @@
 8.  To create branch & checkout the created branch with command 'git checkout -b <make a branch name>', and to check the
     branches with 'git branch', then you wil see a '*' on the left of the current branch.
 
+9.  To modify or add files/directories/, then to add and commit the changes with commands 'git add <the modified/created file>'
+    'git commit -m "<message/reason for committing changes>"'
+
+10. To push the branch to remote github repository 'git push origin <the branch name you made priviously>'
+
