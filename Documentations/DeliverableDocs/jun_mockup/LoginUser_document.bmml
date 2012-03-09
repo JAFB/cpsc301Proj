@@ -1,0 +1,169 @@
+<mockup version="1.0" skin="sketch" measuredW="1164" measuredH="677" mockupW="1132" mockupH="677">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="32" y="0" w="1132" h="677" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Login%20User%20page%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::TextInput" x="993" y="80" w="76" h="-1" measuredW="54" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Hi%2C%20Bob</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Button" x="1084" y="81" w="-1" h="-1" measuredW="63" measuredH="27" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Logout</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::Canvas" x="41" y="116" w="1115" h="528" measuredW="100" measuredH="70" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::Canvas" x="41" y="116" w="1115" h="38" measuredW="100" measuredH="70" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="5" controlTypeID="com.balsamiq.mockups::Button" x="1027" y="122" w="120" h="23" measuredW="127" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Advanced%20Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::ButtonBar" x="41" y="116" w="561" h="37" measuredW="461" measuredH="29" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>Discussions%2C%20Memos%2C%20Document%2C%20Media%2C%20Calendar%2C%20Others</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::TextInput" x="719" y="120" w="216" h="-1" measuredW="209" measuredH="27" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>key%20words%20for%20searching%20Document</text>
+      </controlProperties>
+    </control>
+    <control controlID="8" controlTypeID="com.balsamiq.mockups::Button" x="945" y="122" w="73" h="25" measuredW="66" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Search</text>
+      </controlProperties>
+    </control>
+    <control controlID="9" controlTypeID="__group__" x="818" y="168" w="329" h="461" measuredW="329" measuredH="461" zOrder="9" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::TabBar" x="0" y="0" w="329" h="461" measuredW="360" measuredH="100" zOrder="0" locked="false" isInGroup="9">
+          <controlProperties>
+            <selectedIndex>0</selectedIndex>
+            <text>Recent%2C%20Yesterday%2C%20Older%20within%20a%20week%2C%20Older</text>
+          </controlProperties>
+        </control>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::TitleWindow" x="17" y="41" w="294" h="420" measuredW="450" measuredH="400" zOrder="1" locked="false" isInGroup="9">
+          <controlProperties>
+            <text>Hey%2C%20Bob.%20Alice%20sent%20you%20msg%20%21%21%21</text>
+          </controlProperties>
+        </control>
+        <control controlID="2" controlTypeID="com.balsamiq.mockups::TextArea" x="27" y="76" w="266" h="305" measuredW="200" measuredH="140" zOrder="2" locked="false" isInGroup="9">
+          <controlProperties>
+            <text>Alice%3A%20Messages</text>
+          </controlProperties>
+        </control>
+        <control controlID="3" controlTypeID="com.balsamiq.mockups::TextArea" x="27" y="381" w="266" h="54" measuredW="200" measuredH="140" zOrder="3" locked="false" isInGroup="9">
+          <controlProperties>
+            <text>To%20input%20message%20here%2C%20then%20press%20%27enter%27%20to%20send%20it</text>
+          </controlProperties>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="10" controlTypeID="com.balsamiq.mockups::TitleWindow" x="59" y="186" w="744" h="443" measuredW="450" measuredH="400" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Document</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::Canvas" x="268" y="223" w="526" h="368" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Label" x="41" y="83" w="177" h="21" measuredW="171" measuredH="21" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Calgary%20Emergency%20Medicine</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="__group__" x="68" y="223" w="191" h="369" measuredW="191" measuredH="369" zOrder="13" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="com.balsamiq.mockups::Canvas" x="0" y="0" w="191" h="369" measuredW="100" measuredH="70" zOrder="0" locked="false" isInGroup="17"/>
+        <control controlID="1" controlTypeID="com.balsamiq.mockups::VerticalScrollBar" x="173" y="29" w="-1" h="332" measuredW="16" measuredH="100" zOrder="1" locked="false" isInGroup="17"/>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="43" controlTypeID="com.balsamiq.mockups::TextArea" x="286" y="244" w="490" h="326" measuredW="200" measuredH="140" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>the%20board%20to%20display%20document/papers</text>
+      </controlProperties>
+    </control>
+    <control controlID="44" controlTypeID="com.balsamiq.mockups::ButtonBar" x="70" y="224" w="189" h="29" measuredW="130" measuredH="29" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Article%2C%20Paper</text>
+      </controlProperties>
+    </control>
+    <control controlID="48" controlTypeID="__group__" x="74" y="253" w="115" h="233" measuredW="115" measuredH="233" zOrder="14" locked="false" isInGroup="-1">
+      <groupChildrenDescriptors>
+        <control controlID="0" controlTypeID="__group__" x="0" y="0" w="115" h="118" measuredW="115" measuredH="118" zOrder="0" locked="false" isInGroup="48">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="0" y="0" w="-1" h="-1" measuredW="66" measuredH="21" zOrder="0" locked="false" isInGroup="0">
+              <controlProperties>
+                <text>Publisher%201</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="__group__" x="15" y="18" w="100" h="100" measuredW="100" measuredH="100" zOrder="1" locked="false" isInGroup="0">
+              <groupChildrenDescriptors>
+                <control controlID="0" controlTypeID="com.balsamiq.mockups::VRule" x="0" y="0" w="-1" h="-1" measuredW="5" measuredH="100" zOrder="0" locked="false" isInGroup="1"/>
+                <control controlID="1" controlTypeID="com.balsamiq.mockups::HRule" x="3" y="16" w="17" h="-1" measuredW="100" measuredH="5" zOrder="1" locked="false" isInGroup="1"/>
+                <control controlID="2" controlTypeID="com.balsamiq.mockups::HRule" x="0" y="36" w="20" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="1"/>
+                <control controlID="3" controlTypeID="com.balsamiq.mockups::HRule" x="0" y="56" w="20" h="-1" measuredW="100" measuredH="5" zOrder="3" locked="false" isInGroup="1"/>
+                <control controlID="4" controlTypeID="com.balsamiq.mockups::HRule" x="0" y="74" w="20" h="-1" measuredW="100" measuredH="5" zOrder="4" locked="false" isInGroup="1"/>
+                <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="20" y="10" w="-1" h="-1" measuredW="78" measuredH="21" zOrder="5" locked="false" isInGroup="1">
+                  <controlProperties>
+                    <text>Article%201%20title</text>
+                  </controlProperties>
+                </control>
+                <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="20" y="28" w="78" h="21" measuredW="80" measuredH="21" zOrder="6" locked="false" isInGroup="1">
+                  <controlProperties>
+                    <text>Article%202%20title</text>
+                  </controlProperties>
+                </control>
+                <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="20" y="48" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="7" locked="false" isInGroup="1">
+                  <controlProperties>
+                    <text>Article%203%20title</text>
+                  </controlProperties>
+                </control>
+                <control controlID="8" controlTypeID="com.balsamiq.mockups::Label" x="20" y="66" w="-1" h="-1" measuredW="80" measuredH="21" zOrder="8" locked="false" isInGroup="1">
+                  <controlProperties>
+                    <text>Article%204%20title</text>
+                  </controlProperties>
+                </control>
+              </groupChildrenDescriptors>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+        <control controlID="1" controlTypeID="__group__" x="0" y="112" w="114" h="121" measuredW="114" measuredH="121" zOrder="1" locked="false" isInGroup="48">
+          <groupChildrenDescriptors>
+            <control controlID="0" controlTypeID="com.balsamiq.mockups::Link" x="0" y="0" w="-1" h="-1" measuredW="69" measuredH="21" zOrder="0" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Publisher%202</text>
+              </controlProperties>
+            </control>
+            <control controlID="1" controlTypeID="com.balsamiq.mockups::VRule" x="15" y="15" w="-1" h="106" measuredW="5" measuredH="100" zOrder="1" locked="false" isInGroup="1"/>
+            <control controlID="2" controlTypeID="com.balsamiq.mockups::HRule" x="15" y="40" w="20" h="-1" measuredW="100" measuredH="5" zOrder="2" locked="false" isInGroup="1"/>
+            <control controlID="3" controlTypeID="com.balsamiq.mockups::HRule" x="15" y="60" w="20" h="-1" measuredW="100" measuredH="5" zOrder="3" locked="false" isInGroup="1"/>
+            <control controlID="4" controlTypeID="com.balsamiq.mockups::HRule" x="15" y="80" w="20" h="-1" measuredW="100" measuredH="5" zOrder="4" locked="false" isInGroup="1"/>
+            <control controlID="5" controlTypeID="com.balsamiq.mockups::Label" x="35" y="32" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="5" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Article%205%20title</text>
+              </controlProperties>
+            </control>
+            <control controlID="6" controlTypeID="com.balsamiq.mockups::Label" x="35" y="52" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="6" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Article%206%20title</text>
+              </controlProperties>
+            </control>
+            <control controlID="7" controlTypeID="com.balsamiq.mockups::Label" x="35" y="72" w="-1" h="-1" measuredW="79" measuredH="21" zOrder="7" locked="false" isInGroup="1">
+              <controlProperties>
+                <text>Article%207%20title</text>
+              </controlProperties>
+            </control>
+          </groupChildrenDescriptors>
+        </control>
+      </groupChildrenDescriptors>
+    </control>
+    <control controlID="49" controlTypeID="com.balsamiq.mockups::ComboBox" x="71" y="563" w="171" h="-1" measuredW="142" measuredH="23" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Group%20by%3A%20Publisher</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
