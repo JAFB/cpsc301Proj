@@ -8,6 +8,7 @@ function chkFavoriteIcon(request){
 }
 
 function WebServer(portNum){
+
     function onRequest(request, response){
         console.log(request.method);
         console.log(request.url);
@@ -26,7 +27,6 @@ function WebServer(portNum){
         console.log("Request Received!!");
 
         if(method === 'GET'){
-
             routers.route(pathStr, response);
 
         } else if(method === 'POST'){
