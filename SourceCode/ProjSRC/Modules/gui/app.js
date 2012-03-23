@@ -17,7 +17,7 @@ Ext.application({
     launch: function() {
         Ext.QuickTips.init();
 
-        var cmp1 = Ext.create('GUI.view.im.IM_Tab_Panel', {
+        var cmp1 = Ext.create('GUI.view.mainpanel.MainPanel', {
             renderTo: Ext.getBody()
         });
         cmp1.show();
