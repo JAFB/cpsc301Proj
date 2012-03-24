@@ -12,7 +12,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name: 'GUI',
-	appFolder: 'gui',
+	appFolder: 'gui/mainWindow',
 
     launch: function() {
         Ext.QuickTips.init();
