@@ -7,10 +7,8 @@ var handle = require('../Handlers/requestHandler.js');
 /* to handle different actions or commands*/
 var handler = {};
 handler["/"] = handle.htmlRendering;
-handler["/Action"] = handle.list;
-handler["/action"] = handle.list;
-handler["/ImgFiles"] = handle.download;
 
+/*
 handler["/extjs4"] = handle.extjsHandler;
 handler["/extjs4/resources/css"] = handle.extjsHandler;
 handler["/extjs4/resources/themes/images/default/dd"] = handle.extjsHandler;
@@ -27,15 +25,9 @@ handler["/gui/mainWindow"] = handle.guiModuleHandler;
 handler["/gui/sampleGrid/controller"] = handle.guiModuleHandler;
 handler["/gui/sampleGrid/view/user"] = handle.guiModuleHandler;
 handler["/gui/sampleGrid/model"] = handle.guiModuleHandler;
+*/
 
-
-
-/* to handle upload request*/
-var uploadHandler = {};
-uploadHandler["/ImgFiles"] = handle.upload;
-
-
-function route(pathname, response){
+function http_get(pathname, response){
     console.log("route to " + pathname);
 
     var dirname = path.dirname(pathname);
@@ -49,7 +41,7 @@ function route(pathname, response){
 }
 
 
-function uploadRoute(pathname, response, postData){
+function http_post(pathname, response, postData){
     console.log("route to " + pathname);
     var dirname = path.dirname(pathname);
     var basename = path.basename(pathname);
@@ -58,5 +50,5 @@ function uploadRoute(pathname, response, postData){
     }
 }
 
-exports.route = route;
-exports.uploadRoute = uploadRoute;
+exports.http_get = http_get;
+exports.http_post = http_post;

@@ -1,7 +1,6 @@
 /* a simple web server to receive request from client side*/
 
 var httpServer = require('http');
-var urlParse = require('url');
 var routers = require('../Routers/router.js')
 function chkFavoriteIcon(request){
 

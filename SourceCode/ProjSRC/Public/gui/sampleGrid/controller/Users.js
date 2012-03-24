@@ -36,7 +36,7 @@ Ext.define('GUI.controller.Users',{
 
         record.set(values);
         win.close();
-        this.getUsersStore().sync();
+
     },
 
     editUser: function(grid, record) {

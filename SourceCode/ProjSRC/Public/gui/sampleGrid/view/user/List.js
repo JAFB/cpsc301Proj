@@ -3,15 +3,15 @@ Ext.define('GUI.view.user.List', {
     extend: 'Ext.grid.Panel',
     alias:  'widget.userlist',
     store:  'Users',
-    title: 'All Users',
+    title: 'Calgary Emergency Department - User management',
 
 
     initComponent: function() {
         this.store = {
             fields: ['name', 'email'],
             data: [
-                {name: 'Ed', email: 'ed@sencha.com'},
-                {name: 'Tommy', email: 'tommy@sencha.com'}
+                {name: 'Ed', email: 'ed@gmail.com'},
+                {name: 'Tommy', email: 'tommy@gmail.com'}
             ]
         };
 

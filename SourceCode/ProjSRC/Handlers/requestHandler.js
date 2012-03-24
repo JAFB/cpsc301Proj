@@ -13,19 +13,14 @@ process.on('uncaughtException', function(err){
 */
 function htmlRendering(response, dirname, basename){
     console.log("htmlRendering handler is being called to render html page!! " + new Date());
-    var templatePath = process.env["htmlTemplates"] + "index.jade";
-    if(basename != ""){
-        templatePath = process.env["htmlTemplates"] + "/" + basename + ".jade"
+    if (basename != '' ){
+        response.render(basename);
+    }else{
+        console.log("rendering index page")
+        response.render("index");
     }
-    fs.readFile(templatePath, 'utf-8', function(err, data){
-        if (err) console.log(err);
-        var htmlStream = jade.compile(data, {filename: templatePath, pretty: true})();
-        response.write(htmlStream);
-        response.end();
-
-    })
 }
-
+/*
 function extjsHandler (response, dirname, basename){
     console.log("jsExtjs4 handler is being called to return extjs4 lib " + new Date());
 
@@ -58,9 +53,6 @@ function guiModuleHandler(response, dirname, basename){
 }
 
 
-/*
- To process download request 
-*/
 function download(response, dirname, basename){
     console.log("download handle is being called to download the image file!! " + new Date() );
     var imgFilePath = path.join('ImgFiles/',basename);
@@ -76,6 +68,7 @@ function download(response, dirname, basename){
     })
 
 }
+*/
 
 /*
  To process upload request
@@ -93,7 +86,9 @@ function upload(response, postData, filename){
 }
 
 exports.htmlRendering = htmlRendering;
+exports.upload = upload;
+/*
 exports.extjsHandler = extjsHandler;
 exports.guiModuleHandler = guiModuleHandler;
 exports.download = download;
-exports.upload = upload;
+*/
