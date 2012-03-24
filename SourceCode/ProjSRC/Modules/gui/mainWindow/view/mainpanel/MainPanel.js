@@ -24,7 +24,12 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 				},
                 {
                     xtype: 'panel',
-                    title: 'Discussions'
+                    title: 'Discussions',
+                    items: [
+                        {
+                            xtype: 'discussionspanel'
+                        }
+                    ]
                 },
                 {
                     xtype: 'panel',

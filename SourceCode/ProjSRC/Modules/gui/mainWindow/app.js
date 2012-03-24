@@ -14,6 +14,10 @@ Ext.application({
     name: 'GUI',
 	appFolder: 'gui/mainWindow',
 
+    controllers: [
+        'Discussions'
+    ],
+
     launch: function() {
         Ext.QuickTips.init();
 
