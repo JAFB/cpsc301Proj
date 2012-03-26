@@ -1,1 +1,3 @@
-databaseTest contains modules for database
+Mar 25, 2012
+Database module updated.
+	-- Modules/database.js (Fixed)
