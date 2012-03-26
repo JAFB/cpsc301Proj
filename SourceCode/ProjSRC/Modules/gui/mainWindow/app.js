@@ -15,13 +15,15 @@ Ext.application({
 	appFolder: 'gui/mainWindow',
 
     controllers: [
-        'Discussions'
+        'Discussions',
+        'IM',
+        'Main'
     ],
 
     launch: function() {
         Ext.QuickTips.init();
 
-        var cmp1 = Ext.create('GUI.view.mainpanel.MainPanel', {
+        var cmp1 = Ext.create('GUI.view.IndexPanel', {
             renderTo: Ext.getBody()
         });
         cmp1.show();

@@ -11,6 +11,8 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 	alias: 'widget.mainpanel',
 
     height: 800,
+    width: 'auto',
+
     activeTab: 0,
 
     initComponent: function() {
