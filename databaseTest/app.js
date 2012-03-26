@@ -3,7 +3,8 @@
  */
 
 var express = require('express');
-var Database = require('./database').Database;
+var Database = require('./Modules/database').Database;
+var ObjectID = require('mongodb').ObjectID;
 
 var app = module.exports = express.createServer();
 
@@ -28,7 +29,9 @@ app.configure('production', function(){
   app.use(express.errorHandler()); 
 });
 
-var Database = new Database('node-mongo-blog','localhost', 27017);
+var Database = new Database('testDB','localhost', 27017,function(err){
+	if(err) console.log(err);
+});
 // Routes
 
 app.get('/', function(req, res){
@@ -56,7 +59,7 @@ app.post('/topic/new', function(req, res){
         title: req.param('title'),
 		author: req.param('name'),
         body: req.param('body'),
-		comments: []
+		comments: [],
 		created_at: new Date()
     }, function(error, docs) {
         res.redirect('/')
@@ -85,5 +88,36 @@ app.post('/topic/addComment', function(req, res) {
        });
 });
 
+app.get('/js', function(req, res) {
+    res.render('jstest.jade',{ locals: {
+        title: 'JS test'
+    }
+    });
+});
+app.put('/users/:id', function(req, res) {
+    console.log("PUT request: " + req.param('_id'));
+	res.contentType('json');
+	Database.update('userCollection',req.param('_id'), {
+		name: req.param('name'),
+		email: req.param('email')
+		}, function(err) {
+			if(err) console.log(err);
+			else res.json({success: true});
+	});
+});
+
+app.get('/users', function(req, res) {
+	Database.findAll('userCollection', function(err, docs){
+		if (err) console.log(err);
+		else{
+			res.contentType('json');
+			res.json({
+				success: true,
+				data: docs
+			});
+		}
+	});
+});
+  
 app.listen(10020);
 console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);

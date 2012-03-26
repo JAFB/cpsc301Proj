@@ -1,0 +1,12 @@
+Ext.define('GeekFlicks.store.Movies', {
+    extend: 'Ext.data.Store',
+    model: 'GeekFlicks.model.Movie',
+
+    data: [{
+        title: 'The Matrix',
+        year: '1999'
+    }, {
+        title: 'Star Wars: Return of the Jedi',
+        year: '1983'
+    }]
+});

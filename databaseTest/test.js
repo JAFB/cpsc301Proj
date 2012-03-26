@@ -8,19 +8,16 @@ var collectionName = 'testCollection';
 docs = [
 	{"author" : "John",
 	"title" : "Subject",
-    "created_at" : new Date(),
-    "body" : "Test string"},
+	"created_at" : new Date(),
+	"body" : "Test string",
+	"comments" : []},
 	
 	{"author" : "Alex",
 	"title" : "Second Subject",
     "created_at" : new Date(),
-    "body" : "Example body"}
+    "body" : "Example body",
+	  "comments" : []}
 ];
-
-doc1 = {"author" : "John",
-	"title" : "Subject",
-    "created_at" : new Date(),
-    "body" : "Test string"};
 
 
 	
@@ -67,9 +64,44 @@ process.stdin.on('data', function (chunk) {
 			}
 		});
 		console.log("All authors are changed into 'test'")
-	} else if(chunk==0){
+	} else if(chunk==5){//find test
+		console.log("Searching all record with {author:Alex}");
+		Database.find(collectionName,{author:"Alex"}, function(error,results){
+			assert.equal(error,null);
+			console.log(results);
+		});
+	} else if(chunk==6){//append test
+		Database.findAll(collectionName, function(error,results){
+			assert.equal(error,null);
+			if(results.length >0){
+				for(var i=0; i<results.length; i++){
+					Database.append(collectionName, results[i]._id.toHexString(), {
+					  "comments":{
+						author: 'appendFunc',
+						body: 'Appended'}
+					}, function(error) {
+						assert.equal(error,null);
+					});
+					console.log("Appending comments.." +results[i]._id.toHexString());
+				}
+			}
+		});
+	}else if(chunk==7){//find by id test
+		Database.findAll(collectionName, function(error,results){
+			assert.equal(error,null);
+			if(results.length >0){
+				for(var i=0; i<results.length; i++){
+					console.log("Obtaining "+ results[i]._id);
+					Database.findById(collectionName, results[i]._id.toHexString(), 
+					function(error,docs) {
+						assert.equal(error,null);						
+						console.log(docs);
+					});
+				}
+			}
+		});
+	} else if(chunk==0){// close (useless currently)
 		Database.close();
-		
 	}
 });
 process.stdin.on('end', function () {
