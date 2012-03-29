@@ -9,6 +9,10 @@
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
+    stores: [
+        'Discussions'
+    ],
+
     views: [
         'discussions.DiscussionsPanel'
     ],
