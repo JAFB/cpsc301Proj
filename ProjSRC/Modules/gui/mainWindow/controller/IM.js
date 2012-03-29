@@ -15,13 +15,16 @@ Ext.define('GUI.controller.IM', {
 
     init: function() {
         this.control({
-            'viewport > panel': {
-                render: this.onPanelRendered
+            'impanel button[action=send]': {
+                click: this.sendMssg
             }
         });
     },
 
-    onPanelRendered: function() {
-        console.log('The panel was rendered');
+    sendMssg: function() {
+        var mssg = Ext.getCmp('mssgField').getValue();
+        Ext.getCmp('mssgField').setValue('');
+
+        console.log(mssg);
     }
 });
