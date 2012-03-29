@@ -10,8 +10,7 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
     extend: 'Ext.tab.Panel',
 	alias: 'widget.mainpanel',
 
-    height: 800,
-    width: 'auto',
+    minheight: 300,
 
     activeTab: 0,
 
@@ -29,7 +28,8 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                     title: 'Discussions',
                     items: [
                         {
-                            xtype: 'discussionspanel'
+                            xtype: 'discussionspanel',
+                            height: '100%'
                         }
                     ]
                 },

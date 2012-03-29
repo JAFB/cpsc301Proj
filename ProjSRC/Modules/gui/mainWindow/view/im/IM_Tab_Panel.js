@@ -2,7 +2,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.impanel',
 
-    height: 800,
+    //height: 600,
     width: 280,
 
     activeTab: 0,
@@ -17,25 +17,45 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                 {
                     xtype: 'panel',
                     title: 'Recent',
-                    dockedItems: [
+                    items: [
                         {
                             xtype: 'form',
-                            height: 728,
+                            height: '80%',
+                            //width: 280,
                             bodyPadding: 10,
                             title: 'Recent messages'
                         },
                         {
-                            xtype: 'textareafield',
-                            height: 10,
-                            width: 241,
-                            fieldLabel: '',
-                            labelWidth: 0,
-                            dock: 'left'
-                        },
-                        {
-                            xtype: 'button',
-                            text: 'Send',
-                            dock: 'right'
+                            xtype: 'container',
+                            height: '20%',
+                            items: [
+                                {
+                                    xtype: 'textareafield',
+                                    id: 'mssgField',
+                                    width: 280,
+                                    fieldLabel: '',
+                                    labelWidth: 0
+                                    /*
+                                    listeners:{
+                                        scope: this,
+                                        specialkey: function(f,e){
+                                            if(e.getKey()==e.ENTER){
+                                                // CHANGE LATER
+                                                var mssg = Ext.getCmp('mssgField').getValue();
+                                                Ext.getCmp('mssgField').setValue('');
+
+                                                console.log(mssg);
+                                            }
+                                        }
+                                    }
+                                    */
+                                },
+                                {
+                                    xtype: 'button',
+                                    text: 'Send',
+                                    action: 'send'
+                                }
+                            ]
                         }
                     ]
                 },
@@ -45,7 +65,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 773,
+                            height: 600,
                             bodyPadding: 10,
                             title: 'Messages from the last day'
                         }
@@ -57,7 +77,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 773,
+                            height: 600,
                             bodyPadding: 10,
                             title: 'Messages from the last week'
                         }
@@ -70,7 +90,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 773,
+                            height: 600,
                             bodyPadding: 10,
                             title: 'Older messages'
                         }
