@@ -2,7 +2,7 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.discussionspanel',
 
-    height: 600,
+    height: 800,
     title: 'Discussions',
 
     initComponent: function() {
@@ -12,8 +12,8 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
             dockedItems: [
                 {
                     xtype: 'tabpanel',
-                    height: 543,
-                    width: 145,
+                    height: 800,
+                    width: 200,
                     activeTab: 0,
                     dock: 'left',
                     items: [
@@ -23,8 +23,8 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                             items: [
                                 {
                                     xtype: 'treepanel',
-                                    height: 548,
-                                    width: 146,
+                                    height: 800,
+                                    width: 200,
                                     title: 'Topics',
                                     viewConfig: {
 
@@ -38,8 +38,8 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                             items: [
                                 {
                                     xtype: 'treepanel',
-                                    height: 549,
-                                    width: 144,
+                                    height: 800,
+                                    width: 200,
                                     title: 'Questions',
                                     viewConfig: {
 

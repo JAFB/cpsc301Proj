@@ -1,5 +1,4 @@
 require("./config.js")
-var server = require("./HttpServer/simpleServer.js");
 var expressServer = require("./HttpServer/expressServer.js")
 
 /*

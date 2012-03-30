@@ -2,9 +2,12 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.impanel',
 
-    height: 550,
+    height: 800,
     width: 280,
+
     activeTab: 0,
+
+    title: 'Instant Messaging',
 
     initComponent: function() {
         var me = this;
@@ -17,7 +20,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     dockedItems: [
                         {
                             xtype: 'form',
-                            height: 478,
+                            height: 728,
                             bodyPadding: 10,
                             title: 'Recent messages'
                         },
@@ -42,7 +45,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 523,
+                            height: 773,
                             bodyPadding: 10,
                             title: 'Messages from the last day'
                         }
@@ -54,7 +57,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 523,
+                            height: 773,
                             bodyPadding: 10,
                             title: 'Messages from the last week'
                         }
@@ -67,7 +70,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: 523,
+                            height: 773,
                             bodyPadding: 10,
                             title: 'Older messages'
                         }
