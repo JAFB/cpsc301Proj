@@ -22,13 +22,19 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                     {
                         xtype: 'textfield',
                         name: 'title',
-                        id: 'title',
+                        id: 'post_thread_title',
                         fieldLabel: 'Title'
+                    },
+                    {
+                        xtype: 'triggerfield',
+                        id: 'post_thread_topic',
+                        fieldLabel: 'Topic',
+                        store: 'Discussions'
                     },
                     {
                         xtype: 'textfield',
                         name: 'body',
-                        id: 'body',
+                        id: 'post_thread_body',
                         fieldLabel: 'Body'
                     }
                 ]
