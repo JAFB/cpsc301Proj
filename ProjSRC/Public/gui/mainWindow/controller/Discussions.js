@@ -14,18 +14,20 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     views: [
-        'discussions.DiscussionsPanel'
+        'discussions.DiscussionsPanel',
+        'discussions.PostThreadWindow'
     ],
 
     init: function() {
         this.control({
-            'viewport > panel': {
-                render: this.onPanelRendered
+            'discussionspanel button[action=newthread]': {
+                click: this.showNewThreadWindow
             }
         });
     },
 
-    onPanelRendered: function() {
-        console.log('The panel was rendered');
+    showNewThreadWindow: function () {
+        var view = Ext.widget('postthreadwindow');
+        view.down('postthreadwindow');
     }
 });

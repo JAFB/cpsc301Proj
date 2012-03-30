@@ -8,7 +8,7 @@
 
 Ext.define('GUI.view.discussions.PostThreadWindow', {
     extend: 'Ext.window.Window',
-    alias: 'widget.postthreadnwindow',
+    alias: 'widget.postthreadwindow',
 
     title: 'Start New Thread',
     layout: 'fit',
@@ -39,6 +39,20 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                     }
                 ]
             }
-        ]
+        ];
+
+        this.buttons = [
+            {
+                text: 'Save',
+                action: 'save'
+            },
+            {
+                text: 'Cancel',
+                scope: this,
+                handler: this.close
+            }
+        ];
+
+        this.callParent(arguments);
     }
 });
