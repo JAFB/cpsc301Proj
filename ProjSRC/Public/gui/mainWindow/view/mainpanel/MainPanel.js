@@ -12,10 +12,15 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 
 <<<<<<< HEAD
     height: 800,
+<<<<<<< HEAD
 =======
     minheight: 300,
 
 >>>>>>> 6a211bb34aaaf69e3496177051c1c301a1f26101
+=======
+    width: 'auto',
+
+>>>>>>> 3573a1f7947ec52698929872d80c0e4512ef75a7
     activeTab: 0,
 
     initComponent: function() {
@@ -31,12 +36,16 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                     xtype: 'panel',
                     title: 'Discussions',
 <<<<<<< HEAD
+<<<<<<< HEAD
                     /*
+=======
+>>>>>>> 3573a1f7947ec52698929872d80c0e4512ef75a7
                     items: [
                         {
                             xtype: 'discussionspanel'
                         }
                     ]
+<<<<<<< HEAD
                     */
 =======
                     items: [
@@ -46,6 +55,8 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                         }
                     ]
 >>>>>>> 6a211bb34aaaf69e3496177051c1c301a1f26101
+=======
+>>>>>>> 3573a1f7947ec52698929872d80c0e4512ef75a7
                 },
                 {
                     xtype: 'panel',
