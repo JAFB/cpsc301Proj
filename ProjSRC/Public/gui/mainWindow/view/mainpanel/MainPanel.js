@@ -10,7 +10,12 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
     extend: 'Ext.tab.Panel',
 	alias: 'widget.mainpanel',
 
+<<<<<<< HEAD
     height: 800,
+=======
+    minheight: 300,
+
+>>>>>>> 6a211bb34aaaf69e3496177051c1c301a1f26101
     activeTab: 0,
 
     initComponent: function() {
@@ -25,6 +30,7 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                 {
                     xtype: 'panel',
                     title: 'Discussions',
+<<<<<<< HEAD
                     /*
                     items: [
                         {
@@ -32,6 +38,14 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                         }
                     ]
                     */
+=======
+                    items: [
+                        {
+                            xtype: 'discussionspanel',
+                            height: '100%'
+                        }
+                    ]
+>>>>>>> 6a211bb34aaaf69e3496177051c1c301a1f26101
                 },
                 {
                     xtype: 'panel',
