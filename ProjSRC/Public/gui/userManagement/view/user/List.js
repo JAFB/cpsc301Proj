@@ -4,7 +4,8 @@ Ext.define('GUI.view.user.List', {
     alias:  'widget.userlist',
     title: 'Calgary Emergency Medicine - User Management',
     store: 'Users',
-
+    id: 'userlist',
+    xtype: 'gridpanel',
     initComponent: function() {
         this.columns = [
             {header: 'ID', dataIndex: 'id', flex: 1},
@@ -22,9 +23,14 @@ Ext.define('GUI.view.user.List', {
             },
             items: [
                 {
-                    xtype: 'button',
-                    text: 'Add New User',
+                    xtype:  'button',
+                    text:   'Add New User',
                     action: 'addnewuser'
+                },
+                {
+                    xtype:  'button',
+                    text:   'Remove User',
+                    action: 'removeuser'
                 }
             ]
         }];

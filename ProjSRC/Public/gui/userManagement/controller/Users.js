@@ -20,6 +20,10 @@ Ext.define('GUI.controller.Users',{
                 click: this.addNewUser
             },
 
+            'userlist toolbar button[action="removeuser"]' : {
+                click: this.removeUser
+            },
+
             'useredit button[action="save"]' : {
                 click: this.updateUser
             }
@@ -44,7 +48,15 @@ Ext.define('GUI.controller.Users',{
     },
 
     addNewUser: function(){
-        userStore = this.getStore("Users");
-        userStore.add({id: '', name: '', password: ' ', email: ' ', description: ' '});
+        var userStore = this.getStore("Users");
+        var newuser = Ext.create('GUI.model.User', {id: 0, name: 'new user name'});
+        userStore.add(newuser);
+    },
+
+    removeUser: function(){
+        var selectedRec = Ext.getCmp('userlist').getSelectionModel().getSelection();
+        var userStore = this.getStore('Users');
+        userStore.remove(selectedRec);
+        userStore.save();
     }
 });
