@@ -10,7 +10,8 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
     extend: 'Ext.tab.Panel',
 	alias: 'widget.mainpanel',
 
-    height: 800,
+    minheight: 300,
+
     activeTab: 0,
 
     initComponent: function() {
@@ -20,18 +21,23 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
             items: [
 				{
 					xtype: 'panel',
-					title: 'Home'
+					title: 'Home',
+					items: [
+                        {
+                            xtype: 'login',
+                            height: '100%'
+                        }
+                    ]
 				},
                 {
                     xtype: 'panel',
                     title: 'Discussions',
-                    /*
                     items: [
                         {
-                            xtype: 'discussionspanel'
+                            xtype: 'discussionspanel',
+                            height: '100%'
                         }
                     ]
-                    */
                 },
                 {
                     xtype: 'panel',
@@ -51,7 +57,11 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                 },
                 {
                     xtype: 'panel',
-                    title: 'Calendar'
+                    title: 'Calendar',
+					items:
+					[{
+						xtype: 'schedule'
+					}]
                 },
                 {
                     xtype: 'panel',
