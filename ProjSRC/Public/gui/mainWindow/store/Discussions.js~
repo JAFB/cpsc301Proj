@@ -8,23 +8,9 @@
 
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.TreeStore',
-    /*
-    autoLoad: true,
-    autosync: true,
-
-    proxy: {
-        type: 'rest',
-        url: '/discussions',
-        model: 'GUI.model.Discussions',
-        reader: {
-            type: 'json',
-            root: 'data',
-            successProperty: 'success'
-        }
-    }
-    */
 
     root: {
+        text: 'Topics',
         expanded: true,
         children: [
             {

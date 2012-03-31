@@ -22,6 +22,10 @@ Ext.define('GUI.controller.Discussions', {
         this.control({
             'discussionspanel button[action=newthread]': {
                 click: this.showNewThreadWindow
+            },
+
+            'postthreadwindow button[action=submitthread]': {
+                click: this.submitThread
             }
         });
     },
@@ -38,5 +42,22 @@ Ext.define('GUI.controller.Discussions', {
         else
             var path = node.getPath('text')
         Ext.getCmp('post_thread_topic').setValue(path);
+    },
+
+    submitThread: function() {
+        var tree = Ext.getCmp('discussionstree');
+
+        var root = tree.getRootNode();
+
+        var parent = root.appendChild({
+            text: 'Parent 1'
+        });
+
+        parent.appendChild({
+            text: 'Child 3',
+            leaf: true
+        });
+
+        parent.expand();
     }
 });
