@@ -26,10 +26,10 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         fieldLabel: 'Title'
                     },
                     {
-                        xtype: 'triggerfield',
+                        xtype: 'textfield',
+                        name: 'topic',
                         id: 'post_thread_topic',
-                        fieldLabel: 'Topic',
-                        store: 'Discussions'
+                        fieldLabel: 'Topic'
                     },
                     {
                         xtype: 'textfield',
@@ -43,8 +43,8 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
 
         this.buttons = [
             {
-                text: 'Save',
-                action: 'save'
+                text: 'Submit',
+                action: 'submitthread'
             },
             {
                 text: 'Cancel',

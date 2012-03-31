@@ -29,5 +29,14 @@ Ext.define('GUI.controller.Discussions', {
     showNewThreadWindow: function () {
         var view = Ext.widget('postthreadwindow');
         view.down('postthreadwindow');
+
+        var node = Ext.getCmp('discussionstree').getSelectionModel().getLastSelected();
+        if (node == null)
+            var path = '';
+        else if (node.isLeaf())
+            var path = node.parentNode.getPath('text');
+        else
+            var path = node.getPath('text')
+        Ext.getCmp('post_thread_topic').setValue(path);
     }
 });
