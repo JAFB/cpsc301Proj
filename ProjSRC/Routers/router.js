@@ -5,38 +5,28 @@ var path = require('path');
 var handle = require('../Handlers/requestHandler.js');
 
 /* to handle different actions or commands*/
-var handler = {};
-handler["/"] = handle.htmlRendering;
+var get_handler = {};
+var post_handler = {};
+var put_handler = {};
 
-/*
-handler["/extjs4"] = handle.extjsHandler;
-handler["/extjs4/resources/css"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/dd"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/grid"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/menu"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/form"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/sizer"] = handle.extjsHandler;
-handler["/extjs4/resources/themes/images/default/tools"] = handle.extjsHandler;
-handler["/extjs4/src/app"] = handle.extjsHandler;
+get_handler["/"] = handle.get_Render;
 
-handler["/gui"] = handle.guiModuleHandler;
-handler["/gui/sampleGrid"] = handle.guiModuleHandler;
-handler["/gui/mainWindow"] = handle.guiModuleHandler;
-handler["/gui/sampleGrid/controller"] = handle.guiModuleHandler;
-handler["/gui/sampleGrid/view/user"] = handle.guiModuleHandler;
-handler["/gui/sampleGrid/model"] = handle.guiModuleHandler;
-*/
+post_handler['/users'] = handle.post_Render;
+
+put_handler['/users'] = handle.put_Render;
+
+var reqPath = ['/'];
 
 function http_get(pathname, response){
     console.log("route to " + pathname);
 
-    var dirname = path.dirname(pathname);
-    var basename = path.basename(pathname);
-
-    if (typeof handler[dirname] === 'function'){
-        handler[dirname](response, dirname, basename);
+    if (reqPath.indexOf(pathname) >= 0) {
+        var dirname = path.dirname(pathname);
+        var basename = path.basename(pathname);
+        handle.get_Render(response, dirname, basename);
     } else {
-        console.log('handler not found to handle path ' + dirname);
+        response.render('err_nopage');
+        response.end();
     }
 }
 
@@ -50,5 +40,10 @@ function http_post(pathname, response, postData){
     }
 }
 
+function http_put(pathname, response, putData){
+    console.log("PUT method : route to " + pathname )
+}
+
 exports.http_get = http_get;
 exports.http_post = http_post;
+exports.http_put = http_put;
