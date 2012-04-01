@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 Mar 25, 2012
 Database module updated.
 	-- Modules/database.js (Fixed)
@@ -14,3 +6,17 @@ Database module updated.
 Mar 31, 2012
 GUI updated
 Database module updated
+
+Apr 1, 2012
+Login function Added
+	-- HttpServer/expressServer.js is modified
+	-- Index page, session control, login form, and logout button are added.
+		-- gui/index is added
+		-- gui/mainWindow is modified
+	-- gui/userManagement is modified
+		-- new value 'admin' (boolean) is added
+		-- Editor is fixed
+	-- HttpServer/mongodbServer.js has new function userLogin()
+	-- Modules/datamodule.js is modified
+Fix an error on HttpServer/mongodbServer.js
+Missing documents are added

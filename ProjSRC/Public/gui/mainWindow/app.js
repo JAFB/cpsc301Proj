@@ -10,6 +10,28 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
+var username,admin;
+
+var userNameStore = new Ext.data.Store({
+    fields: ['username','admin'],  
+    proxy: {
+        type: 'ajax',
+        method: 'GET',
+        url: '/session',
+        reader: {
+            type: 'json',
+            root: 'data'
+        }
+    }
+});
+userNameStore.load({
+  scope: this,
+  callback: function(record,options,success){
+    username = userNameStore.proxy.reader.jsonData.data.username;
+    admin = userNameStore.proxy.reader.jsonData.data.admin;
+  }
+});
+
 Ext.application({
     name: 'GUI',
     appFolder: 'gui/mainWindow',
@@ -31,9 +53,20 @@ Ext.application({
                 split: true
             },
             items: [
-                {
+				{	   
                     region: 'north',
-                    title: 'Calgary Emergency Medicine'
+					title: 'Calgary Emergency Medicine',
+					//html: "<b>title</b>",
+					dockedItems: [{
+						dock: 'bottom',
+						xtype: 'toolbar',
+						items: ["Welcome ",username,'->',
+						{
+						  text: 'Log out',
+						  action: 'logout'
+						}
+						]
+					}]
                 },
                 {
                     xtype: 'mainpanel',
