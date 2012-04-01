@@ -42,7 +42,7 @@ exports.insert = function(collectionName, request, response){
         userDoc_new[k] = request.body[k]
     }
 
-    mongodbObj.insert('user', userDoc_new, function(err, data){
+    mongodbObj.insert(collectionName, userDoc_new, function(err, data){
         if (err) {
             console.log(err);
         } else {
@@ -65,4 +65,29 @@ exports.remove = function(collectionName, request, response){
             })
         }
     })
-}
+};
+
+exports.userLogin = function(collectionName,request,response){
+	mongodbObj.findOne(collectionName,{userid:request.param('email')}, function(err, docs){
+		response.contentType('json');
+		if (err){//Database Error
+			console.log(err);
+			request.send("500 Internal Server Error",500);
+		}else if(docs==null){
+			response.json({
+				failure: true
+			});
+		}else if(request.param('password')==docs.password){
+			request.session.auth = true;
+			request.session.username = docs.name;
+			request.session.admin = docs.admin;
+			response.json({
+				success: true
+			});
+		}else{
+			response.json({
+				failure: true
+			});
+		}
+	});
+};

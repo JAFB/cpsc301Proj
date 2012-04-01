@@ -4,6 +4,7 @@ exports.user = function (){
         name: null,
         password: null,
         email: null,
+		admin: null,
         description: null
     }
 };

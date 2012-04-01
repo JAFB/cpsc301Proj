@@ -12,6 +12,13 @@ Ext.define('GUI.view.user.List', {
             {header: 'Name', dataIndex: 'name', flex: 1},
             {header: 'Email', dataIndex: 'email', flex: 1},
             {header: 'Password', dataIndex: 'password', flex: 1},
+			{
+				xtype: 'booleancolumn', 
+				text: 'Admin',
+				trueText: 'Yes',
+				falseText: 'No', 
+				dataIndex: 'admin'
+			},
             {header: 'Desc', dataIndex: 'description', flex: 1}
         ];
         this.dockedItems = [{
