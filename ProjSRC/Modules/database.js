@@ -5,6 +5,7 @@ Author		 -- Akio Hoshikawa
 Date		 -- Mar 23, 2012
 
 Mar 25, 2012 -- Added callback function for Database().
+Mar 29, 2012 -- Added findOne function.
 ----------------------------------------------------------------------- */
 var Db = require('mongodb').Db;
 var Connection = require('mongodb').Connection;
@@ -125,6 +126,30 @@ Database.prototype.findById = function(collectionName, objId, callback) {
       else {
 		var targetId = new ObjectID.createFromHexString(objId);
         collection.findOne({_id: targetId}, function(error, result) {
+          if( error ) callback(error)
+          else callback(null, result)
+        });
+      }
+    });
+};
+/* ---------------------------------------------------------------------
+Database.findOne()
+precondition -- connection to database is opened
+description  -- Returns one document specified with query
+params		 -- collectionName: name of collection
+query:			query for searching which has following form:
+{field : value}
+callback:		callback function which is called with
+1st arg: error
+2nd arg: a matched object
+Postcondition-- specified object is passed into callback function and
+the callback function is invoked.
+----------------------------------------------------------------------- */
+Database.prototype.findOne = function(collectionName, query, callback) {
+    this.getCollection(collectionName, function(error, collection) {
+      if( error ) callback(error)
+      else {
+        collection.findOne(query, function(error, result) {
           if( error ) callback(error)
           else callback(null, result)
         });
