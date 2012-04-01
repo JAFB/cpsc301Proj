@@ -11,26 +11,35 @@ Ext.define('GUI.view.user.Edit', {
         this.items = [
             {
                 xtype: 'form',
+				defaultType:  'textfield',
                 items: [
                     {
-                        xtype: 'textfield',
+						xtype: 'numberfield',
                         name:   'id',
-                        fieldLabel: 'ID'
+                        fieldLabel: 'ID',
+						minValue: 0,
+						decimalPrecision: 0
+						
                     },
                     {
-                        xtype: 'textfield',
                         name: 'name',
                         fieldLabel: 'Name'
                     },
                     {
-                        xtype: 'textfield',
                         name: 'email',
                         fieldLabel: 'Email'
                     },
                     {
-                        xtype: 'textfield',
                         name: 'password',
-                        fieldLabel: 'Password'
+                        fieldLabel: 'Password',
+						inputType: 'password'
+                    },
+					{
+						xtype: 'checkbox',
+						boxLabel: 'Make Administrator',
+						name: 'admin',
+						inputValue: true,
+						uncheckedValue: false
                     },
                     {
                         xtype: 'textareafield',

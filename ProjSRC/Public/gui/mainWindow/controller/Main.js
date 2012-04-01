@@ -13,5 +13,25 @@ Ext.define('GUI.controller.Main', {
         'mainpanel.MainPanel'
     ],
 
-    init: function() { }
+    init: function() { 
+		this.control({
+            'panel button[action=logout]':{
+				click: this.logout
+			}
+        });
+	},
+	
+	logout: function(){
+		//console.log("Logged out");
+		Ext.Ajax.request({
+			url: '/logout',
+			success: function (){
+				var redirect = '/'; 
+				window.location = redirect;
+			},
+			failure: function (){
+				Ext.MessageBox.alert('Error', "Failed to log out");
+			}
+		});
+    }
 });
