@@ -1,7 +1,3 @@
 require("./config.js")
-var expressServer = require("./HttpServer/expressServer.js")
-
-/*
-To Launch the server
- */
+var expressServer = require("./HttpServer/expressServer.js");
 expressServer.launchExpressServer(13910);

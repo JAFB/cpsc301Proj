@@ -12,7 +12,7 @@ Ext.Loader.setConfig({
 
 Ext.application({
     name: 'GUI',
-	appFolder: 'gui/mainWindow',
+    appFolder: 'gui/mainWindow',
 
     controllers: [
         'Discussions',
@@ -21,11 +21,31 @@ Ext.application({
     ],
 
     launch: function() {
-        Ext.QuickTips.init();
+        Ext.create('Ext.container.Viewport', {
 
-        var cmp1 = Ext.create('GUI.view.IndexPanel', {
-            renderTo: Ext.getBody()
+            layout: {
+                type: 'border',
+                padding: 5
+            },
+            defaults: {
+                split: true
+            },
+            items: [
+                {
+                    region: 'north',
+                    title: 'Calgary Emergency Medicine'
+                },
+                {
+                    xtype: 'mainpanel',
+                    region: 'center',
+                    border: false
+                },
+                {
+                    xtype: 'impanel',
+                    region: 'east',
+                    collapsible: true
+                }
+            ]
         });
-        cmp1.show();
     }
 });
