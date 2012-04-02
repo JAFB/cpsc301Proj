@@ -41,7 +41,8 @@ Ext.application({
         'Discussions',
         'IM',
         'Main',
-        'Users'
+        'Users',
+        'Memos'
     ],
 
     launch: function() {

@@ -59,10 +59,6 @@ expressAppServer.get('/session', function(req, res){
 	}
 });
 
-expressAppServer.get('/userManagement', function(request, response){
-    response.render('userManagement');
-});
-
 expressAppServer.get('/users', function(request, response){
     mongodbServer.findAll('user', request, response);
 });

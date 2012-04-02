@@ -60,14 +60,16 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 						title: 'Admin',
                         layout:
                         {
-                            type: 'hbox',
-                            alias: 'stretch'
-
+                            type: 'accordion'
                         },
-                        dockedItems:[
+                        items:[
                             {
                                 xtype: 'userlist'
+                            },
+                            {
+                                xtype: 'memoeditor'
                             }
+
 
                         ]
 					}
