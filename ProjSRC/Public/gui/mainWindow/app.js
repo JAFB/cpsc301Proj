@@ -24,6 +24,7 @@ var userNameStore = new Ext.data.Store({
         }
     }
 });
+
 userNameStore.load({
   scope: this,
   callback: function(record,options,success){
@@ -39,7 +40,8 @@ Ext.application({
     controllers: [
         'Discussions',
         'IM',
-        'Main'
+        'Main',
+        'Users'
     ],
 
     launch: function() {
@@ -53,11 +55,6 @@ Ext.application({
                 split: true
             },
             items: [
-<<<<<<< HEAD
-                {
-                    region: 'north',
-                    title: 'Calgary Emergency Medicine'
-=======
 				{	   
                     region: 'north',
 					title: 'Calgary Emergency Medicine',
@@ -72,7 +69,6 @@ Ext.application({
 						}
 						]
 					}]
->>>>>>> f0b551760e93e4c824561c9ed2f322a9330594da
                 },
                 {
                     xtype: 'mainpanel',

@@ -51,62 +51,25 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
     initComponent: function() {
         var me = this;
 
-<<<<<<< HEAD
-        Ext.applyIf(me, {
-            items: [
-				{
-					xtype: 'panel',
-					title: 'Home'
-				},
-                {
-                    xtype: 'panel',
-                    title: 'Discussions',
-                    items: [
-                        {
-                            xtype: 'discussionspanel',
-                            height: '100%'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Memos'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Documents'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Policies'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Media'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Calendar'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Profile'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Admin'
-                }
-            ]
-        });
-
-=======
 		if(admin==true){
 			Ext.applyIf(me, {
 				items: [
 					panels   
 					,{
 						xtype: 'panel',
-						title: 'Admin'
+						title: 'Admin',
+                        layout:
+                        {
+                            type: 'hbox',
+                            alias: 'stretch'
+
+                        },
+                        dockedItems:[
+                            {
+                                xtype: 'userlist'
+                            }
+
+                        ]
 					}
 				]
 			});
@@ -116,7 +79,6 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 			});
 		}
 		
->>>>>>> f0b551760e93e4c824561c9ed2f322a9330594da
         me.callParent(arguments);
     }
 });
