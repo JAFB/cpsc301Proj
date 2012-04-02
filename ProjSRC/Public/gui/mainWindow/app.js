@@ -24,6 +24,7 @@ var userNameStore = new Ext.data.Store({
         }
     }
 });
+
 userNameStore.load({
   scope: this,
   callback: function(record,options,success){
@@ -39,7 +40,8 @@ Ext.application({
     controllers: [
         'Discussions',
         'IM',
-        'Main'
+        'Main',
+        'Users'
     ],
 
     launch: function() {
