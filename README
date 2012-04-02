@@ -1,4 +1,3 @@
-
 Mar 25, 2012
 Database module updated.
 	-- Modules/database.js (Fixed)
@@ -20,3 +19,12 @@ Login function Added
 	-- Modules/datamodule.js is modified
 Fix an error on HttpServer/mongodbServer.js
 Missing documents are added
+
+Mar 30, 2012
+Complete user management functionality
+	-- new user could be added into database
+	-- user could be deleted from database
+
+April 1, 2012
+Complete merging user management into admin tab
+fix bug in findOne function in mongodbServer.js

@@ -26,6 +26,7 @@ exports.update = function(collectionName, request, response){
     }
     mongodbObj.update(collectionName, request.body['_id'], userDoc_update, function(err, data){
         if (err) {
+            console.log("error from Updating data!!")
             console.log(err)
         }
         response.json({
@@ -44,6 +45,7 @@ exports.insert = function(collectionName, request, response){
 
     mongodbObj.insert(collectionName, userDoc_new, function(err, data){
         if (err) {
+            console.log("error from inserting data!!")
             console.log(err);
         } else {
             response.json({
@@ -68,7 +70,10 @@ exports.remove = function(collectionName, request, response){
 };
 
 exports.userLogin = function(collectionName,request,response){
-	mongodbObj.findOne(collectionName,{userid:request.param('email')}, function(err, docs){
+
+    var loginQuery = {email: request.body['userid']} // to user email as login id.
+
+	mongodbObj.findOne(collectionName,loginQuery, function(err, docs){
 		response.contentType('json');
 		if (err){//Database Error
 			console.log(err);
@@ -77,7 +82,7 @@ exports.userLogin = function(collectionName,request,response){
 			response.json({
 				failure: true
 			});
-		}else if(request.param('password')==docs.password){
+		}else if(request.body['password']===docs.password){
 			request.session.auth = true;
 			request.session.username = docs.name;
 			request.session.admin = docs.admin;

@@ -57,7 +57,19 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 					panels   
 					,{
 						xtype: 'panel',
-						title: 'Admin'
+						title: 'Admin',
+                        layout:
+                        {
+                            type: 'hbox',
+                            alias: 'stretch'
+
+                        },
+                        dockedItems:[
+                            {
+                                xtype: 'userlist'
+                            }
+
+                        ]
 					}
 				]
 			});

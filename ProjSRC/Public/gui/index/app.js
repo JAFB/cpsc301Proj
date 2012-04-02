@@ -47,7 +47,7 @@ Ext.application({
 		    items: [{
 		      xtype: 'loginform',
 		      region: 'north'
-		    }],/*
+		    }]/*
 		    dockedItems: [{
 		      xtype: 'toolbar',
 		      dock: 'top',

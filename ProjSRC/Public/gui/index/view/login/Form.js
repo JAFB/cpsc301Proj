@@ -21,27 +21,30 @@ Ext.define('GUI.view.login.Form' ,{
     
     initComponent: function() {
         this.buttons = [
-        {
-			name: 'loginButton',
-            text: 'Login',
-            action: 'login',
-			formBind: true
-        }
+            {
+                name: 'loginButton',
+                text: 'Login',
+                action: 'login',
+                formBind: true
+            }
         ];
         
         this.items = [
-        {
-            fieldLabel: 'UserID',
-            name: 'userid',
-            id: 'userid',
-            inputType: 'text',
-			emptyText: 'Enter email address'
-        },
-        {
-            fieldLabel: 'Password',
-            name: 'password',
-			emptyText: 'Enter password'
-        }
+            {
+                fieldLabel: 'UserID',
+                name: 'userid',
+                id: 'userid',
+                inputType: 'text',
+                emptyText: 'Enter email address',
+                enableKeyEvents: true
+            },
+            {
+                fieldLabel: 'Password',
+                name: 'password',
+                id: 'pwd',
+                emptyText: 'Enter password',
+                enableKeyEvents: true
+            }
         ];
         
         this.callParent(arguments);
