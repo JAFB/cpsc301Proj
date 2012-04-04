@@ -2,7 +2,7 @@ Ext.define('GUI.store.Memos', {
     extend: 'Ext.data.Store',
     autoLoad: true,
     autosync: true,
-    fields: ['_id', 'title', 'content', 'date_created', 'data_modified','author'],
+    fields: ['_id', 'title', 'content', 'date_created', 'date_modified','author'],
     proxy: {
         type: 'rest',
         url : '/memos',

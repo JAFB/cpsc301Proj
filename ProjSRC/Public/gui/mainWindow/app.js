@@ -10,7 +10,7 @@ Ext.Loader.setConfig({
     enabled: true
 });
 
-var username,admin;
+var username,admin, useremail;
 
 var userNameStore = new Ext.data.Store({
     fields: ['username','admin'],  
@@ -26,11 +26,12 @@ var userNameStore = new Ext.data.Store({
 });
 
 userNameStore.load({
-  scope: this,
-  callback: function(record,options,success){
-    username = userNameStore.proxy.reader.jsonData.data.username;
-    admin = userNameStore.proxy.reader.jsonData.data.admin;
-  }
+    scope: this,
+    callback: function(record,options,success){
+        username = userNameStore.proxy.reader.jsonData.data.username;
+        admin = userNameStore.proxy.reader.jsonData.data.admin;
+        useremail = userNameStore.proxy.reader.jsonData.data.email;
+    }
 });
 
 Ext.application({

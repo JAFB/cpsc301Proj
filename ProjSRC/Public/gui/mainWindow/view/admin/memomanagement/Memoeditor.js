@@ -1,9 +1,12 @@
 Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
     extend: "Ext.form.Panel",
     alias: "widget.memoeditor",
+    id: 'memoeditor',
+    store: 'Memos',
     title: "Calgary Emergency Medicine - Memo Editor",
     bodyStyle: 'padding:5px 5px 0',
     collapsible: true,
+
     collapseDirection: 'top',
 
     fieldDefaults: {
@@ -13,25 +16,36 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
 
     initComponent: function(){
         Ext.apply(this, {
-            layout: {
-                type: "vbox",
-                alias: "stretch"
-            },
-            dockedItems: [
+
+            items: [
                 {
-                    xtype: 'textfield',
-                    fieldLable: 'Title:',
-                    name: 'title'
+                    xtype: 'container',
+                    columnWidth: 0.5,
+                    layout: 'anchor',
+                    items: [
+                        {
+                            xtype: 'textfield',
+                            fieldLabel: 'Memo Topic',
+                            name: 'memotopic',
+                            id: 'memotopic',
+                            labelAlign: 'top',
+                            anchor: '96%',
+                            value: 'Enter new topic here'
+                        }
+                    ]
                 },
                 {
                     xtype: 'htmleditor',
-                    name: 'memoeditor',
-                    fieldLable: 'Memo body',
-                    height: 500,
+                    name: 'memobodyedit',
+                    id: 'memobodyedit',
+                    height: 400,
                     anchor: '100%',
                     autoScroll: true,
-                    id: 'memoeidibox'
-                },
+                    resizable: true,
+                    value: 'Enter new topic here'
+                }
+            ],
+            dockedItems: [
                 {
                     xtype: 'toolbar',
                     dock: 'bottom',
@@ -42,11 +56,6 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                     items: [
                         {
                             xtype:  'button',
-                            text:   'Save Memo',
-                            action: 'savememo'
-                        },
-                        {
-                            xtype:  'button',
                             text:   'Post Memo',
                             action: 'postmemo'
                         }
@@ -54,6 +63,7 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                 }
 
             ]
+
         })
 
         this.callParent(arguments);

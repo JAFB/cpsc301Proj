@@ -48,8 +48,9 @@ expressAppServer.get('/session', function(req, res){
 	  res.json({
 	    success: true,
 	    data: {
-	      username: req.session.username,
-	      admin: req.session.admin
+            username: req.session.username,
+	        admin: req.session.admin,
+            email: req.session.email
 	    }
 	  });
 	}else{
@@ -63,17 +64,40 @@ expressAppServer.get('/users', function(request, response){
     mongodbServer.findAll('user', request, response);
 });
 
+expressAppServer.get('/memos', function(request, response){
+    mongodbServer.findAll('memo', request, response);
+})
+
 expressAppServer.put('/users/:id', function(request, response){
     mongodbServer.update('user', request, response);
 });
+
+expressAppServer.put('/memos/:id', function(request, response){
+    mongodbServer.update('memo', request, response);
+})
 
 expressAppServer.post('/users/:id', function(request, response){
     mongodbServer.insert('user', request, response);
 });
 
+expressAppServer.post('/memos/:id', function(request, response){
+    mongodbServer.insert('memo', request, response);
+});
+
+expressAppServer.post('/memos', function(request, response){
+    console.log(request.body);
+    mongodbServer.insert('memo', request, response);
+});
+
 expressAppServer.del('/users/:id', function(request, response){
     mongodbServer.remove('user', request, response);
-})
+});
+
+expressAppServer.del('/memos/:id', function(request, response){
+    mongodbServer.remove('memo', request, response);
+});
+
+
 
 
 exports.launchExpressServer = function(portNum){
