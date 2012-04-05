@@ -32,3 +32,4 @@ fix bug in findOne function in mongodbServer.js
 April 5, 2012
 
 Complete memo functionality (include display, create)
+Remove handlers and router( clean up)
