@@ -21,7 +21,24 @@ var panels = [
 		]
 	},{
 		xtype: 'panel',
-		title: 'Memos'
+		title: 'Memos',
+        layout: {
+            type: 'column'
+        },
+        items: [
+            {
+                xtype: 'memoviewpanel',
+                height: '100%'
+
+            },
+            {
+                xtype: 'tabpanel',
+                height: '100%',
+                width: '70%',
+                id: 'memodisplaypanel'
+
+            }
+        ]
 	},{
 		xtype: 'panel',
 		title: 'Documents'

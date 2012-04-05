@@ -66,6 +66,10 @@ expressAppServer.get('/users', function(request, response){
 
 expressAppServer.get('/memos', function(request, response){
     mongodbServer.findAll('memo', request, response);
+});
+
+expressAppServer.get('/memos/:id', function(request, response){
+    mongodbServer.findById('memo', request, response);
 })
 
 expressAppServer.put('/users/:id', function(request, response){

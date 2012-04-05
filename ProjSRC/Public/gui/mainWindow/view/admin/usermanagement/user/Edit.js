@@ -14,11 +14,11 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 				defaultType:  'textfield',
                 items: [
                     {
-						//xtype: 'numberfield',
+						xtype: 'numberfield',
                         name:   'id',
-                        fieldLabel: 'ID'
-						//minValue: 0,
-						//decimalPrecision: 0
+                        fieldLabel: 'ID',
+						minValue: 0,
+						decimalPrecision: 0
 						
                     },
                     {

@@ -11,11 +11,31 @@ exports.user = function (){
 
 exports.memo = function(){
     return {
-        topic: null,
+        title: null,
         content: null,
         date_created: null,
         date_modified: null,
-        author: null,
+        author: null
     }
-}
+};
+
+exports.discussion = function(){
+    return {
+        title: null,
+        thread: [{
+            thread_id: null,
+            body: null,
+            comments: [{
+                comment_id: null,
+                body: null,
+                self_regulating: null
+            }]
+        }],
+        comments: null,
+        author: null,
+        date_created: null,
+        date_modified: null
+    }
+};
+
 

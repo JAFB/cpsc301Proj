@@ -18,28 +18,31 @@ Ext.define('GUI.controller.Memos', {
     },
 
     create_post_memo: function(){
-        console.log(useremail + "postmemo button is clicked");
-        var newmemoTopic = Ext.getCmp('memotopic').value;
-        var newmemoBody = Ext.getCmp('memobodyedit').value;
-        var newMemoRec = Ext.create('GUI.model.Memo', {
-            title: newmemoTopic,
-            content: newmemoBody,
-            date_created: new Date(),
-            date_modified: new Date(),
-            author: useremail
-        });
-        var memoStore = this.getStore('Memos');
+        /*
+            to validate Memo body and Memo title
+         */
+        if(Ext.getCmp('memotopic').getValue().trim().length == 0
+           || Ext.getCmp('memobodyedit').getValue().trim().length == 0 ){
 
+            Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
 
-        memoStore.add(newMemoRec);
-        memoStore.save();
+        } else {
+            var date = new Date();
+            var newMemoRec = Ext.create('GUI.model.Memo', {
+                title: Ext.getCmp('memotopic').getValue(),
+                content: Ext.getCmp('memobodyedit').getValue(),
+                date_created: date,
+                date_modified: date,
+                author: useremail
+            });
+            var memoStore = this.getStore('Memos');
+            memoStore.add(newMemoRec);
+            console.log(newMemoRec);
+            memoStore.save();
 
-        Ext.getCmp('memotopic').value = 'Enter New Topic';
-
-        Ext.getCmp('memobodyedit').value = 'Enter New Body';
-
-        console.log(memoStore['data']);
-
+            newMemoRec.commit(); // commit the new record into local store object.
+            console.log(newMemoRec);
+        }
     }
 
 })

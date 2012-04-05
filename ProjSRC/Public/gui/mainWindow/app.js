@@ -43,7 +43,8 @@ Ext.application({
         'IM',
         'Main',
         'Users',
-        'Memos'
+        'Memos',
+        'Memoviews'
     ],
 
     launch: function() {

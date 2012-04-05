@@ -25,24 +25,22 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                     items: [
                         {
                             xtype: 'textfield',
-                            fieldLabel: 'Memo Topic',
-                            name: 'memotopic',
+                            fieldLabel: 'Memo Title',
                             id: 'memotopic',
                             labelAlign: 'top',
                             anchor: '96%',
-                            value: 'Enter new topic here'
+                            inputType: 'text',
+                            emptyText: 'Enter new topic here'
                         }
                     ]
                 },
                 {
                     xtype: 'htmleditor',
-                    name: 'memobodyedit',
                     id: 'memobodyedit',
                     height: 400,
                     anchor: '100%',
                     autoScroll: true,
-                    resizable: true,
-                    value: 'Enter new topic here'
+                    resizable: true
                 }
             ],
             dockedItems: [
@@ -57,7 +55,8 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                         {
                             xtype:  'button',
                             text:   'Post Memo',
-                            action: 'postmemo'
+                            action: 'postmemo',
+                            tooltip: 'Click Me to Post Memo'
                         }
                     ]
                 }

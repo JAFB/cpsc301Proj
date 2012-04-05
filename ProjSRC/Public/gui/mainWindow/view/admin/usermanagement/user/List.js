@@ -5,7 +5,7 @@ Ext.define('GUI.view.admin.usermanagement.user.List', {
     title: 'Calgary Emergency Medicine - User Manager',
     store: 'Users',
     id: 'userlist',
-    xtype: 'gridpanel',
+    //xtype: 'userlist_gridpanel',
     anchor: '100%',
     collapsible: true,
     collapseDirection: 'top',
