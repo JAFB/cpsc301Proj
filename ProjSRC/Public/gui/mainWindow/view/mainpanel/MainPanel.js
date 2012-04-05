@@ -21,7 +21,21 @@ var panels = [
 		]
 	},{
 		xtype: 'panel',
-		title: 'Memos'
+		title: 'Memos',
+        layout: {
+            type: 'column'
+        },
+        items: [
+            {
+                xtype: 'memoviewpanel',
+                height: '100%'
+
+            },
+            {
+                xtype: 'memoviewlist',
+                height: '100%'
+            }
+        ]
 	},{
 		xtype: 'panel',
 		title: 'Documents'
@@ -60,14 +74,16 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 						title: 'Admin',
                         layout:
                         {
-                            type: 'hbox',
-                            alias: 'stretch'
-
+                            type: 'accordion'
                         },
-                        dockedItems:[
+                        items:[
                             {
                                 xtype: 'userlist'
+                            },
+                            {
+                                xtype: 'memoeditor'
                             }
+
 
                         ]
 					}
