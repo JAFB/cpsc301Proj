@@ -41,7 +41,9 @@ Ext.define('GUI.controller.Memos', {
             memoStore.save();
 
             newMemoRec.commit(); // commit the new record into local store object.
-            console.log(newMemoRec);
+
+            Ext.getCmp('memotopic').setValue('');
+            Ext.getCmp('memobodyedit').setValue('');
         }
     }
 

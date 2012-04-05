@@ -32,11 +32,8 @@ var panels = [
 
             },
             {
-                xtype: 'tabpanel',
-                height: '100%',
-                width: '70%',
-                id: 'memodisplaypanel'
-
+                xtype: 'memoviewlist',
+                height: '100%'
             }
         ]
 	},{

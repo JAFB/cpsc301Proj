@@ -22,7 +22,7 @@ Ext.define('GUI.controller.Memoviews',{
             Ext.getStore('Memoview').load();
 
         },
-        interval: 60000 // 2 sconds
+        interval: 60000 // 1 minute
     }
 
 });

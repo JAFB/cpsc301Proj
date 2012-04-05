@@ -5,6 +5,7 @@ Ext.define('GUI.view.memoview.MemoviewList',{
     alias: 'widget.memoviewlist',
     id: 'memodisplaypanel',
     width: '70%',
+    autoScroll: true,
     initComponent: function(){
         this.items = [
             {
@@ -13,8 +14,8 @@ Ext.define('GUI.view.memoview.MemoviewList',{
                 items: [
                     {
                         xtype: 'gridpanel',
-                        id: 'memopage',
                         layout: 'fit',
+                        cls: 'feed-grid',
                         store: 'Memoview',
                         columns: [
                             {
@@ -22,13 +23,9 @@ Ext.define('GUI.view.memoview.MemoviewList',{
                                 text: 'Title',
                                 dataIndex: 'title',
                                 flex: 1,
-                                sortable: false
-                            },
-                            {
-                                id: 'memocontent',
-                                text: 'Content',
-                                dataIndex: 'content',
-                                flex: 1
+                                sortable: false,
+                                renderer: this.memoTitleRender
+
                             },
                             {
                                 text: 'Author',
@@ -53,7 +50,33 @@ Ext.define('GUI.view.memoview.MemoviewList',{
                     }
                 ]
             }
-        ];
+
+        ],
         this.callParent(arguments);
+    },
+
+    onViewRender: function(){
+        this.keynav = Ext.create('Ext.util.KeyNav', this.items.getAt(0).el, {
+            enter: this.onEnterKey,
+            scope: this
+        })
+    },
+
+    onDestroy: function(){
+        Ext.destroy(me.keyNav);
+        delete this.keyNav;
+        this.callParent(arguments);
+    },
+
+    onLoad: function(){
+        this.getSelectionModel.select(0);
+    },
+
+    memoTitleRender: function(value, p, record){
+        var renderStr = '<div class="topic"><b>{0}</b></div>';
+        return Ext.String.format(renderStr, value, record.get('author'));
     }
+
+
+
 })

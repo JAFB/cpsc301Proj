@@ -66,22 +66,39 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
     },
 
     getSelectedItem: function(){
-        return this.view.getSelectionModel().getSelection()[0] || false;
+        return this.view.getSelectionModel().getSelection()[0] || null;
     },
 
     onSelectChange: function(){
         var selected = this.getSelectedItem();
-        if (Ext.getCmp('memodisplaypanel').items.items['id'] != selected.data._id.toString()){
-            var panel = Ext.create('Ext.panel.Panel',{
-                title: selected.data.title,
-                closable: true,
-                id: selected.data._id.toString()
-            });
+        var displaypanel = Ext.getCmp('memodisplaypanel');
+        var memopanel = null;
+        if (selected == null) {
+            return
+        } else {
+            var memopanel = Ext.getCmp(selected.get('_id').toString().trim());
+            if (memopanel == null){
+                var panel = Ext.create('Ext.panel.Panel',{
+                    title: selected.data.title,
+                    closable: true,
+                    border: true,
+                    autoScroll: true,
+                    id: selected.get('_id').toString().trim(),
+                    html: this.contentRender(selected),
+                    cls: 'feed-grid'
 
-            Ext.getCmp('memodisplaypanel').add(panel);
+                });
+                displaypanel.add(panel);
+                displaypanel.setActiveTab(panel);
+            } else {
+                displaypanel.setActiveTab(memopanel);
+            }
         }
-        //console.log(Ext.getCmp('memodisplaypanel'))
-
-        // the code for display or dynamic create tab panel
+    },
+    
+    contentRender: function(record){
+        var renderedStr = '<div class="topic"><h5> title: {0} </h5>' +
+            '<div><p>{1}</p></div> <div><span class="author">author: {2} </span></div> </div>';
+        return Ext.String.format(renderedStr,record.get('title'), record.get('content'), record.get('author'));
     }
 })
