@@ -19,6 +19,20 @@ exports.findAll = function(collectionName, request, response){
     });
 };
 
+exports.findById = function(collectionName, request, response){
+    mongodbObj.findById(collectionName, request.body['_id'], function(err, data){
+        response.contentType('json');
+        if (err) {
+            console.log(err);
+        } else {
+            response.json({
+                success: true,
+                data: data
+            })
+        }
+    })
+}
+
 exports.update = function(collectionName, request, response){
     var userDoc_update = new datamodule.user();
     for(var k in userDoc_update) {
@@ -38,22 +52,37 @@ exports.update = function(collectionName, request, response){
 };
 
 exports.insert = function(collectionName, request, response){
-    var userDoc_new = new datamodule.user();
-    for(var k in userDoc_new) {
-        userDoc_new[k] = request.body[k]
-    }
 
-    mongodbObj.insert(collectionName, userDoc_new, function(err, data){
-        if (err) {
-            console.log("error from inserting data!!")
-            console.log(err);
-        } else {
-            response.json({
-                success: true,
-                data: data
-            })
+    if(request.body['_id'] == ''){
+        var doc_new = new datamodule[collectionName];
+        for(var k in doc_new) {
+            doc_new[k] = request.body[k]
         }
-    });
+
+        mongodbObj.insert(collectionName, doc_new, function(err, data){
+            if (err) {
+                console.log("error from inserting data!!")
+                console.log(err);
+            } else {
+                response.json({
+                    success: true,
+                    data: data
+                })
+            }
+        });
+    } else {
+        mongodbObj.findById(collectionName, request.body['_id'], function(err, data){
+            if (err) {
+                console.log("Object '_id' exist, error from finding Object by '_id' ");
+                console.log(err);
+            } else {
+                response.json({
+                    success: true,
+                    data: data
+                })
+            }
+        })
+    }
 };
 
 exports.remove = function(collectionName, request, response){
@@ -86,6 +115,7 @@ exports.userLogin = function(collectionName,request,response){
 			request.session.auth = true;
 			request.session.username = docs.name;
 			request.session.admin = docs.admin;
+            request.session.email = docs.email;
 			response.json({
 				success: true
 			});

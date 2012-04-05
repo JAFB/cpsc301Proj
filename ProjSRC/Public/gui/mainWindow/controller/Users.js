@@ -5,8 +5,8 @@ Ext.define('GUI.controller.Users',{
     stores: ['Users'],
     models: ['User'],
     views: [
-        'usermanagement.user.List',
-        'usermanagement.user.Edit'
+        'admin.usermanagement.user.List',
+        'admin.usermanagement.user.Edit'
     ],
 
     init: function(){

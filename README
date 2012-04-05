@@ -28,3 +28,7 @@ Complete user management functionality
 April 1, 2012
 Complete merging user management into admin tab
 fix bug in findOne function in mongodbServer.js
+
+April 5, 2012
+
+Complete memo functionality (include display, create)
