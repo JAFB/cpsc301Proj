@@ -1,35 +1,10 @@
-Mar 25, 2012
-Database module updated.
-	-- Modules/database.js (Fixed)
-
-Mar 31, 2012
-GUI updated
-Database module updated
-
-Apr 1, 2012
-Login function Added
-	-- HttpServer/expressServer.js is modified
-	-- Index page, session control, login form, and logout button are added.
-		-- gui/index is added
-		-- gui/mainWindow is modified
-	-- gui/userManagement is modified
-		-- new value 'admin' (boolean) is added
-		-- Editor is fixed
-	-- HttpServer/mongodbServer.js has new function userLogin()
-	-- Modules/datamodule.js is modified
-Fix an error on HttpServer/mongodbServer.js
-Missing documents are added
-
-Mar 30, 2012
-Complete user management functionality
-	-- new user could be added into database
-	-- user could be deleted from database
-
-April 1, 2012
-Complete merging user management into admin tab
-fix bug in findOne function in mongodbServer.js
-
-April 5, 2012
-
-Complete memo functionality (include display, create)
-Remove handlers and router( clean up)
+Apr 5, 2012
+	Create HISTORY and put all previous update info there.
+	IM function is merged
+		Auto refresh every 10 sec
+		Able to store last day messages
+		Older messages are discarded automatically
+			-- controller, store, mode, view of IM is added/modified
+			-- Add request handler on expressServer.js
+			-- Add database handler for IM on mongodbServer.js
+	
