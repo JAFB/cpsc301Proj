@@ -1,2 +1,4 @@
 .idea
-ProjSRC/Public/extjs4
+ProjSRC/Public/extjs4/locale
+ProjSRC/Public/extjs4/pkgs
+ProjSRC/Public/extjs4/*.js
