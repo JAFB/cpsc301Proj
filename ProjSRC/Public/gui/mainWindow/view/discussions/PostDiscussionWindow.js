@@ -6,7 +6,7 @@
  * To change this template use File | Settings | File Templates.
  */
 
-Ext.define('GUI.view.discussions.PostThreadWindow', {
+Ext.define('GUI.view.discussions.PostDiscussionWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.postthreadwindow',
 

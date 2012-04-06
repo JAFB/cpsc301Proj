@@ -22,7 +22,7 @@ Ext.define('GUI.controller.Memos', {
             to validate Memo body and Memo title
          */
         if(Ext.getCmp('memotopic').getValue().trim().length == 0
-           || Ext.getCmp('memobodyedit').getValue().trim().length == 0 ){
+           || Ext.getCmp('memobodyedit').getValue().trim().length == 0){
 
             Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
 
@@ -46,5 +46,4 @@ Ext.define('GUI.controller.Memos', {
             Ext.getCmp('memobodyedit').setValue('');
         }
     }
-
 })

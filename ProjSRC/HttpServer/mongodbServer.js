@@ -53,7 +53,6 @@ exports.update = function(collectionName, request, response){
 };
 
 exports.insert = function(collectionName, request, response){
-
     if(request.body['_id'] == ''){
         var doc_new = new datamodule[collectionName];
         for(var k in doc_new) {
@@ -85,6 +84,8 @@ exports.insert = function(collectionName, request, response){
         })
     }
 };
+
+
 
 exports.remove = function(collectionName, request, response){
     mongodbObj.remove(collectionName, request.body['_id'], function(err, data){

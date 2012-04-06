@@ -7,5 +7,16 @@
  */
 
 Ext.define('GUI.model.Discussions', {
-    extend: 'Ext.data.Model'
+    extend: 'Ext.data.Model',
+    fields: [
+        '_id',
+        'title',
+        'topic',
+        'body',
+        'comments',
+        'author',
+        'date_created',
+        'date_modified'
+    ]
 });
+

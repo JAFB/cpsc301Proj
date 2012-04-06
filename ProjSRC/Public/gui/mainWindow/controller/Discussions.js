@@ -1,10 +1,3 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 23/03/12
- * Time: 6:37 PM
- * To change this template use File | Settings | File Templates.
- */
 
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
@@ -15,7 +8,7 @@ Ext.define('GUI.controller.Discussions', {
 
     views: [
         'discussions.DiscussionsPanel',
-        'discussions.PostThreadWindow'
+        'discussions.PostDiscussionWindow'
     ],
 
     init: function() {
