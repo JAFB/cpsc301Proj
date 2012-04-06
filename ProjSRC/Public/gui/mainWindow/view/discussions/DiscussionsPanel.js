@@ -22,7 +22,14 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                             items: [
                                 {
                                     xtype: 'treepanel',
+<<<<<<< HEAD
                                     store: 'Discussions',
+=======
+                                    id: 'discussionstree',
+                                    store: 'Discussions',
+                                    useArrows: true,
+                                    rootVisible: false,
+>>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
                                     height: '90%',
                                     width: 200,
                                     title: 'Topics',

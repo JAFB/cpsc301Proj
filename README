@@ -1,12 +1,10 @@
-
-
-
-
-
-
-
-
-
-Mar 25, 2012
-Database module updated.
-	-- Modules/database.js (Fixed)
+Apr 5, 2012
+	Create HISTORY and put all previous update info there.
+	IM function is merged
+		Auto refresh every 10 sec
+		Able to store last day messages
+		Older messages are discarded automatically
+			-- controller, store, mode, view of IM is added/modified
+			-- Add request handler on expressServer.js
+			-- Add database handler for IM on mongodbServer.js
+	

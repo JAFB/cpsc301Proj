@@ -12,7 +12,11 @@ Ext.define('GUI.controller.Discussions', {
     stores: [
         'Discussions'
     ],
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     views: [
         'discussions.DiscussionsPanel',
         'discussions.PostThreadWindow'
@@ -22,6 +26,13 @@ Ext.define('GUI.controller.Discussions', {
         this.control({
             'discussionspanel button[action=newthread]': {
                 click: this.showNewThreadWindow
+<<<<<<< HEAD
+=======
+            },
+
+            'postthreadwindow button[action=submitthread]': {
+                click: this.submitThread
+>>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
             }
         });
     },
@@ -29,5 +40,34 @@ Ext.define('GUI.controller.Discussions', {
     showNewThreadWindow: function () {
         var view = Ext.widget('postthreadwindow');
         view.down('postthreadwindow');
+<<<<<<< HEAD
+=======
+
+        var node = Ext.getCmp('discussionstree').getSelectionModel().getLastSelected();
+        if (node == null)
+            var path = '';
+        else if (node.isLeaf())
+            var path = node.parentNode.getPath('text');
+        else
+            var path = node.getPath('text')
+        Ext.getCmp('post_thread_topic').setValue(path);
+    },
+
+    submitThread: function() {
+        var tree = Ext.getCmp('discussionstree');
+
+        var root = tree.getRootNode();
+
+        var parent = root.appendChild({
+            text: 'Parent 1'
+        });
+
+        parent.appendChild({
+            text: 'Child 3',
+            leaf: true
+        });
+
+        parent.expand();
+>>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     }
 });

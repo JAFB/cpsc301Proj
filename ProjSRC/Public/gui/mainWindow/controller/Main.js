@@ -13,6 +13,7 @@ Ext.define('GUI.controller.Main', {
         'mainpanel.MainPanel'
     ],
 
+<<<<<<< HEAD
     init: function() {
         this.control({
             'viewport > panel': {
@@ -23,5 +24,27 @@ Ext.define('GUI.controller.Main', {
 
     onPanelRendered: function() {
         console.log('The panel was rendered');
+=======
+    init: function() { 
+		this.control({
+            'panel button[action=logout]':{
+				click: this.logout
+			}
+        });
+	},
+	
+	logout: function(){
+		//console.log("Logged out");
+		Ext.Ajax.request({
+			url: '/logout',
+			success: function (){
+				var redirect = '/'; 
+				window.location = redirect;
+			},
+			failure: function (){
+				Ext.MessageBox.alert('Error', "Failed to log out");
+			}
+		});
+>>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     }
 });
