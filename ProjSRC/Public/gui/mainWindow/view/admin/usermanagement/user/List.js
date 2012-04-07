@@ -11,10 +11,8 @@ Ext.define('GUI.view.admin.usermanagement.user.List', {
     collapseDirection: 'top',
     initComponent: function() {
         this.columns = [
-            {header: 'ID', dataIndex: 'id', flex: 1},
             {header: 'Name', dataIndex: 'name', flex: 1},
             {header: 'Email', dataIndex: 'email', flex: 1},
-            //{header: 'Password', dataIndex: 'password', flex: 1},
 			{
 				xtype: 'booleancolumn', 
 				text: 'Admin',
