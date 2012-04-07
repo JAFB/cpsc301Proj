@@ -21,16 +21,11 @@ Ext.define('GUI.controller.Memos', {
         /*
             to validate Memo body and Memo title
          */
-<<<<<<< HEAD
-        if(Ext.getCmp('memotopic').getValue().trim().length == 0
-           || Ext.getCmp('memobodyedit').getValue().trim().length == 0){
-=======
-		 var topicValid = this.validate_memotopic(Ext.getCmp('memotopic').getValue().trim())
-        var bodyValid = this.validate_memobody(Ext.getCmp('memobodyedit').getValue().trim())
-		
-		if( !topicValid || !bodyValid ){
->>>>>>> JAFB-master
 
+		var topicValid = this.validate_memotopic(Ext.getCmp('memotopic').getValue().trim())
+        var bodyValid = this.validate_memobody(Ext.getCmp('memobodyedit').getValue().trim())
+
+		if( !topicValid || !bodyValid ){
            // Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
 			if( !topicValid )
 				Ext.MessageBox.alert('Error', "Memo topic is invalid");
@@ -57,9 +52,6 @@ Ext.define('GUI.controller.Memos', {
             Ext.getCmp('memotopic').setValue('');
             Ext.getCmp('memobodyedit').setValue('');
         }
-<<<<<<< HEAD
-    }
-=======
     },
 	
 	//validates topic of memo, returns true or false
@@ -77,7 +69,5 @@ Ext.define('GUI.controller.Memos', {
 	
 		return true;
 	}
-	
 
->>>>>>> JAFB-master
 })

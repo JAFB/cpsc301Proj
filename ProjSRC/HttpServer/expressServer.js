@@ -102,25 +102,7 @@ expressAppServer.post('/mes', function(request, response){
 	mongodbServer.IMSave('IM',request,response);
 });
 
-<<<<<<< HEAD
-/*-- Discussion request handling -- */
-expressAppServer.get('/discussion', function(request, response){
-    mongodbServer.findAll('discussion', request, response);
-});
 
-expressAppServer.get('/discussion/:id', function(request, response){
-    mongodbServer.findById('discussion', request, response);
-});
-
-expressAppServer.post('/discussion', function(request, response){
-    mongodbServer.insert('discussion', request, response);
-});
-
-expressAppServer.post('/discussion/:id', function(request, response){
-    mongodbServer.insert('discussion', request, response);
-})
-
-=======
 /*-- Discussions action handling starts here --*/
 expressAppServer.get('/discussion', function(request, response){
     mongodbServer.findAll('discussion', request, response);
@@ -141,7 +123,6 @@ expressAppServer.post('/discussion', function(request, response){
 expressAppServer.del('/discussion/:id', function(request, response){
     mongodbServer.remove('discussion', request, response);
 });
->>>>>>> JAFB-master
 
 /* Run the server */
 exports.launchExpressServer = function(portNum){
