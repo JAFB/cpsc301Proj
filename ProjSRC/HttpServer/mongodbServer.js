@@ -55,7 +55,7 @@ exports.update = function(collectionName, request, response){
     }
 
 	if(request.body['password']=="passwordisnotmodified")
-		delete userDoc_update['password'];
+		delete doc_update['password'];
 		
     mongodbObj.update(collectionName, request.body['_id'], doc_update, function(err, data){
         if (err) {
