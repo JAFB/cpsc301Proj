@@ -10,9 +10,11 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.postthreadwindow',
 
-    title: 'Start New Thread',
+    title: 'New Discussion Thread',
     layout: 'fit',
     autoShow: true,
+    closable: false,
+    width: 600,
 
     initComponent: function() {
         this.items = [
@@ -23,19 +25,23 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         xtype: 'textfield',
                         name: 'title',
                         id: 'post_thread_title',
-                        fieldLabel: 'Title'
+                        fieldLabel: 'Title',
+                        anchor: '100%'
                     },
                     {
                         xtype: 'textfield',
                         name: 'topic',
                         id: 'post_thread_topic',
-                        fieldLabel: 'Topic'
+                        fieldLabel: 'Topic',
+                        anchor: '100%'
                     },
                     {
-                        xtype: 'textfield',
+                        xtype: 'textareafield',
                         name: 'body',
                         id: 'post_thread_body',
-                        fieldLabel: 'Body'
+                        fieldLabel: 'Body',
+                        anchor: '100%',
+                        height: 200
                     }
                 ]
             }
@@ -48,8 +54,7 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
             },
             {
                 text: 'Cancel',
-                scope: this,
-                handler: this.close
+                action: 'closewindow'
             }
         ];
 

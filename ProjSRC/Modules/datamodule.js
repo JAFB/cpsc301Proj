@@ -22,6 +22,8 @@ exports.memo = function(){
 exports.discussion = function(){
     return {
         title: null,
+        topic: null,
+        body: null,
         thread: [{
             thread_id: null,
             body: null,
