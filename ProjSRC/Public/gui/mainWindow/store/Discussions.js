@@ -10,16 +10,13 @@ Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
     fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
-<<<<<<< HEAD
     sorters: [
         {
             property: 'date_created',
             direction: 'DESC'
         }
     ],
-=======
     sorters: ['topic', 'title'],
->>>>>>> e4318dcbf7d77a8dff19b1fd7784b2e9b34164df
     groupField: 'topic',
 
     proxy: {

@@ -23,15 +23,6 @@ exports.discussion = function(){
         title: null,
         topic: null,
         body: null,
-        thread: [{
-            thread_id: null,
-            body: null,
-            comments: [{
-                comment_id: null,
-                body: null,
-                self_regulating: null
-            }]
-        }],
         comments: null,
         author: null,
         date_created: null,

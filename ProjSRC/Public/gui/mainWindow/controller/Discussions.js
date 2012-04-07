@@ -7,10 +7,7 @@
  */
 
 var winOpen = false;
-<<<<<<< HEAD
 var commentFormOpen = false;
-=======
->>>>>>> e4318dcbf7d77a8dff19b1fd7784b2e9b34164df
 
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
@@ -29,6 +26,7 @@ Ext.define('GUI.controller.Discussions', {
         'discussions.DiscussionsViewPanel',
         'discussions.PostThreadWindow'
     ],
+
 
 
     init: function() {
@@ -55,28 +53,39 @@ Ext.define('GUI.controller.Discussions', {
 
             'postthreadwindow button[action=closewindow]': {
                 click: this.closeThreadWindow
-<<<<<<< HEAD
             },
 
             'panel discussionsgridpanel' : {
                 itemdblclick: this.openDiscussion
-=======
->>>>>>> e4318dcbf7d77a8dff19b1fd7784b2e9b34164df
             }
         });
 
         var runner = new Ext.util.TaskRunner();
         runner.start(this.refreshTask);
-<<<<<<< HEAD
     },
 
 
     refreshTask: {
         run: function() {
-            Ext.getStore('Memoview').load();
-
+            Ext.getStore('Discussions').load();
         },
-        interval: 30000 // 1 minute
+        interval: 30000
+    },
+
+
+
+    showNewThreadWindow: function() {
+        if (!winOpen) { // if window not already open
+            winOpen = true;
+            var view = Ext.widget('postthreadwindow');
+            view.down('postthreadwindow');
+        }
+    },
+
+
+    closeThreadWindow: function(button) {
+        button.up('postthreadwindow').close();
+        winOpen = false;
     },
 
 
@@ -104,44 +113,6 @@ Ext.define('GUI.controller.Discussions', {
         if (topic == '')
             Ext.MessageBox.alert('Error', "Please enter a topic.");
 
-=======
-    },
-
-
-    refreshTask: {
-        run: function() {
-            Ext.getStore('Memoview').load();
-
-        },
-        interval: 30000 // 1 minute
-    },
-
-
-    showNewThreadWindow: function() {
-        if (!winOpen) { // if window not already open
-            winOpen = true;
-            var view = Ext.widget('postthreadwindow');
-            view.down('postthreadwindow');
-        }
-    },
-
-
-    closeThreadWindow: function(button) {
-        button.up('postthreadwindow').close();
-        winOpen = false;
-    },
-
-
-    submitThread: function(button) {
-        var win = button.up('postthreadwindow');
-        var topic = Ext.getCmp('post_thread_topic').getValue();
-        var title = Ext.getCmp('post_thread_title').getValue();
-        var body = Ext.getCmp('post_thread_body').getValue();
-
-        if (topic == '')
-            Ext.MessageBox.alert('Error', "Please enter a topic.");
-
->>>>>>> e4318dcbf7d77a8dff19b1fd7784b2e9b34164df
         else {
             var newDiscussion = Ext.create('GUI.model.Discussions', {
                 title: title,
@@ -156,7 +127,6 @@ Ext.define('GUI.controller.Discussions', {
             this.getStore('Discussions').add(newDiscussion);
             this.getStore('Discussions').save();
             newDiscussion.commit();
-<<<<<<< HEAD
 
             win.close();
             winOpen = false;
@@ -185,19 +155,24 @@ Ext.define('GUI.controller.Discussions', {
 
 
     bodyRender: function(record){
-        var renderedStr = '<div class="topic"><h5>{0}</h5>' +
+        var renderedStr = '<br><div class="topic"><h5>{0}</h5>' +
             '<div><p>Author: {1}</p></div> <div><span class="author"><br>{2}</span></div> </div>';
         return Ext.String.format(renderedStr,record.get('title'), record.get('author'), record.get('body'));
     },
 
 
     commentRender: function(record){
-        var str = '<br><br><br><b>Comments</b><br><br>';
+        var str = '<br><br><hr/><br><b>Comments:</b><br><br>';
         
-        comments = record.get('comments');
+        var comments = record.get('comments');
         
-        for (var i in comments) {
-            str += comments[i].body + '<br><br>';
+        if (comments.length == 0)
+            str += '<i>There are no comments to display.</i>';
+        else {
+            for (var i in comments)
+               str += '<b>' + comments[i].author +
+                   '</b> <i>(' + comments[i].date +
+                   ')</i><br>' + comments[i].body + '<br><br>';
         }
         
         return str;
@@ -222,6 +197,7 @@ Ext.define('GUI.controller.Discussions', {
 
     addComment: function(button) {
         var win = button.up('commentform');
+        var store = this.getStore('Discussions');
         var discussion = win.record;
         var body = Ext.getCmp('comment_body').getValue();
 
@@ -235,16 +211,19 @@ Ext.define('GUI.controller.Discussions', {
                 date: new Date()
             };
 
-            discussion.get('comments').push(newComment);
-            this.getStore('Discussions').save();
+            var newCommentsList = discussion.get('comments');
+            newCommentsList.push(newComment);
+
+            //discussion.set('comments', newCommentsList);
+            var record = store.find('title', discussion.get('title'));
+            record.set('comments', newCommentsList);
+            store.save();
+            discussion.commit();
+
+            console.log(discussion.get('comments'));
 
             win.close();
             commentFormOpen = false;
-=======
-
-            win.close();
-            winOpen = false;
->>>>>>> e4318dcbf7d77a8dff19b1fd7784b2e9b34164df
         }
     }
 });
