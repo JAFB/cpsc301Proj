@@ -60,13 +60,21 @@ expressAppServer.get('/session', function(req, res){
 expressAppServer.get('/users', function(request, response){
     mongodbServer.findAll('user', request, response);
 });
-expressAppServer.put('/users/:id', function(request, response){
-    mongodbServer.update('user', request, response);
+expressAppServer.put('/users', function(request, response){
+	if(request.body['_id'] == ""){
+		delete request.param["_id"];
+		mongodbServer.insert('user',request,response);
+	}else{
+		mongodbServer.update('user', request, response);
+	}
 });
-expressAppServer.post('/users/:id', function(request, response){
+expressAppServer.post('/users', function(request, response){
     mongodbServer.insert('user', request, response);
 });
-expressAppServer.del('/users/:id', function(request, response){
+expressAppServer.del('/users', function(request, response){
+	if(request.body['_id'] == ""){
+		response.json({success:true});
+	} else
     mongodbServer.remove('user', request, response);
 });
 

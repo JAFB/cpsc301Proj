@@ -1,4 +1,6 @@
-
+/*
+	
+ */
 Ext.define('GUI.controller.Users',{
     extend: 'Ext.app.Controller',
 
@@ -30,32 +32,60 @@ Ext.define('GUI.controller.Users',{
     },
 
     updateUser: function(button){
-        //console.log("save button pressed!!!");
         var userStore = this.getStore("Users");
         var win = button.up('window');
         var form = win.down('form');
         var record = form.getRecord();
         var values = form.getValues();
-        record.set(values);
-        win.close();
-        userStore.save();
+		
+		if(record.data.id == values.id && record.data.email == values.email){
+			record.set(values);
+			userStore.save();
+			win.close();
+		}else if (record.data.id != values.id){
+			if(userStore.find('id',values.id) == -1){
+				record.set(values);
+				userStore.save();
+				win.close();
+			}else{
+				Ext.MessageBox.alert('Error', "Invalid Data: Duplicate ID");
+			}
+		}else{
+			if(userStore.findExact('email',values.email) == -1){
+				record.set(values);
+				userStore.save();
+				win.close();
+			}else{
+				Ext.MessageBox.alert('Error', "Invalid Data: Duplicate Email");
+			}
+		}
+	
     },
 
     editUser: function(grid, record) {
         var view = Ext.widget('useredit');
         view.down('form').loadRecord(record);
+		if(Ext.getCmp("passwordField").getValue() !=""){
+			Ext.getCmp("passwordField").setValue("passwordisnotmodified");
+		}
     },
 
     addNewUser: function(){
         var userStore = this.getStore("Users");
-        var newuser = Ext.create('GUI.model.User', {id: 0 , name: 'new user name'});
+        var newuser = Ext.create('GUI.model.User', {name: 'new user name'});
         userStore.add(newuser);
+		var view = Ext.widget('useredit');
+        view.down('form').loadRecord(newuser);
     },
 
     removeUser: function(){
         var selectedRec = Ext.getCmp('userlist').getSelectionModel().getSelection();
         var userStore = this.getStore('Users');
-        userStore.remove(selectedRec);
-        userStore.save();
+		if(useremail == selectedRec[0].data.email){
+			Ext.MessageBox.alert('Error', "Invalid Request: You cannot remove yourself");
+		}else{
+			userStore.remove(selectedRec);
+			userStore.save();
+		}
     }
 });

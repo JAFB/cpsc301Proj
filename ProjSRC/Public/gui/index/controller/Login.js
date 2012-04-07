@@ -2,10 +2,8 @@
 Ext.define('GUI.controller.Login',{
     extend: 'Ext.app.Controller',
 
-    views: [
-        'login.Form'
-    ],
-
+    views: ['login.Form'],
+	
 	refs: [
         {
            ref: 'loginForm',
@@ -19,11 +17,7 @@ Ext.define('GUI.controller.Login',{
     ],
 
     init: function(){
-        this.control({
-            'viewport > loginform' : {
-                render: this.onPanelRendered
-            },
-
+        this.control({/* Event handlers */
 			'loginform button[action=login]': {
 				click: this.login   //mouse click event
             },
@@ -43,7 +37,7 @@ Ext.define('GUI.controller.Login',{
 
     login: function(){
         this.getLoginForm().form.submit({
-            waitMsg:'Logining in...',
+            waitMsg:'Loging in...',
             url: 'login',
             method: 'POST',
 
@@ -61,9 +55,5 @@ Ext.define('GUI.controller.Login',{
 
     loginFailure: function(form,action){
         Ext.MessageBox.alert('Error', "Invalid username/password");
-    },
-
-    onPanelRendered: function(){
-        console.log('The panel was rendered');
     }
 });

@@ -1,8 +1,13 @@
+/*
+	Store definition for Users
+		-Add documentation
+			--Apr 6, Akio
+		-Original -- Jun
+ */
 Ext.define('GUI.store.Users', {
     extend: 'Ext.data.Store',
     autoLoad: true,
-    //autosync: true,
-    fields: ['_id', 'id','name', 'password','email','admin','description'],
+    fields: ['_id','name', 'password','email','admin','description'],
     proxy: {
         type: 'rest',
 		url : '/users',

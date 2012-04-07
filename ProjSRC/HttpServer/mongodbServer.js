@@ -1,7 +1,7 @@
 /*
 	database related action handler
  */
-
+var crypto = require('crypto');
 var datamodule = require('../Modules/datamodule.js')
 var Database = require('../Modules/database.js').Database;
 var mongodbObj = new Database('cem_db', 'localhost', 27017, function(err){
@@ -39,6 +39,15 @@ exports.update = function(collectionName, request, response){
     for(var k in userDoc_update) {
         userDoc_update[k] = request.body[k]
     }
+
+	var shasum = crypto.createHash('sha1');
+	shasum.update(userDoc_update['password']);
+	var passHash = shasum.digest('hex');
+	userDoc_update['password'] = passHash;
+	
+	if(request.body['password']=="passwordisnotmodified")
+		delete userDoc_update['password'];
+		
     mongodbObj.update(collectionName, request.body['_id'], userDoc_update, function(err, data){
         if (err) {
             console.log("error from Updating data!!")
@@ -59,6 +68,10 @@ exports.insert = function(collectionName, request, response){
         for(var k in doc_new) {
             doc_new[k] = request.body[k]
         }
+		var shasum = crypto.createHash('sha1');
+		shasum.update(doc_new['password']);
+		var passHash = shasum.digest('hex');
+		doc_new['password'] = passHash;
 
         mongodbObj.insert(collectionName, doc_new, function(err, data){
             if (err) {
@@ -107,9 +120,14 @@ exports.userLogin = function(collectionName,request,response){
 
 	mongodbObj.findOne(collectionName,loginQuery, function(err, docs){
 		response.contentType('json');
+		var shasum = crypto.createHash('sha1');
+		shasum.update(request.body['password']);
+		var passHash = shasum.digest('hex');
+		
+		response.contentType('json');
 		if (err){//Database Error
 			console.log(err);
-		}else if(docs==null || request.body['password']!==docs.password){
+		}else if(docs==null || passHash!==docs.password){
 			/* if no such ID, or pasword does not match */
 			response.json({
 				failure: true
