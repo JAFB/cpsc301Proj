@@ -8,11 +8,6 @@
 
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.TreeStore',
-<<<<<<< HEAD
-
-    root: {
-        text: 'Topics',
-=======
     /*
     autoLoad: true,
     autosync: true,
@@ -30,7 +25,6 @@ Ext.define('GUI.store.Discussions', {
     */
 
     root: {
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
         expanded: true,
         children: [
             {

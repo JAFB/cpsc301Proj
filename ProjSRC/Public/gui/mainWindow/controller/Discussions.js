@@ -12,11 +12,7 @@ Ext.define('GUI.controller.Discussions', {
     stores: [
         'Discussions'
     ],
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     views: [
         'discussions.DiscussionsPanel',
         'discussions.PostThreadWindow'
@@ -26,13 +22,10 @@ Ext.define('GUI.controller.Discussions', {
         this.control({
             'discussionspanel button[action=newthread]': {
                 click: this.showNewThreadWindow
-<<<<<<< HEAD
-=======
             },
 
             'postthreadwindow button[action=submitthread]': {
                 click: this.submitThread
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
             }
         });
     },
@@ -40,8 +33,6 @@ Ext.define('GUI.controller.Discussions', {
     showNewThreadWindow: function () {
         var view = Ext.widget('postthreadwindow');
         view.down('postthreadwindow');
-<<<<<<< HEAD
-=======
 
         var node = Ext.getCmp('discussionstree').getSelectionModel().getLastSelected();
         if (node == null)
@@ -68,6 +59,5 @@ Ext.define('GUI.controller.Discussions', {
         });
 
         parent.expand();
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     }
 });

@@ -9,7 +9,8 @@
 var panels = [
 	{
 		xtype: 'panel',
-		title: 'Home'
+		title: 'Home',
+		html: '<img src="images/hospital.jpg" height="315" width="550" />'
 	},{
 		xtype: 'panel',
         title: 'Discussions',
@@ -65,64 +66,6 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
     initComponent: function() {
         var me = this;
 
-<<<<<<< HEAD
-        Ext.applyIf(me, {
-            items: [
-				{
-					xtype: 'panel',
-					title: 'Home',
-					items: [
-                        {
-                            xtype: 'login',
-                            height: '100%'
-                        }
-                    ]
-				},
-                {
-                    xtype: 'panel',
-                    title: 'Discussions',
-                    items: [
-                        {
-                            xtype: 'discussionspanel',
-                            height: '100%'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Memos'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Documents'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Policies'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Media'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Calendar',
-					items:
-					[{
-						xtype: 'schedule'
-					}]
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Profile'
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Admin'
-                }
-            ]
-        });
-=======
 		if(admin==true){
 			Ext.applyIf(me, {
 				items: [
@@ -142,7 +85,6 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                                 xtype: 'memoeditor'
                             }
 
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
 
                         ]
 					}

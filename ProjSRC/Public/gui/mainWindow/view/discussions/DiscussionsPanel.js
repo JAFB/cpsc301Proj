@@ -22,14 +22,10 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                             items: [
                                 {
                                     xtype: 'treepanel',
-<<<<<<< HEAD
-                                    store: 'Discussions',
-=======
                                     id: 'discussionstree',
                                     store: 'Discussions',
                                     useArrows: true,
                                     rootVisible: false,
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
                                     height: '90%',
                                     width: 200,
                                     title: 'Topics',
@@ -61,49 +57,8 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                         }
                     ]
                 }
-            ],
-			items:
-			[{
-				xtype: 'tabpanel',
-				items:[{ xtype: 'panel', title: 'topic#1' }]
-			},
-			{
-				//xtype: 'discussionsthread'
-				xtype: 'container',
-				height: '100%',
-				width: '100%',
-				layout: 'vbox',
-				autoscroll: 'true',
-				
-				items: 
-				[
-					{
-						xtype: 'label',
-						text: 'Title of thread'
-					},{
-						xtype: 'label',
-						text: 'Author: '
-					},{
-						xtype: 'label',
-						text: 'Discussion goes here'
-					},
-					{
-						xtype: 'panel',
-						title: 'Comments',
-						height: 100
-					},
-					{
-						xtype: 'panel',
-						title: 'Comment#1',
-						html: 'where is the stethoscope?'
-					},{
-						xtype: 'panel',
-						title: 'Comment#2',
-						html: 'in the bathtub'
-					}
-				]
-			}]
-		});
+            ]
+        });
 
         me.callParent(arguments);
     }

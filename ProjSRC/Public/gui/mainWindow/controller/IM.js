@@ -1,41 +1,12 @@
-<<<<<<< HEAD
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 26/03/12
- * Time: 3:43 PM
- * To change this template use File | Settings | File Templates.
- */
-=======
  /*
 	Instant Message controller
 		Brennan Jones  -- Mar 26
 		Akio Hoshikawa -- Apr 5
   */
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
 
 Ext.define('GUI.controller.IM', {
     extend: 'Ext.app.Controller',
 
-<<<<<<< HEAD
-    views: [
-        'im.IM_Tab_Panel'
-    ],
-
-    init: function() {
-        this.control({
-            'impanel button[action=send]': {
-                click: this.sendMssg
-            }
-        });
-    },
-
-    sendMssg: function() {
-        var mssg = Ext.getCmp('mssgField').getValue();
-        Ext.getCmp('mssgField').setValue('');
-
-        console.log(mssg);
-=======
 	stores: ['IM'],
     models: ['IM'],
     views: ['im.IM_Tab_Panel'],
@@ -126,6 +97,5 @@ Ext.define('GUI.controller.IM', {
 				Ext.getCmp('mssgField').reset();
 			}
 		});
->>>>>>> 1ae5376eeece8b337328e1a26296df2acbf3b5e8
     }
 });
