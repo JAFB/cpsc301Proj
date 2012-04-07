@@ -48,13 +48,6 @@ exports.update = function(collectionName, request, response){
     for(var k in doc_update) {
         doc_update[k] = request.body[k]
     }
-    /*
-
-	var shasum = crypto.createHash('sha1');
-	shasum.update(userDoc_update['password']);
-	var passHash = shasum.digest('hex');
-	userDoc_update['password'] = passHash;
-	*/
 
 	if(request.body['password']=="passwordisnotmodified")
 		delete userDoc_update['password'];
@@ -78,14 +71,6 @@ exports.insert = function(collectionName, request, response){
         for(var k in doc_new) {
             doc_new[k] = request.body[k]
         }
-
-        /*
-		var shasum = crypto.createHash('sha1');
-		shasum.update(doc_new['password']);
-		var passHash = shasum.digest('hex');
-		doc_new['password'] = passHash;
-        */
-
         mongodbObj.insert(collectionName, doc_new, function(err, data){
             if (err) {
                 console.log("error from inserting data!!")
@@ -135,9 +120,7 @@ exports.userLogin = function(collectionName,request,response){
 
 	mongodbObj.findOne(collectionName,loginQuery, function(err, docs){
 		response.contentType('json');
-		//var shasum = crypto.createHash('sha1');
-		//shasum.update(request.body['password']);
-		//var passHash = shasum.digest('hex');
+		
         var passHash = pwdEncrypt(request.body['password']);
 		
 		response.contentType('json');
