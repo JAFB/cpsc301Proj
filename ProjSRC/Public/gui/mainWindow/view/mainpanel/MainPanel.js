@@ -2,7 +2,8 @@
 var panels = [
 	{
 		xtype: 'panel',
-		title: 'Home'
+		title: 'Home',
+		html: '<img src="images/hospital.jpg" height="315" width="550" />'
 	},{
 		xtype: 'panel',
         title: 'Discussions',

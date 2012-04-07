@@ -8,6 +8,7 @@
 
 Ext.define('GUI.model.Discussions', {
     extend: 'Ext.data.Model',
+<<<<<<< HEAD
     fields: [
         '_id',
         'title',
@@ -20,3 +21,7 @@ Ext.define('GUI.model.Discussions', {
     ]
 });
 
+=======
+    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified']
+});
+>>>>>>> JAFB-master

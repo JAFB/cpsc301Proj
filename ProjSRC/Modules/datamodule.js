@@ -24,6 +24,18 @@ exports.discussion = function(){
         title: null,
         topic: null,
         body: null,
+<<<<<<< HEAD
+=======
+        thread: [{
+            thread_id: null,
+            body: null,
+            comments: [{
+                comment_id: null,
+                body: null,
+                self_regulating: null
+            }]
+        }],
+>>>>>>> JAFB-master
         comments: null,
         author: null,
         date_created: null,
