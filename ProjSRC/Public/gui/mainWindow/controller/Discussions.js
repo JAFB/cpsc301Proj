@@ -6,8 +6,14 @@
  * To change this template use File | Settings | File Templates.
  */
 
+var winOpen = false;
+
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
+
+    models: [
+        'Discussions'
+    ],
 
     stores: [
         'Discussions'
@@ -18,6 +24,7 @@ Ext.define('GUI.controller.Discussions', {
         'discussions.PostThreadWindow'
     ],
 
+
     init: function() {
         this.control({
             'discussionspanel button[action=newthread]': {
@@ -26,38 +33,68 @@ Ext.define('GUI.controller.Discussions', {
 
             'postthreadwindow button[action=submitthread]': {
                 click: this.submitThread
+            },
+
+            'postthreadwindow button[action=closewindow]': {
+                click: this.closeThreadWindow
             }
         });
+
+        var runner = new Ext.util.TaskRunner();
+        runner.start(this.refreshTask);
     },
 
-    showNewThreadWindow: function () {
-        var view = Ext.widget('postthreadwindow');
-        view.down('postthreadwindow');
 
-        var node = Ext.getCmp('discussionstree').getSelectionModel().getLastSelected();
-        if (node == null)
-            var path = '';
-        else if (node.isLeaf())
-            var path = node.parentNode.getPath('text');
-        else
-            var path = node.getPath('text')
-        Ext.getCmp('post_thread_topic').setValue(path);
+    refreshTask: {
+        run: function() {
+            Ext.getStore('Memoview').load();
+
+        },
+        interval: 30000 // 1 minute
     },
 
-    submitThread: function() {
-        var tree = Ext.getCmp('discussionstree');
 
-        var root = tree.getRootNode();
+    showNewThreadWindow: function() {
+        if (!winOpen) { // if window not already open
+            winOpen = true;
+            var view = Ext.widget('postthreadwindow');
+            view.down('postthreadwindow');
+        }
+    },
 
-        var parent = root.appendChild({
-            text: 'Parent 1'
-        });
 
-        parent.appendChild({
-            text: 'Child 3',
-            leaf: true
-        });
+    closeThreadWindow: function(button) {
+        button.up('postthreadwindow').close();
+        winOpen = false;
+    },
 
-        parent.expand();
+
+    submitThread: function(button) {
+        var win = button.up('postthreadwindow');
+        var topic = Ext.getCmp('post_thread_topic').getValue();
+        var title = Ext.getCmp('post_thread_title').getValue();
+        var body = Ext.getCmp('post_thread_body').getValue();
+
+        if (topic == '')
+            Ext.MessageBox.alert('Error', "Please enter a topic.");
+
+        else {
+            var newDiscussion = Ext.create('GUI.model.Discussions', {
+                title: title,
+                topic: topic,
+                body: body,
+                comments: [],
+                author: username,
+                date_created: new Date(),
+                date_modified: new Date()
+            });
+
+            this.getStore('Discussions').add(newDiscussion);
+            this.getStore('Discussions').save();
+            newDiscussion.commit();
+
+            win.close();
+            winOpen = false;
+        }
     }
 });

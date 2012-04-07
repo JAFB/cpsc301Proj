@@ -1,3 +1,7 @@
+var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
+    groupHeaderTpl: '{name} ({rows.length} Discussion{[values.rows.length > 1 ? "s" : ""]})'
+});
+
 Ext.define('GUI.view.discussions.DiscussionsPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.discussionspanel',
@@ -5,61 +9,53 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
     title: 'Discussions',
 
     initComponent: function() {
-        var me = this;
-
-        Ext.applyIf(me, {
-            dockedItems: [
+        Ext.applyIf(this, {
+			layout:'border',
+			defaults: {
+				split: true
+			},
+            items: [
                 {
                     xtype: 'tabpanel',
-                    height: '100%',
-                    width: 200,
+                    region: 'center',
+                    height: 800,	
+
                     activeTab: 0,
-                    dock: 'left',
                     items: [
                         {
                             xtype: 'panel',
-                            title: 'Topics',
-                            items: [
-                                {
-                                    xtype: 'treepanel',
-                                    id: 'discussionstree',
-                                    store: 'Discussions',
-                                    useArrows: true,
-                                    rootVisible: false,
-                                    height: '90%',
-                                    width: 200,
-                                    title: 'Topics',
-                                    viewConfig: {
-
-                                    }
-                                },
-                                {
-                                    xtype: 'button',
-                                    text: 'Start New Thread',
-                                    action: 'newthread'
-                                }
-                            ]
-                        },
-                        {
-                            xtype: 'panel',
-                            title: 'Questions',
-                            items: [
-                                {
-                                    xtype: 'treepanel',
-                                    height: '100%',
-                                    width: 200,
-                                    title: 'Questions',
-                                    viewConfig: {
-
-                                    }
-                                }
-                            ]
+                            title: 'Welcome'
                         }
                     ]
+                },
+                {
+                    xtype: 'gridpanel',
+                    region: 'west',
+                    collapsible: true,
+                    height: 100,
+                    width: 225,
+
+                    title: 'Topics',
+                    id: 'topicspanel',
+                    //iconCls: 'icon-grid',
+                    store: 'Discussions',
+                    features: [groupingFeature],
+
+                    columns: [
+                        {
+                            header: '',
+                            flex: 1,
+                            dataIndex: 'title'
+                        }
+                    ],
+                    fbar: ['->', {
+                        text:'New Discussion Thread',
+                        action: 'newthread'
+                    }]
                 }
             ]
         });
 
-        me.callParent(arguments);
+        this.callParent(arguments);
     }
 });
