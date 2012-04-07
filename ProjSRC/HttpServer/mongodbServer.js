@@ -10,6 +10,10 @@ var mongodbObj = new Database('cem_db', 'localhost', 27017, function(err){
 
 /* this is a function to encrypt password*/
 var pwdEncrypt = function(pwdStr) {
+    if (pwdStr == 'passwordisnotmodifid') {
+        return pwdStr;
+    }
+
     var shasum = crypto.createHash('sha1');
     shasum.update(pwdStr);
     return shasum.digest('hex');
@@ -28,7 +32,7 @@ exports.findAll = function(collectionName, request, response){
     });
 };
 
-/**/
+/* to find document object with the document id which is returned from database*/
 exports.findById = function(collectionName, request, response){
     mongodbObj.findById(collectionName, request.body['_id'], function(err, data){
         response.contentType('json');
@@ -41,8 +45,9 @@ exports.findById = function(collectionName, request, response){
             })
         }
     })
-}
+};
 
+/* To update document object which belongs to the specified collection */
 exports.update = function(collectionName, request, response){
     var doc_update = new datamodule[collectionName];
     for(var k in doc_update) {
@@ -120,7 +125,7 @@ exports.userLogin = function(collectionName,request,response){
 
 	mongodbObj.findOne(collectionName,loginQuery, function(err, docs){
 		response.contentType('json');
-		
+
         var passHash = pwdEncrypt(request.body['password']);
 		
 		response.contentType('json');

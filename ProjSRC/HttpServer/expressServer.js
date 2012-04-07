@@ -63,7 +63,7 @@ expressAppServer.get('/users', function(request, response){
 expressAppServer.put('/users', function(request, response){
 
     var pwdstr = request.body['password'];
-    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr);
+    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr); // encrypt user's password
 
     if(request.body['_id'] == ""){
 		delete request.param["_id"];
@@ -74,7 +74,7 @@ expressAppServer.put('/users', function(request, response){
 });
 expressAppServer.post('/users', function(request, response){
     var pwdstr = request.body['password'];
-    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr);
+    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr); // encrypt user's password
 
     mongodbServer.insert('user', request, response);
 });
