@@ -1,30 +1,101 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 26/03/12
- * Time: 3:43 PM
- * To change this template use File | Settings | File Templates.
- */
+ /*
+	Instant Message controller
+		Brennan Jones  -- Mar 26
+		Akio Hoshikawa -- Apr 5
+  */
 
 Ext.define('GUI.controller.IM', {
     extend: 'Ext.app.Controller',
 
-    views: [
-        'im.IM_Tab_Panel'
-    ],
+	stores: ['IM'],
+    models: ['IM'],
+    views: ['im.IM_Tab_Panel'],
 
+	/* initial functions */
     init: function() {
         this.control({
+			'impanel' : {
+				render: this.onIMPanelRender
+			},
             'impanel button[action=send]': {
                 click: this.sendMssg
-            }
+            },
+			'impanel textfield': {
+				specialkey: this.keyCheck
+			},
+			'impanel panel[name=lastdaypanel]':{
+				activate: this.loadLastDayMssg
+			}
         });
+		/* auto refresh */
+		var IMStore = this.getStore("IM");
+		var interval = setInterval(function(){
+				IMStore.load({
+					callback: function(){
+						Ext.getCmp('mssgForm').setValue(IMStore.proxy.reader.jsonData.data.mssgForm);
+					}
+				})
+		},10000);//10 sec interval
     },
-
+	
+	onIMPanelRender: function() {
+		this.loadMssg();
+	},
+	/* load recent messages */
+	loadMssg: function() {
+		var IMStore = this.getStore("IM")
+		IMStore.load({
+			callback: function(){
+				Ext.getCmp('mssgForm').setValue(IMStore.proxy.reader.jsonData.data.mssgForm);
+			}
+		})
+	},
+	/* load messages on last day */
+	loadLastDayMssg: function() {
+		var IMStore = this.getStore("IMLastDay")
+		IMStore.load({
+			callback: function(){
+				Ext.getCmp('mssgFormLastDay').setValue(IMStore.proxy.reader.jsonData.data.mssgForm);
+			}
+		})
+	},
+	/* set enter key as sending button */
+	keyCheck: function(f, e) {
+		if(e.getKey() == e.ENTER){ // ENTER key is pressed
+			this.sendMssg();
+		}
+	},
+	/* send message to server and refresh */
     sendMssg: function() {
-        var mssg = Ext.getCmp('mssgField').getValue();
-        Ext.getCmp('mssgField').setValue('');
+		var IMStore = this.getStore("IM");
+		IMStore.load({
+			callback: function() {
+				var mssg = Ext.getCmp('mssgField').getValue();
+				var old = IMStore.proxy.reader.jsonData.data.mssgForm;
+				var newMssg;
+				if(mssg!=''){
+					/* Send New Message */
+					Ext.Ajax.request({
+						url: '/mes',   
+						method: "Post",
+						jsonData: { mssgForm : username+' : '+mssg }
+					});
+					if(old==''){
+						newMssg = username+ ' : ' +mssg
+						Ext.getCmp('mssgForm').setValue(newMssg);
+					}else{
+						newMssg = old + '\n' + username+ ' : ' +mssg;
+						Ext.getCmp('mssgForm').setValue(newMssg);
+					}
+				}
 
-        console.log(mssg);
+				/* Scroll to bottom */
+				var mssgArea = Ext.getCmp('mssgForm').bodyEl.dom.childNodes[0].id;
+				objDiv = document.getElementById(mssgArea);
+				objDiv.scrollTop = objDiv.scrollHeight;
+				
+				Ext.getCmp('mssgField').reset();
+			}
+		});
     }
 });

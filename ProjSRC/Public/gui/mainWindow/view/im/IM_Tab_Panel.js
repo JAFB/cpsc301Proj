@@ -1,12 +1,9 @@
 Ext.define('GUI.view.im.IM_Tab_Panel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.impanel',
-
-    //height: 600,
+	
     width: 280,
-
     activeTab: 0,
-
     title: 'Instant Messaging',
 
     initComponent: function() {
@@ -20,79 +17,58 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                     items: [
                         {
                             xtype: 'form',
-                            height: '80%',
-                            //width: 280,
-                            bodyPadding: 10,
-                            title: 'Recent messages'
+                            height: '95%',
+                            title: 'Recent messages',
+							items : [
+								{
+									xtype: 'textareafield',
+									width: 280,
+									id: 'mssgForm',
+									readOnly: true,
+									height: '100%'
+									
+								}
+							]
+							
                         },
-                        {
-                            xtype: 'container',
-                            height: '20%',
-                            items: [
-                                {
-                                    xtype: 'textareafield',
-                                    id: 'mssgField',
-                                    width: 280,
-                                    fieldLabel: '',
-                                    labelWidth: 0
-                                    /*
-                                    listeners:{
-                                        scope: this,
-                                        specialkey: function(f,e){
-                                            if(e.getKey()==e.ENTER){
-                                                // CHANGE LATER
-                                                var mssg = Ext.getCmp('mssgField').getValue();
-                                                Ext.getCmp('mssgField').setValue('');
-
-                                                console.log(mssg);
-                                            }
-                                        }
-                                    }
-                                    */
-                                },
-                                {
-                                    xtype: 'button',
-                                    text: 'Send',
-                                    action: 'send'
-                                }
-                            ]
-                        }
+						{
+							xtype: 'toolbar',
+							height: '5%',
+							items: [
+								{
+									xtype: 'textfield',
+									id: 'mssgField',
+									width: 230,
+									enterIsSpecial: true,
+									emptyText: 'Enter Message'
+								},'->',
+								{
+									text: 'Send',
+									action: 'send'
+								}
+							]
+						}  
                     ]
                 },
                 {
                     xtype: 'panel',
                     title: 'Last day',
+					name: 'lastdaypanel',
+
                     items: [
                         {
                             xtype: 'form',
-                            height: 600,
-                            bodyPadding: 10,
-                            title: 'Messages from the last day'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
-                    title: 'Last week',
-                    items: [
-                        {
-                            xtype: 'form',
-                            height: 600,
-                            bodyPadding: 10,
-                            title: 'Messages from the last week'
-                        }
-                    ]
-                },
-                {
-                    xtype: 'panel',
-                    width: 312,
-                    title: 'Older',
-                    items: [
-                        {
-                            xtype: 'form',
-                            height: 600,
-                            bodyPadding: 10,
-                            title: 'Older messages'
+                            height: '100%',
+                            title: 'Messages from the last day',
+							items : [
+								{
+									xtype: 'textareafield',
+									width: 280,
+									id: 'mssgFormLastDay',
+									readOnly: true,
+									height: '100%'
+								}
+							]
                         }
                     ]
                 }
