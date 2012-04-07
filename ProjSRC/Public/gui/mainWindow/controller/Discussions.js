@@ -21,6 +21,7 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     views: [
+        'admin.discussionsmanagement.DiscussionsManagement',
         'discussions.CommentForm',
         'discussions.DiscussionsGridPanel',
         'discussions.DiscussionsViewPanel',
@@ -41,6 +42,10 @@ Ext.define('GUI.controller.Discussions', {
 
             'discussionsgridpanel button[action=newthread]': {
                 click: this.showNewThreadWindow
+            },
+
+            'discussionsmanagement button[action=removediscussion]': {
+                click: this.removeDiscussion
             },
 
             'discussionsviewpanel button[action=addcomment]': {
@@ -134,6 +139,14 @@ Ext.define('GUI.controller.Discussions', {
     },
 
 
+    removeDiscussion: function() {
+        var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection();
+        var store = this.getStore('Discussions');
+        store.remove(selectedRec);
+        store.save();
+    },
+
+
     openDiscussion: function(grid, record) {
         var viewpanel = Ext.getCmp('discussionsviewpanel');
 
@@ -214,9 +227,7 @@ Ext.define('GUI.controller.Discussions', {
             var newCommentsList = discussion.get('comments');
             newCommentsList.push(newComment);
 
-            //discussion.set('comments', newCommentsList);
-            var record = store.find('title', discussion.get('title'));
-            record.set('comments', newCommentsList);
+            discussion.set('comments', newCommentsList);
             store.save();
             discussion.commit();
 
