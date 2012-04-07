@@ -22,10 +22,8 @@ exports.memo = function(){
 exports.discussion = function(){
     return {
         title: null,
-<<<<<<< HEAD
         topic: null,
         body: null,
-=======
         thread: [{
             thread_id: null,
             body: null,
@@ -35,15 +33,9 @@ exports.discussion = function(){
                 self_regulating: null
             }]
         }],
->>>>>>> 5ffaaceb8a59e160381f13720946236531b816e3
         comments: null,
         author: null,
         date_created: null,
         date_modified: null
     }
 };
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 5ffaaceb8a59e160381f13720946236531b816e3

@@ -102,7 +102,6 @@ expressAppServer.post('/mes', function(request, response){
 	mongodbServer.IMSave('IM',request,response);
 });
 
-<<<<<<< HEAD
 /*-- Discussions action handling starts here --*/
 expressAppServer.get('/discussion', function(request, response){
     mongodbServer.findAll('discussion', request, response);
@@ -124,8 +123,6 @@ expressAppServer.del('/discussion/:id', function(request, response){
     mongodbServer.remove('discussion', request, response);
 });
 
-=======
->>>>>>> 5ffaaceb8a59e160381f13720946236531b816e3
 /* Run the server */
 exports.launchExpressServer = function(portNum){
     console.log('Express Application Server is launched and listening port ' + portNum);
