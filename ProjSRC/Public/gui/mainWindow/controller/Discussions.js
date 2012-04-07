@@ -7,6 +7,7 @@
  */
 
 var winOpen = false;
+var commentFormOpen = false;
 
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
@@ -20,15 +21,29 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     views: [
-        'discussions.DiscussionsPanel',
+        'discussions.CommentForm',
+        'discussions.DiscussionsGridPanel',
+        'discussions.DiscussionsViewPanel',
         'discussions.PostThreadWindow'
     ],
 
 
     init: function() {
         this.control({
-            'discussionspanel button[action=newthread]': {
+            'commentform button[action=submitcomment]': {
+                click: this.addComment
+            },
+
+            'commentform button[action=closewindow]': {
+                click: this.closeCommentForm
+            },
+
+            'discussionsgridpanel button[action=newthread]': {
                 click: this.showNewThreadWindow
+            },
+
+            'discussionsviewpanel button[action=addcomment]': {
+                click: this.showCommentForm
             },
 
             'postthreadwindow button[action=submitthread]': {
@@ -37,6 +52,10 @@ Ext.define('GUI.controller.Discussions', {
 
             'postthreadwindow button[action=closewindow]': {
                 click: this.closeThreadWindow
+            },
+
+            'panel discussionsgridpanel' : {
+                itemdblclick: this.openDiscussion
             }
         });
 
@@ -95,6 +114,86 @@ Ext.define('GUI.controller.Discussions', {
 
             win.close();
             winOpen = false;
+        }
+    },
+
+
+    openDiscussion: function(grid, record) {
+        var viewpanel = Ext.getCmp('discussionsviewpanel');
+
+        var newpanel = Ext.create('Ext.panel.Panel', {
+            title: record.get('title'),
+            closable: true,
+            autoScroll: true,
+            html: this.bodyRender(record) + this.commentRender(record),
+            fbar: ['->', {
+                text:'Add comment',
+                record: record,
+                action: 'addcomment'
+            }]
+        });
+        
+        viewpanel.add(newpanel);
+        viewpanel.setActiveTab(newpanel);
+    },
+
+
+    bodyRender: function(record){
+        var renderedStr = '<div class="topic"><h5>{0}</h5>' +
+            '<div><p>Author: {1}</p></div> <div><span class="author"><br>{2}</span></div> </div>';
+        return Ext.String.format(renderedStr,record.get('title'), record.get('author'), record.get('body'));
+    },
+
+
+    commentRender: function(record){
+        var str = '<br><br><br><b>Comments</b><br><br>';
+        
+        comments = record.get('comments');
+        
+        for (var i in comments) {
+            str += comments[i].body + '<br><br>';
+        }
+        
+        return str;
+    },
+
+
+    showCommentForm: function(button) {
+        if (!commentFormOpen) { // if window not already open
+            commentFormOpen = true;
+            var view = Ext.widget('commentform');
+            view.down('commentform');
+            view.record = button.record;
+        }
+    },
+
+
+    closeCommentForm: function(button) {
+        button.up('commentform').close();
+        commentFormOpen = false;
+    },
+
+
+    addComment: function(button) {
+        var win = button.up('commentform');
+        var discussion = win.record;
+        var body = Ext.getCmp('comment_body').getValue();
+
+        if (body == '')
+            Ext.MessageBox.alert('Error', "Please enter a comment or press cancel.");
+
+        else {
+            var newComment = {
+                author: username,
+                body: body,
+                date: new Date()
+            };
+
+            discussion.get('comments').push(newComment);
+            this.getStore('Discussions').save();
+
+            win.close();
+            commentFormOpen = false;
         }
     }
 });

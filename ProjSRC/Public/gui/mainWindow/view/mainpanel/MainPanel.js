@@ -15,8 +15,26 @@ var panels = [
         title: 'Discussions',
 		items: [
 			{
-				xtype: 'discussionspanel',
-				height: '100%'
+				xtype: 'panel',
+				height: '100%',
+                layout:'border',
+                defaults: {
+                    split: true
+                },
+                items: [
+                    {
+                        xtype: 'discussionsviewpanel',
+                        region: 'center',
+                        height: 800
+                    },
+                    {
+                        xtype: 'discussionsgridpanel',
+                        region: 'west',
+                        collapsible: true,
+                        height: 100,
+                        width: 225
+                    }
+                ]
 			}
 		]
 	},{

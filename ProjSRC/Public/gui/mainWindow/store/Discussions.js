@@ -10,7 +10,12 @@ Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
     fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
-    sorters: ['topic', 'title'],
+    sorters: [
+        {
+            property: 'date_created',
+            direction: 'DESC'
+        }
+    ],
     groupField: 'topic',
 
     proxy: {
