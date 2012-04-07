@@ -5,8 +5,12 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
     store: 'Discussions',
     initComponent: function() {
         this.items = [
+            {
+                xtype: 'panel',
+                title: 'discussion'
 
-        ],
+            }
+        ]
         this.callParent(arguments);
     }
 });

@@ -4,7 +4,6 @@ Ext.define('GUI.view.memoview.MemoviewList',{
     extend: 'Ext.tab.Panel',
     alias: 'widget.memoviewlist',
     id: 'memodisplaypanel',
-    width: '70%',
     autoScroll: true,
     initComponent: function(){
         this.items = [
@@ -76,7 +75,5 @@ Ext.define('GUI.view.memoview.MemoviewList',{
         var renderStr = '<div class="topic"><b>{0}</b></div>';
         return Ext.String.format(renderStr, value, record.get('author'));
     }
-
-
 
 })

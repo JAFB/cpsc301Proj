@@ -1,13 +1,12 @@
 Ext.define('GUI.view.memoview.MemoviewPanel',{
     extend: 'Ext.panel.Panel',
     alias: 'widget.memoviewpanel',
-    width: '30%',
+    width: 200,
     autoScroll: true,
 
     title: 'Memo Title',
-
     initComponent: function() {
-        Ext.apply(this, {
+        Ext.applyIf(this, {
             items: [
                 this.memoTitleView()
             ]
