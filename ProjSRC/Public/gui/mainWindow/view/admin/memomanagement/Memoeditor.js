@@ -37,7 +37,9 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                 {
                     xtype: 'htmleditor',
                     id: 'memobodyedit',
-                    height: 400,
+					height: 400,
+                    minHeight: 200,
+					minWidth: 200,
                     anchor: '100%',
                     autoScroll: true,
                     resizable: true
