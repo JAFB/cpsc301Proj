@@ -84,7 +84,6 @@ expressAppServer.post('/memos/:id', function(request, response){
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.post('/memos', function(request, response){
-    console.log(request.body);
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.del('/memos/:id', function(request, response){
@@ -117,7 +116,6 @@ expressAppServer.post('/discussion/:id', function(request, response){
     mongodbServer.insert('discussion', request, response);
 });
 expressAppServer.post('/discussion', function(request, response){
-    console.log(request.body);
     mongodbServer.insert('discussion', request, response);
 });
 expressAppServer.del('/discussion/:id', function(request, response){

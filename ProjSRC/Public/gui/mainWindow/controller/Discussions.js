@@ -14,7 +14,7 @@ Ext.define('GUI.controller.Discussions', {
 
     views: [
         'discussions.DiscussionsPanel',
-        'discussions.PostDiscussionWindow'
+        'discussions.PostThreadWindow'
     ],
 
 
