@@ -48,6 +48,18 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.closeThreadWindow
             }
         });
+
+        var runner = new Ext.util.TaskRunner();
+        runner.start(this.refreshTask);
+    },
+
+
+    refreshTask: {
+        run: function() {
+            Ext.getStore('Memoview').load();
+
+        },
+        interval: 60000 // 1 minute
     },
 
 
