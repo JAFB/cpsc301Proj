@@ -1,3 +1,8 @@
+/*
+	IM view definitions
+		Add documentation
+			Apr 6 -- Akio
+ */
 Ext.define('GUI.view.im.IM_Tab_Panel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.impanel',
@@ -11,18 +16,17 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 
         Ext.applyIf(me, {
             items: [
-                {
+                {	/* Recent Panel */
                     xtype: 'panel',
                     title: 'Recent',
                     items: [
-                        {
+                        {	/* Message receiver form */
                             xtype: 'form',
                             height: '95%',
                             title: 'Recent messages',
-							items : [
+							dockedItems : [
 								{
 									xtype: 'textareafield',
-									width: 280,
 									id: 'mssgForm',
 									readOnly: true,
 									height: '100%'
@@ -31,7 +35,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 							]
 							
                         },
-						{
+						{	/* Message sender form */
 							xtype: 'toolbar',
 							height: '5%',
 							items: [
@@ -39,7 +43,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 									xtype: 'textfield',
 									id: 'mssgField',
 									width: 230,
-									enterIsSpecial: true,
+									enterIsSpecial: true, //enter key to trigger event
 									emptyText: 'Enter Message'
 								},'->',
 								{
@@ -50,7 +54,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 						}  
                     ]
                 },
-                {
+                {	/* Last day message panel */
                     xtype: 'panel',
                     title: 'Last day',
 					name: 'lastdaypanel',
@@ -60,8 +64,8 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                             xtype: 'form',
                             height: '100%',
                             title: 'Messages from the last day',
-							items : [
-								{
+							dockedItems : [
+								{	/* message field */
 									xtype: 'textareafield',
 									width: 280,
 									id: 'mssgFormLastDay',

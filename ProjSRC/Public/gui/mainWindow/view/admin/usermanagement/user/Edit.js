@@ -14,25 +14,21 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 				defaultType:  'textfield',
                 items: [
                     {
-						xtype: 'numberfield',
-                        name:   'id',
-                        fieldLabel: 'ID',
-						minValue: 0,
-						decimalPrecision: 0
-						
-                    },
-                    {
                         name: 'name',
-                        fieldLabel: 'Name'
+                        fieldLabel: 'Name',
+						allowBlank: false
                     },
                     {
                         name: 'email',
-                        fieldLabel: 'Email'
+                        fieldLabel: 'Email',
+						allowBlank: false
                     },
                     {
                         name: 'password',
                         fieldLabel: 'Password',
-						inputType: 'password'
+						inputType: 'password',
+						id: 'passwordField',
+						allowBlank: false
                     },
 					{
 						xtype: 'checkbox',
@@ -43,30 +39,27 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                     },
                     {
                         xtype: 'textareafield',
-                        grow: true,
                         name: 'description',
                         fieldLabel: 'User Description',
                         autoScroll: true
                     }
 
-                ]
+                ],
+				buttons: [
+					{
+						text: 'Save',
+						formBind: true,
+						action: 'save'
+					},
+					{
+						text: 'Cancel',
+						scope: this,
+						handler: this.close
+					}
+				]
 
             }
         ];
-
-
-        this.buttons = [
-            {
-                text: 'Save',
-                action: 'save'
-            },
-            {
-                text: 'Cancel',
-                scope: this,
-                handler: this.close
-            }
-        ];
-
         this.callParent(arguments);
     }
 });
