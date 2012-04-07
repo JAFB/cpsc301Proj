@@ -35,7 +35,7 @@ exports.findById = function(collectionName, request, response){
 }
 
 exports.update = function(collectionName, request, response){
-    var userDoc_update = new datamodule.user();
+	var userDoc_data = new datamodule[collectionName]
     for(var k in userDoc_update) {
         userDoc_update[k] = request.body[k]
     }
