@@ -61,7 +61,9 @@ expressAppServer.get('/users', function(request, response){
     mongodbServer.findAll('user', request, response);
 });
 expressAppServer.put('/users', function(request, response){
-	if(request.body['_id'] == ""){
+    var pwdstr = request.body['password'];
+    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr);
+    if(request.body['_id'] == ""){
 		delete request.param["_id"];
 		mongodbServer.insert('user',request,response);
 	}else{
@@ -69,6 +71,9 @@ expressAppServer.put('/users', function(request, response){
 	}
 });
 expressAppServer.post('/users', function(request, response){
+    //var pwdstr = request.body['password'];
+    //request.body['password'] = mongodbServer.pwdEncrypt(pwdstr);
+
     mongodbServer.insert('user', request, response);
 });
 expressAppServer.del('/users', function(request, response){
