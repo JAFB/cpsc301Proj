@@ -12,6 +12,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
                 this.memoTitleView()
             ]
         });
+		
         this.memoTitleList();
         this.addEvents(
             'memotitleselect'
@@ -34,7 +35,8 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
             listeners: {
                 scope: this,
                 //contextmenu: this.onContextMenu,
-                viewReady: this.onViewReady
+                viewReady: this.onViewReady,
+				itemclick: this.checkTabs
             },
             trackOver: true,
             cls: 'feed-list',
@@ -73,6 +75,8 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
         var selected = this.getSelectedItem();
         var displaypanel = Ext.getCmp('memodisplaypanel');
         var memopanel = null;
+
+
         if (selected == null) {
             return
         } else {
@@ -86,7 +90,6 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
                     id: selected.get('_id').toString().trim(),
                     html: this.contentRender(selected),
                     cls: 'feed-grid'
-
                 });
                 displaypanel.add(panel);
                 displaypanel.setActiveTab(panel);
@@ -100,5 +103,16 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
         var renderedStr = '<div class="topic"><h5> title: {0} </h5>' +
             '<div><p>{1}</p></div> <div><span class="author">author: {2} </span></div> </div>';
         return Ext.String.format(renderedStr,record.get('title'), record.get('content'), record.get('author'));
-    }
+    },
+	
+	checkTabs: function()
+	{
+		
+		var displaypanel = Ext.getCmp('memodisplaypanel');
+		var currentTabid = displaypanel.getActiveTab().id;
+		if (this.getSelectedItem().get('_id').toString().trim() != currentTabid){
+			var memopanel = Ext.getCmp(this.getSelectedItem().get('_id').toString().trim());
+			displaypanel.setActiveTab(memopanel);
+		}	
+	}
 })

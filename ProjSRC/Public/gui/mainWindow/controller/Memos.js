@@ -21,10 +21,17 @@ Ext.define('GUI.controller.Memos', {
         /*
             to validate Memo body and Memo title
          */
-        if(Ext.getCmp('memotopic').getValue().trim().length == 0
-           || Ext.getCmp('memobodyedit').getValue().trim().length == 0 ){
+		 var topicValid = this.validate_memotopic(Ext.getCmp('memotopic').getValue().trim())
+        var bodyValid = this.validate_memobody(Ext.getCmp('memobodyedit').getValue().trim())
+		
+		if( !topicValid || !bodyValid ){
 
-            Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
+           // Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
+			if( !topicValid )
+				Ext.MessageBox.alert('Error', "Memo topic is invalid");
+				
+			else if( !bodyValid )
+				Ext.MessageBox.alert('Error', "Memo body is invalid");
 
         } else {
             var date = new Date();
@@ -45,6 +52,23 @@ Ext.define('GUI.controller.Memos', {
             Ext.getCmp('memotopic').setValue('');
             Ext.getCmp('memobodyedit').setValue('');
         }
-    }
+    },
+	
+	//validates topic of memo, returns true or false
+	validate_memotopic: function(memotopic){
+		if(  memotopic.length < 3 || memotopic.length > 100 )
+			return false;
+	
+		return true;
+	}, 
+	
+	//validates body of memo, returns true or false
+	validate_memobody: function(memobody) {
+		if(  memobody.length < 3 )
+			return false;
+	
+		return true;
+	}
+	
 
 })
