@@ -39,14 +39,6 @@ exports.update = function(collectionName, request, response){
     for(var k in userDoc_update) {
         userDoc_update[k] = request.body[k]
     }
-
-	var shasum = crypto.createHash('sha1');
-	shasum.update(userDoc_update['password']);
-	var passHash = shasum.digest('hex');
-	userDoc_update['password'] = passHash;
-	
-	if(request.body['password']=="passwordisnotmodified")
-		delete userDoc_update['password'];
 		
     mongodbObj.update(collectionName, request.body['_id'], userDoc_update, function(err, data){
         if (err) {
@@ -68,10 +60,6 @@ exports.insert = function(collectionName, request, response){
         for(var k in doc_new) {
             doc_new[k] = request.body[k]
         }
-		var shasum = crypto.createHash('sha1');
-		shasum.update(doc_new['password']);
-		var passHash = shasum.digest('hex');
-		doc_new['password'] = passHash;
 
         mongodbObj.insert(collectionName, doc_new, function(err, data){
             if (err) {
@@ -112,6 +100,71 @@ exports.remove = function(collectionName, request, response){
     })
 };
 
+/* Insert New User */
+exports.userInsert = function(collectionName, request, response){
+
+    if(request.body['_id'] == ''){
+        var doc_new = new datamodule[collectionName];
+        for(var k in doc_new) {
+            doc_new[k] = request.body[k]
+        }
+		var shasum = crypto.createHash('sha1');
+		shasum.update(doc_new['password']);
+		var passHash = shasum.digest('hex');
+		doc_new['password'] = passHash;
+
+        mongodbObj.insert(collectionName, doc_new, function(err, data){
+            if (err) {
+                console.log("error from inserting data!!")
+                console.log(err);
+            } else {
+                response.json({
+                    success: true,
+                    data: data
+                })
+            }
+        });
+    } else {
+        mongodbObj.findById(collectionName, request.body['_id'], function(err, data){
+            if (err) {
+                console.log("Object '_id' exist, error from finding Object by '_id' ");
+                console.log(err);
+            } else {
+                response.json({
+                    success: true,
+                    data: data
+                })
+            }
+        })
+    }
+};
+/* User Update */
+exports.userUpdate = function(collectionName, request, response){
+    var userDoc_update = new datamodule.user();
+    for(var k in userDoc_update) {
+        userDoc_update[k] = request.body[k]
+    }
+
+	var shasum = crypto.createHash('sha1');
+	shasum.update(userDoc_update['password']);
+	var passHash = shasum.digest('hex');
+	userDoc_update['password'] = passHash;
+	
+	if(request.body['password']=="passwordisnotmodified")
+		delete userDoc_update['password'];
+		
+    mongodbObj.update(collectionName, request.body['_id'], userDoc_update, function(err, data){
+        if (err) {
+            console.log("error from Updating data!!")
+            console.log(err)
+        }
+        response.json({
+            success: true,
+            data: data
+        })
+    })
+
+};
 
 /* Login request handler */
 exports.userLogin = function(collectionName,request,response){

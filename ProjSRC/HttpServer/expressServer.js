@@ -63,13 +63,13 @@ expressAppServer.get('/users', function(request, response){
 expressAppServer.put('/users', function(request, response){
 	if(request.body['_id'] == ""){
 		delete request.param["_id"];
-		mongodbServer.insert('user',request,response);
+		mongodbServer.userInsert('user',request,response);
 	}else{
-		mongodbServer.update('user', request, response);
+		mongodbServer.userUpdate('user', request, response);
 	}
 });
 expressAppServer.post('/users', function(request, response){
-    mongodbServer.insert('user', request, response);
+    mongodbServer.userInsert('user', request, response);
 });
 expressAppServer.del('/users', function(request, response){
 	if(request.body['_id'] == ""){
@@ -92,7 +92,6 @@ expressAppServer.post('/memos/:id', function(request, response){
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.post('/memos', function(request, response){
-    console.log(request.body);
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.del('/memos/:id', function(request, response){
