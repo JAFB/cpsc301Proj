@@ -22,7 +22,6 @@ Ext.define('GUI.controller.Main', {
 	},
 	
 	logout: function(){
-		//console.log("Logged out");
 		Ext.Ajax.request({
 			url: '/logout',
 			success: function (){

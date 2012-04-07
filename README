@@ -7,4 +7,21 @@ Apr 5, 2012
 			-- controller, store, mode, view of IM is added/modified
 			-- Add request handler on expressServer.js
 			-- Add database handler for IM on mongodbServer.js
+			
+Apr 6, 2012
+	Merge discussion page (from Brennan, not finished)
+	Password hashing is implemented
+	Add a logo
+	Add a welcome message on Index page
+	IM message field fixed
+		--However, the input field does not follow windows size yet
+	User management function fixed
+		--Add input checking
+		--Remove ID
+		--Open editting windows when one clicks the add user button
+		--Fix updating password function to avoid double hashing
+		--Disable to remove myself
+	Add some documentation
+	
+	!!Note that you have to set up user accounts again because of hash function!!
 	
