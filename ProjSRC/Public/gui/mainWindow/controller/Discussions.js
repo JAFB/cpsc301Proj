@@ -8,15 +8,6 @@
 
 var winOpen = false;
 
-function replaceWithDots(s) {
-    for (var i in s) {
-        if (s[i] == '/')
-            s[i] == '.';
-    }
-    return s;
-}
-
-
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
@@ -59,7 +50,7 @@ Ext.define('GUI.controller.Discussions', {
             Ext.getStore('Memoview').load();
 
         },
-        interval: 60000 // 1 minute
+        interval: 30000 // 1 minute
     },
 
 
