@@ -54,7 +54,9 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
             },
             {
                 text: 'Cancel',
-                action: 'closewindow'
+                scope: this,
+                action: 'closewindow',
+                handle: this.close
             }
         ];
 

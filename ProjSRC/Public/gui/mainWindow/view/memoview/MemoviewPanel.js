@@ -28,7 +28,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
 
                 listeners: {
                     scope: this,
-                    selectionchange: this.onSelectChange
+                    itemclick: this.onSelectChange
                 }
 
             },

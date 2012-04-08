@@ -1,13 +1,12 @@
 var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
-    groupHeaderTpl: '{name} ({rows.length} Discussion{[values.rows.length > 1 ? "s" : ""]})'
+    groupHeaderTpl: 'Topic: {name} ({rows.length} {[values.rows.length > 1 ? "s" : ""]})'
 });
 
 Ext.define('GUI.view.discussions.DiscussionsPanel', {
     extend: 'Ext.panel.Panel',
     alias: 'widget.discussionspanel',
-
     title: 'Discussions',
-
+    id: 'discussionpanel',
     initComponent: function() {
         Ext.applyIf(this, {
 			layout:'border',
@@ -18,8 +17,7 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                 {
                     xtype: 'tabpanel',
                     region: 'center',
-                    height: 800,	
-
+                    itemId: 'discussiondisplayborad',
                     activeTab: 0,
                     items: [
                         {
@@ -31,16 +29,14 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                 {
                     xtype: 'gridpanel',
                     region: 'west',
+                    itemId: 'discussiongridpanel',
                     collapsible: true,
                     height: 100,
                     width: 225,
-
                     title: 'Topics',
                     id: 'topicspanel',
-                    //iconCls: 'icon-grid',
                     store: 'Discussions',
                     features: [groupingFeature],
-
                     columns: [
                         {
                             header: '',
@@ -48,14 +44,29 @@ Ext.define('GUI.view.discussions.DiscussionsPanel', {
                             dataIndex: 'title'
                         }
                     ],
-                    fbar: ['->', {
-                        text:'New Discussion Thread',
-                        action: 'newthread'
-                    }]
+                    dockedItems: [
+                        {
+                            xtype: 'toolbar',
+                            dock: 'bottom',
+                            layout: {
+                            align: 'stretchmax',
+                                type: 'hbox'
+                            },
+                            items: [
+                                {
+                                    xtype: 'button',
+                                    text: 'New Discussion Thread',
+                                    action: 'newthread'
+                                }
+                            ]
+                        }
+                    ]
                 }
+
             ]
         });
 
         this.callParent(arguments);
     }
+
 });

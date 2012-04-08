@@ -5,7 +5,7 @@ Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
     models: [
-        'Discussions'
+        'Discussion'
     ],
 
     stores: [
@@ -24,7 +24,11 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.showNewThreadWindow
             },
 
-            'postthreadwindow button[action=submitthread]': {
+            'discussionspanel gridpanel': {
+                itemclick: this.displaytopic
+            },
+
+            'postthreadwindow toolbar button[action=submitthread]': {
                 click: this.submitThread
             },
 
@@ -63,16 +67,17 @@ Ext.define('GUI.controller.Discussions', {
 
 
     submitThread: function(button) {
+        console.log("button clicked");
         var win = button.up('postthreadwindow');
-        var topic = Ext.getCmp('post_thread_topic').getValue();
-        var title = Ext.getCmp('post_thread_title').getValue();
-        var body = Ext.getCmp('post_thread_body').getValue();
+        var topic = Ext.getCmp('post_thread_topic').getValue().trim();
+        var title = Ext.getCmp('post_thread_title').getValue().trim();
+        var body = Ext.getCmp('post_thread_body').getValue().trim();
 
         if (topic == '')
             Ext.MessageBox.alert('Error', "Please enter a topic.");
 
         else {
-            var newDiscussion = Ext.create('GUI.model.Discussions', {
+            var newDiscussion = Ext.create('GUI.model.Discussion', {
                 title: title,
                 topic: topic,
                 body: body,
@@ -88,6 +93,40 @@ Ext.define('GUI.controller.Discussions', {
 
             win.close();
             winOpen = false;
+        }
+    },
+
+    displaytopic: function(){
+        // get discussionpanel object which is defined in 'view/discussion/DiscussionPanel.js'
+        var discussionpanel = Ext.getCmp('discussionpanel');
+        // get the selected item from gridpanel
+        var selecteditem = discussionpanel.getComponent('discussiongridpanel').getSelectionModel().getSelection();
+        this.createDispTab(selecteditem[0]);
+        console.log(selecteditem[0]);
+
+    },
+
+    /*create a tab panel to display the selected item */
+    /*
+    precondition: discussion dataset object is created
+    postcondition: tabpanel object will be created and activated
+    params:
+        discussionRec: it is unique id for creating tabpanel object.
+     */
+    createDispTab: function(discussionRec){
+        var displayPanel = Ext.getCmp('discussionpanel').getComponent('discussiondisplayborad');
+        var discussionTab = displayPanel.getComponent(discussionRec.get('_id'));
+        if (discussionTab == null){
+            var tabpanel = Ext.create('Ext.panel.Panel', {
+                id: discussionRec.get('_id').toString().trim(),
+                title: discussionRec.get('topic'),
+                html: discussionRec.get('body')
+            });
+            displayPanel.add(tabpanel);
+            displayPanel.setActiveTab(tabpanel);
+
+        } else {
+            displayPanel.setActiveTab(discussionTab);
         }
     }
 });
