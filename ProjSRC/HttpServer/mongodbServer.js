@@ -70,6 +70,7 @@ exports.update = function(collectionName, request, response){
 
 };
 
+/* Intsert new document into the specified collection with pass-in collectionName*/
 exports.insert = function(collectionName, request, response){
     if(request.body['_id'] == ''){
         var doc_new = new datamodule[collectionName];
@@ -118,7 +119,9 @@ exports.remove = function(collectionName, request, response){
     })
 };
 
+
 /* Insert New User */
+/*
 exports.userInsert = function(collectionName, request, response){
 
     if(request.body['_id'] == ''){
@@ -156,7 +159,10 @@ exports.userInsert = function(collectionName, request, response){
         })
     }
 };
+*/
+
 /* User Update */
+/*
 exports.userUpdate = function(collectionName, request, response){
     var userDoc_update = new datamodule.user();
     for(var k in userDoc_update) {
@@ -183,6 +189,8 @@ exports.userUpdate = function(collectionName, request, response){
     })
 
 };
+*/
+
 
 /* Login request handler */
 exports.userLogin = function(collectionName,request,response){

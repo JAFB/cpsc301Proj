@@ -1,17 +1,10 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 07/04/12
- * Time: 1:17 AM
- * To change this template use File | Settings | File Templates.
- */
 
 Ext.define('GUI.view.discussions.DiscussionsViewPanel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.discussionsviewpanel',
 
     id: 'discussionsviewpanel',
-
+    width: '60%',
     activeTab: 0,
 
     initComponent: function() {

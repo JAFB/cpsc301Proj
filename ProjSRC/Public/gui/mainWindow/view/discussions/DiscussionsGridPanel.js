@@ -13,7 +13,7 @@ var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
 Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.discussionsgridpanel',
-
+    width: '40%',
     title: 'Topics',
     id: 'duscussionsgridpanel',
     store: 'Discussions',
@@ -26,8 +26,19 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
             dataIndex: 'title'
         }
     ],
-    fbar: ['->', {
-        text:'New Discussion Thread',
-        action: 'newthread'
+    dockedItems:  [{
+        xtype: 'toolbar',
+        dock: 'bottom',
+        layout: {
+            align: 'stretchmax',
+            type: 'hbox'
+        },
+        items: [
+            {
+                xtype:  'button',
+                text:   'New Discussion Thread',
+                action: 'newthread'
+            }
+        ]
     }]
 })

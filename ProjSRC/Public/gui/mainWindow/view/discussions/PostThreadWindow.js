@@ -9,7 +9,7 @@
 Ext.define('GUI.view.discussions.PostThreadWindow', {
     extend: 'Ext.window.Window',
     alias: 'widget.postthreadwindow',
-
+    id: 'postthreadwindow',
     title: 'New Discussion Thread',
     layout: 'fit',
     autoShow: true,
@@ -26,6 +26,9 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         name: 'title',
                         id: 'post_thread_title',
                         fieldLabel: 'Title',
+                        enforceLength: true,
+                        allowBlank: false,
+                        maxLength: 10,
                         anchor: '100%'
                     },
                     {
@@ -33,6 +36,9 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         name: 'topic',
                         id: 'post_thread_topic',
                         fieldLabel: 'Topic',
+                        enforceLength: true,
+                        allowBlank: false,
+                        maxLength: 100,
                         anchor: '100%'
                     },
                     {
@@ -41,6 +47,9 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         id: 'post_thread_body',
                         fieldLabel: 'Body',
                         anchor: '100%',
+                        enforceLength: true,
+                        allowBlank: false,
+                        maxLength: 400,
                         height: 200
                     }
                 ]

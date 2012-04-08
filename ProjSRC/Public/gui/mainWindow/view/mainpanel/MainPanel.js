@@ -7,30 +7,24 @@ var panels = [
 	},{
 		xtype: 'panel',
         title: 'Discussions',
-		items: [
-			{
-				xtype: 'panel',
-				height: '100%',
-                layout:'border',
-                defaults: {
-                    split: true
-                },
-                items: [
-                    {
-                        xtype: 'discussionsviewpanel',
-                        region: 'center',
-                        height: 800
-                    },
-                    {
-                        xtype: 'discussionsgridpanel',
-                        region: 'west',
-                        collapsible: true,
-                        height: 100,
-                        width: 225
-                    }
-                ]
-			}
-		]
+        layout: {
+            type: 'border'
+        },
+        defaults: {
+            split: true
+        },
+        items: [
+            {
+                xtype: 'discussionsviewpanel',
+                region: 'center'
+            },
+            {
+                xtype: 'discussionsgridpanel',
+                region: 'west',
+                collapsible: true,
+                title: 'Discussions'
+            }
+        ]
 	},{
 		xtype: 'panel',
 		title: 'Memos',

@@ -26,10 +26,6 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.addComment
             },
 
-            'commentform button[action=closewindow]': {
-                click: this.closeCommentForm
-            },
-
             'discussionsgridpanel button[action=newthread]': {
                 click: this.showNewThreadWindow
             },
@@ -91,6 +87,14 @@ Ext.define('GUI.controller.Discussions', {
         winOpen = false;
     },
 
+    validateInputs: function(){
+        var topicField = Ext.getCmp('post_thread_topic');
+        var titleField = Ext.getCmp('post_thread_title');
+        var body = Ext.getCmp('post_thread_body');
+        
+        return (topicField.validate() && titleField.validate() && body.validate());
+
+    },
 
     submitThread: function(button) {
         console.log("button clicked");
@@ -99,10 +103,10 @@ Ext.define('GUI.controller.Discussions', {
         var title = Ext.getCmp('post_thread_title').getValue().trim();
         var body = Ext.getCmp('post_thread_body').getValue().trim();
 
-        if (topic == '')
-            Ext.MessageBox.alert('Error', "Please enter a topic.");
 
-        else {
+        if (this.validateInputs() == false){
+            Ext.MessageBox.alert('Error', "Please enter the require field or your inputs are too long");
+        } else {
             var newDiscussion = Ext.create('GUI.model.Discussion', {
                 title: title,
                 topic: topic,
@@ -120,25 +124,48 @@ Ext.define('GUI.controller.Discussions', {
             win.close();
             winOpen = false;
         }
+
+    },
+
+    newdiscussionTab: function(record){
+        var newpanel = Ext.create('Ext.panel.Panel', {
+            title: record.get('title'),
+            id: record.get('_id').toString().trim(),
+            closable: true,
+            autoScroll: true,
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'bottom',
+                layout: {
+                    align: 'stretchmax',
+                    type: 'hbox'
+                },
+                items: [
+                    {
+                        xtype:  'button',
+                        text:   'Add Comment',
+                        record: record,
+                        action: 'addcomment'
+                    }
+                ]
+            }]
+        });
+        return newpanel;
     },
 
     openDiscussion: function(grid, record) {
         var viewpanel = Ext.getCmp('discussionsviewpanel');
+        var tabcomponentID = record.get('_id').toString().trim();
+        var newpanel =  viewpanel.getComponent(tabcomponentID);
 
-        var newpanel = Ext.create('Ext.panel.Panel', {
-            title: record.get('title'),
-            closable: true,
-            autoScroll: true,
-            html: this.bodyRender(record) + this.commentRender(record),
-            fbar: ['->', {
-                text:'Add comment',
-                record: record,
-                action: 'addcomment'
-            }]
-        });
-        
-        viewpanel.add(newpanel);
-        viewpanel.setActiveTab(newpanel);
+        if(viewpanel.getComponent(tabcomponentID) == null){ // check if the tabpanel is created
+            newpanel = this.newdiscussionTab(record);
+            newpanel['html'] = this.bodyRender(record) + this.commentRender(record);
+            viewpanel.add(newpanel);
+            viewpanel.setActiveTab(newpanel);
+        } else {
+            viewpanel.setActiveTab(newpanel);
+        }
     },
 
 
@@ -166,7 +193,6 @@ Ext.define('GUI.controller.Discussions', {
         return str;
     },
 
-
     showCommentForm: function(button) {
         if (!commentFormOpen) { // if window not already open
             commentFormOpen = true;
@@ -175,13 +201,6 @@ Ext.define('GUI.controller.Discussions', {
             view.record = button.record;
         }
     },
-
-
-    closeCommentForm: function(button) {
-        button.up('commentform').close();
-        commentFormOpen = false;
-    },
-
 
     addComment: function(button) {
         var win = button.up('commentform');

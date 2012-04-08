@@ -26,6 +26,8 @@ Ext.define('GUI.view.discussions.CommentForm', {
                         name: 'body',
                         id: 'comment_body',
                         anchor: '100%',
+                        allowBlank: false,
+                        maxLength: 400,
                         height: 100
                     }
                 ]
@@ -39,7 +41,8 @@ Ext.define('GUI.view.discussions.CommentForm', {
             },
             {
                 text: 'Cancel',
-                action: 'closewindow'
+                scope: this,
+                handler: this.close // to use handler to close the form self
             }
         ];
 
