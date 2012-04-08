@@ -6,7 +6,7 @@ Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
     models: [
-        'Discussions'
+        'Discussion'
     ],
 
     stores: [
@@ -14,14 +14,11 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     views: [
-        'admin.discussionsmanagement.DiscussionsManagement',
         'discussions.CommentForm',
         'discussions.DiscussionsGridPanel',
         'discussions.DiscussionsViewPanel',
         'discussions.PostThreadWindow'
     ],
-
-
 
     init: function() {
         this.control({
@@ -37,15 +34,12 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.showNewThreadWindow
             },
 
-            'discussionsmanagement button[action=removediscussion]': {
-                click: this.removeDiscussion
-            },
-
             'discussionsviewpanel button[action=addcomment]': {
                 click: this.showCommentForm
             },
 
             'postthreadwindow button[action=submitthread]': {
+
                 click: this.submitThread
             },
 
@@ -99,16 +93,17 @@ Ext.define('GUI.controller.Discussions', {
 
 
     submitThread: function(button) {
+        console.log("button clicked");
         var win = button.up('postthreadwindow');
-        var topic = Ext.getCmp('post_thread_topic').getValue();
-        var title = Ext.getCmp('post_thread_title').getValue();
-        var body = Ext.getCmp('post_thread_body').getValue();
+        var topic = Ext.getCmp('post_thread_topic').getValue().trim();
+        var title = Ext.getCmp('post_thread_title').getValue().trim();
+        var body = Ext.getCmp('post_thread_body').getValue().trim();
 
         if (topic == '')
             Ext.MessageBox.alert('Error', "Please enter a topic.");
 
         else {
-            var newDiscussion = Ext.create('GUI.model.Discussions', {
+            var newDiscussion = Ext.create('GUI.model.Discussion', {
                 title: title,
                 topic: topic,
                 body: body,
@@ -126,15 +121,6 @@ Ext.define('GUI.controller.Discussions', {
             winOpen = false;
         }
     },
-
-
-    removeDiscussion: function() {
-        var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection();
-        var store = this.getStore('Discussions');
-        store.remove(selectedRec);
-        store.save();
-    },
-
 
     openDiscussion: function(grid, record) {
         var viewpanel = Ext.getCmp('discussionsviewpanel');

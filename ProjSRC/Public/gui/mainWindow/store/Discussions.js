@@ -2,25 +2,23 @@
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
-    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
     sorters: [
         {
             property: 'date_created',
             direction: 'DESC'
         }
     ],
-    sorters: ['topic', 'title'],
     groupField: 'topic',
-
+    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
     proxy: {
         type: 'rest',
         url : '/discussion',
-        model : 'GUI.model.Discussions',
+        model : 'GUI.model.Discussion',
         reader: {
             type: 'json',
             root: 'data',
-
             successProperty: 'success'
-        }
+        },
+        simpleSortMode: true
     }
 });

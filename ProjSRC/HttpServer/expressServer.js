@@ -135,6 +135,7 @@ expressAppServer.post('/discussion', function(request, response){
     mongodbServer.insert('discussion', request, response);
 });
 expressAppServer.del('/discussion/:id', function(request, response){
+    console.log(request.body);
     mongodbServer.remove('discussion', request, response);
 });
 

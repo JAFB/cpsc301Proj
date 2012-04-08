@@ -100,6 +100,9 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
                             },
                             {
                                 xtype: 'memoeditor'
+                            },
+                            {
+                                xtype: 'discussionsmanagement'
                             }
 
 

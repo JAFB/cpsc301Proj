@@ -39,6 +39,7 @@ Ext.application({
 
     controllers: [
         'Discussions',
+        'DiscussionsManager',
         'IM',
         'Main',
         'Users',
