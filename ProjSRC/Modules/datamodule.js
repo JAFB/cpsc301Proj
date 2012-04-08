@@ -29,5 +29,3 @@ exports.discussion = function(){
         date_modified: null
     }
 };
-
-
