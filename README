@@ -24,4 +24,9 @@ Apr 6, 2012
 	Add some documentation
 	
 	!!Note that you have to set up user accounts again because of hash function!!
-	
+
+Apr 8, 2012
+
+    Adding comments function is completed
+    Fix bug about infinitely generating discussion panel
+    Add validator rules on postthread window and postcomment window

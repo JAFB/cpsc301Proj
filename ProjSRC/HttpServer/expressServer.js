@@ -61,7 +61,11 @@ expressAppServer.get('/users', function(request, response){
     mongodbServer.findAll('user', request, response);
 });
 expressAppServer.put('/users', function(request, response){
-	if(request.body['_id'] == ""){
+
+    var pwdstr = request.body['password'];
+    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr); // encrypt user's password
+
+    if(request.body['_id'] == ""){
 		delete request.param["_id"];
 		mongodbServer.insert('user',request,response);
 	}else{
@@ -69,8 +73,12 @@ expressAppServer.put('/users', function(request, response){
 	}
 });
 expressAppServer.post('/users', function(request, response){
+    var pwdstr = request.body['password'];
+    request.body['password'] = mongodbServer.pwdEncrypt(pwdstr); // encrypt user's password
+
     mongodbServer.insert('user', request, response);
 });
+
 expressAppServer.del('/users', function(request, response){
 	if(request.body['_id'] == ""){
 		response.json({success:true});
@@ -92,7 +100,6 @@ expressAppServer.post('/memos/:id', function(request, response){
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.post('/memos', function(request, response){
-    console.log(request.body);
     mongodbServer.insert('memo', request, response);
 });
 expressAppServer.del('/memos/:id', function(request, response){
@@ -110,24 +117,40 @@ expressAppServer.post('/mes', function(request, response){
 	mongodbServer.IMSave('IM',request,response);
 });
 
+
 /*-- Discussions action handling starts here --*/
 expressAppServer.get('/discussion', function(request, response){
     mongodbServer.findAll('discussion', request, response);
 });
 expressAppServer.get('/discussion/:id', function(request, response){
     mongodbServer.findById('discussion', request, response);
-})
-expressAppServer.put('/discussion/:id', function(request, response){
+});
+
+expressAppServer.put('/discussion', function(request, response){
     mongodbServer.update('discussion', request, response);
-})
+}),
+
+expressAppServer.put('/discussion/:id', function(request, response){
+    console.log('put discussion id');
+    console.log(request.body);
+    mongodbServer.update('discussion', request, response);
+});
+
 expressAppServer.post('/discussion/:id', function(request, response){
     mongodbServer.insert('discussion', request, response);
 });
+
 expressAppServer.post('/discussion', function(request, response){
-    console.log(request.body);
-    mongodbServer.insert('discussion', request, response);
+    if (request.body['_id'].trim() != ''){
+        mongodbServer.update('discussion', request, response);
+    }else{
+        mongodbServer.insert('discussion', request, response);
+    }
 });
+
 expressAppServer.del('/discussion/:id', function(request, response){
+
+    console.log(request.body);
     mongodbServer.remove('discussion', request, response);
 });
 

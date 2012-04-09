@@ -63,6 +63,8 @@ Ext.define('GUI.controller.Users',{
     },
 
     editUser: function(grid, record) {
+        console.log('user record');
+        console.log(record);
         var view = Ext.widget('useredit');
         view.down('form').loadRecord(record);
 		if(Ext.getCmp("passwordField").getValue() !=""){
