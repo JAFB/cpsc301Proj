@@ -42,8 +42,12 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
 					minWidth: 200,
                     anchor: '100%',
                     autoScroll: true,
-                    resizable: true
-					//setDisabled: 
+                    resizable: true,
+					enableColors: false,
+                    enableSourceEdit: false,
+                    enableFormat: false,
+                    enableLists: false
+
                 }
             ],
             dockedItems: [

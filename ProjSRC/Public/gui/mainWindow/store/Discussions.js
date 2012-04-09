@@ -1,26 +1,24 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 28/03/12
- * Time: 9:07 PM
- * To change this template use File | Settings | File Templates.
- */
 
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
-    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
-    sorters: ['topic', 'title'],
+    sorters: [
+        {
+            property: 'date_created',
+            direction: 'DESC'
+        }
+    ],
     groupField: 'topic',
-
+    //fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
     proxy: {
         type: 'rest',
         url : '/discussion',
-        model : 'GUI.model.Discussions',
+        model : 'GUI.model.Discussion',
         reader: {
             type: 'json',
             root: 'data',
             successProperty: 'success'
-        }
+        },
+        simpleSortMode: true
     }
 });

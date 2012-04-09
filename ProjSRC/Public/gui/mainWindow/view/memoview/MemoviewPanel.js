@@ -1,13 +1,12 @@
 Ext.define('GUI.view.memoview.MemoviewPanel',{
     extend: 'Ext.panel.Panel',
     alias: 'widget.memoviewpanel',
-    width: '30%',
+    width: 200,
     autoScroll: true,
 
     title: 'Memo Title',
-
     initComponent: function() {
-        Ext.apply(this, {
+        Ext.applyIf(this, {
             items: [
                 this.memoTitleView()
             ]
@@ -26,17 +25,19 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
             selectedMemoTitle: null,
             selModel: {
                 mode: 'SINGLE',
+
                 listeners: {
                     scope: this,
-                    selectionchange: this.onSelectChange
+                    itemclick: this.onSelectChange
                 }
+
             },
 
             listeners: {
                 scope: this,
-                //contextmenu: this.onContextMenu,
                 viewReady: this.onViewReady,
 				itemclick: this.checkTabs
+
             },
             trackOver: true,
             cls: 'feed-list',
@@ -107,12 +108,19 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
 	
 	checkTabs: function()
 	{
-		
+		var selectedItem = this.getSelectedItem();
+
+        if (selectedItem == null) return; // if the selected item is null, do nothing
+
 		var displaypanel = Ext.getCmp('memodisplaypanel');
 		var currentTabid = displaypanel.getActiveTab().id;
 		if (this.getSelectedItem().get('_id').toString().trim() != currentTabid){
 			var memopanel = Ext.getCmp(this.getSelectedItem().get('_id').toString().trim());
 			displaypanel.setActiveTab(memopanel);
 		}	
-	}
+	},
+
+    onDestroy: function(){
+        this.callParent(arguments);
+    }
 })

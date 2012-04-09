@@ -27,6 +27,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 							dockedItems : [
 								{
 									xtype: 'textareafield',
+									width: '100%',
 									id: 'mssgForm',
 									readOnly: true,
 									height: '100%'
@@ -67,7 +68,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 							dockedItems : [
 								{	/* message field */
 									xtype: 'textareafield',
-									width: 280,
+									width: '100%',
 									id: 'mssgFormLastDay',
 									readOnly: true,
 									height: '100%'
