@@ -67,9 +67,9 @@ expressAppServer.put('/users', function(request, response){
 
     if(request.body['_id'] == ""){
 		delete request.param["_id"];
-		mongodbServer.userInsert('user',request,response);
+		mongodbServer.insert('user',request,response);
 	}else{
-		mongodbServer.userUpdate('user', request, response);
+		mongodbServer.update('user', request, response);
 	}
 });
 expressAppServer.post('/users', function(request, response){
