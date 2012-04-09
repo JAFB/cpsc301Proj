@@ -9,7 +9,7 @@ Ext.define('GUI.store.Discussions', {
         }
     ],
     groupField: 'topic',
-    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
+    //fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
     proxy: {
         type: 'rest',
         url : '/discussion',

@@ -6,7 +6,8 @@
  */
 
 Ext.Loader.setConfig({
-    enabled: true
+    enabled: true,
+    disableCaching: true
 });
 
 /* Create Global Session Data variables */

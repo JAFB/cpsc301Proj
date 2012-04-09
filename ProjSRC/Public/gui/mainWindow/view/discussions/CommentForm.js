@@ -9,7 +9,7 @@
 Ext.define('GUI.view.discussions.CommentForm', {
     extend: 'Ext.window.Window',
     alias: 'widget.commentform',
-
+    id: 'commentform',
     title: 'Add comment',
     layout: 'fit',
     autoShow: true,
@@ -25,6 +25,7 @@ Ext.define('GUI.view.discussions.CommentForm', {
                         xtype: 'textareafield',
                         name: 'body',
                         id: 'comment_body',
+                        itemId: 'comment_body',
                         anchor: '100%',
                         allowBlank: false,
                         maxLength: 400,

@@ -124,17 +124,32 @@ expressAppServer.get('/discussion', function(request, response){
 });
 expressAppServer.get('/discussion/:id', function(request, response){
     mongodbServer.findById('discussion', request, response);
-})
-expressAppServer.put('/discussion/:id', function(request, response){
+});
+
+expressAppServer.put('/discussion', function(request, response){
     mongodbServer.update('discussion', request, response);
-})
+}),
+
+expressAppServer.put('/discussion/:id', function(request, response){
+    console.log('put discussion id');
+    console.log(request.body);
+    mongodbServer.update('discussion', request, response);
+});
+
 expressAppServer.post('/discussion/:id', function(request, response){
     mongodbServer.insert('discussion', request, response);
 });
+
 expressAppServer.post('/discussion', function(request, response){
-    mongodbServer.insert('discussion', request, response);
+    if (request.body['_id'].trim() != ''){
+        mongodbServer.update('discussion', request, response);
+    }else{
+        mongodbServer.insert('discussion', request, response);
+    }
 });
+
 expressAppServer.del('/discussion/:id', function(request, response){
+
     console.log(request.body);
     mongodbServer.remove('discussion', request, response);
 });

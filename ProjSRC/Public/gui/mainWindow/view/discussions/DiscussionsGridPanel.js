@@ -15,30 +15,37 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     alias: 'widget.discussionsgridpanel',
     width: '40%',
     title: 'Topics',
-    id: 'duscussionsgridpanel',
+    id: 'discussionsgridpanel',
     store: 'Discussions',
     features: [groupingFeature],
+    selModel: {
+        selType: 'rowmodel',
+        mode: 'SINGLE'
+    },
+    initComponent: function(){
 
-    columns: [
-        {
-            header: '',
-            flex: 1,
-            dataIndex: 'title'
-        }
-    ],
-    dockedItems:  [{
-        xtype: 'toolbar',
-        dock: 'bottom',
-        layout: {
-            align: 'stretchmax',
-            type: 'hbox'
-        },
-        items: [
+        this.columns = [
             {
-                xtype:  'button',
-                text:   'New Discussion Thread',
-                action: 'newthread'
+                header: '',
+                flex: 1,
+                dataIndex: 'title'
             }
-        ]
-    }]
+        ];
+        this.dockedItems =  [{
+            xtype: 'toolbar',
+            dock: 'bottom',
+            layout: {
+                align: 'stretchmax',
+                type: 'hbox'
+            },
+            items: [
+                {
+                    xtype:  'button',
+                    text:   'New Discussion Thread',
+                    action: 'newthread'
+                }
+            ]
+        }];
+        this.callParent(arguments);
+    }
 })
