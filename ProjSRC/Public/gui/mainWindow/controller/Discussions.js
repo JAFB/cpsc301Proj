@@ -1,19 +1,12 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 23/03/12
- * Time: 6:37 PM
- * To change this template use File | Settings | File Templates.
- */
 
-var winOpen = false;
-var commentFormOpen = false;
+//var winOpen = false;
+//var commentFormOpen = false;
 
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
     models: [
-        'Discussions'
+        'Discussion'
     ],
 
     stores: [
@@ -21,14 +14,11 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     views: [
-        'admin.discussionsmanagement.DiscussionsManagement',
         'discussions.CommentForm',
         'discussions.DiscussionsGridPanel',
         'discussions.DiscussionsViewPanel',
         'discussions.PostThreadWindow'
     ],
-
-
 
     init: function() {
         this.control({
@@ -36,16 +26,8 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.addComment
             },
 
-            'commentform button[action=closewindow]': {
-                click: this.closeCommentForm
-            },
-
             'discussionsgridpanel button[action=newthread]': {
                 click: this.showNewThreadWindow
-            },
-
-            'discussionsmanagement button[action=removediscussion]': {
-                click: this.removeDiscussion
             },
 
             'discussionsviewpanel button[action=addcomment]': {
@@ -53,11 +35,8 @@ Ext.define('GUI.controller.Discussions', {
             },
 
             'postthreadwindow button[action=submitthread]': {
-                click: this.submitThread
-            },
 
-            'postthreadwindow button[action=closewindow]': {
-                click: this.closeThreadWindow
+                click: this.submitThread
             },
 
             'panel discussionsgridpanel' : {
@@ -69,7 +48,6 @@ Ext.define('GUI.controller.Discussions', {
         runner.start(this.refreshTask);
     },
 
-
     refreshTask: {
         run: function() {
             Ext.getStore('Discussions').load();
@@ -77,49 +55,36 @@ Ext.define('GUI.controller.Discussions', {
         interval: 30000
     },
 
-
-
     showNewThreadWindow: function() {
-        if (!winOpen) { // if window not already open
-            winOpen = true;
-            var view = Ext.widget('postthreadwindow');
-            view.down('postthreadwindow');
-        }
+        var view = Ext.widget('postthreadwindow');
+        view.down('postthreadwindow');
     },
 
-
-    closeThreadWindow: function(button) {
-        button.up('postthreadwindow').close();
-        winOpen = false;
+    validatePostThreadsInputs: function(){
+        // if validator's rules are violated, then function validate() will return false.
+        var topicField = Ext.getCmp('post_thread_topic');
+        var titleField = Ext.getCmp('post_thread_title');
+        var body = Ext.getCmp('post_thread_body');
+        return (topicField.validate() && titleField.validate() && body.validate());
     },
 
-
-    showNewThreadWindow: function() {
-        if (!winOpen) { // if window not already open
-            winOpen = true;
-            var view = Ext.widget('postthreadwindow');
-            view.down('postthreadwindow');
-        }
+    validateCommentsInputs: function(){
+        var commentBodyField = Ext.getCmp('comment_body');
+        return (commentBodyField.validate());
     },
-
-
-    closeThreadWindow: function(button) {
-        button.up('postthreadwindow').close();
-        winOpen = false;
-    },
-
 
     submitThread: function(button) {
+        console.log("button clicked");
         var win = button.up('postthreadwindow');
-        var topic = Ext.getCmp('post_thread_topic').getValue();
-        var title = Ext.getCmp('post_thread_title').getValue();
-        var body = Ext.getCmp('post_thread_body').getValue();
+        var topic = Ext.getCmp('post_thread_topic').getValue().trim();
+        var title = Ext.getCmp('post_thread_title').getValue().trim();
+        var body = Ext.getCmp('post_thread_body').getValue().trim();
 
-        if (topic == '')
-            Ext.MessageBox.alert('Error', "Please enter a topic.");
-
-        else {
-            var newDiscussion = Ext.create('GUI.model.Discussions', {
+        // validate all inputs, the validator could be implemented within the component.
+        if (this.validatePostThreadsInputs() == false){
+            Ext.MessageBox.alert('Error', "Please enter the required field or your inputs are too long to handle");
+        } else {
+            var newDiscussion = Ext.create('GUI.model.Discussion', {
                 title: title,
                 topic: topic,
                 body: body,
@@ -132,38 +97,49 @@ Ext.define('GUI.controller.Discussions', {
             this.getStore('Discussions').add(newDiscussion);
             this.getStore('Discussions').save();
             newDiscussion.commit();
-
             win.close();
-            winOpen = false;
         }
     },
 
-
-    removeDiscussion: function() {
-        var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection();
-        var store = this.getStore('Discussions');
-        store.remove(selectedRec);
-        store.save();
+    newdiscussionTab: function(record){
+        var newpanel = Ext.create('Ext.panel.Panel', {
+            title: record.get('title'),
+            id: record.get('_id').toString().trim(),
+            closable: true,
+            autoScroll: true,
+            dockedItems: [{
+                xtype: 'toolbar',
+                dock: 'bottom',
+                layout: {
+                    align: 'stretchmax',
+                    type: 'hbox'
+                },
+                items: [
+                    {
+                        xtype:  'button',
+                        text:   'Add Comment',
+                        record: record,
+                        action: 'addcomment'
+                    }
+                ]
+            }]
+        });
+        return newpanel;
     },
-
 
     openDiscussion: function(grid, record) {
         var viewpanel = Ext.getCmp('discussionsviewpanel');
+        var tabcomponentID = record.get('_id').toString().trim();
+        var newpanel =  viewpanel.getComponent(tabcomponentID);
 
-        var newpanel = Ext.create('Ext.panel.Panel', {
-            title: record.get('title'),
-            closable: true,
-            autoScroll: true,
-            html: this.bodyRender(record) + this.commentRender(record),
-            fbar: ['->', {
-                text:'Add comment',
-                record: record,
-                action: 'addcomment'
-            }]
-        });
-        
-        viewpanel.add(newpanel);
-        viewpanel.setActiveTab(newpanel);
+        if(viewpanel.getComponent(tabcomponentID) == null){ // check if the tabpanel is created
+            newpanel = this.newdiscussionTab(record);
+            newpanel['html'] = this.bodyRender(record) + this.commentRender(record);
+            viewpanel.add(newpanel);
+            viewpanel.setActiveTab(newpanel);
+        } else {
+            viewpanel.setActiveTab(newpanel);
+        }
     },
 
 
@@ -183,58 +159,41 @@ Ext.define('GUI.controller.Discussions', {
             str += '<i>There are no comments to display.</i>';
         else {
             for (var i in comments)
-               str += '<b>' + comments[i].author +
-                   '</b> <i>(' + comments[i].date +
+               str += '<b>' + "Author: " + comments[i].author +
+                   '</b> <i>(' + comments[i].date_created +
                    ')</i><br>' + comments[i].body + '<br><br>';
         }
         
         return str;
     },
 
-
     showCommentForm: function(button) {
-        if (!commentFormOpen) { // if window not already open
-            commentFormOpen = true;
-            var view = Ext.widget('commentform');
-            view.down('commentform');
-            view.record = button.record;
-        }
+        var view = Ext.widget('commentform');
+        view.down('commentform');
+        view.record = button.record;
     },
-
-
-    closeCommentForm: function(button) {
-        button.up('commentform').close();
-        commentFormOpen = false;
-    },
-
 
     addComment: function(button) {
         var win = button.up('commentform');
         var store = this.getStore('Discussions');
         var discussion = win.record;
-        var body = Ext.getCmp('comment_body').getValue();
 
-        if (body == '')
-            Ext.MessageBox.alert('Error', "Please enter a comment or press cancel.");
-
+        if (!this.validateCommentsInputs())
+            Ext.MessageBox.alert('Error', "Please enter the required field or your inputs are too long to handle");
         else {
+            var body = Ext.getCmp('comment_body').getValue().trim();
             var newComment = {
-                author: username,
                 body: body,
-                date: new Date()
+                author: username,
+                date_created: new Date()
             };
 
-            var newCommentsList = discussion.get('comments');
-            newCommentsList.push(newComment);
-
-            discussion.set('comments', newCommentsList);
+            discussion.get('comments').push(newComment);
+            discussion.set('date_modified', new Date());
             store.save();
             discussion.commit();
-
-            console.log(discussion.get('comments'));
-
             win.close();
-            commentFormOpen = false;
         }
+
     }
 });
