@@ -17,23 +17,23 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
         this.columns = [
             {
                 header: 'Title',
-                flex: 1,
-                dataIndex: 'title'
+                dataIndex: 'title',
+                flex: 1
             },
             {
                 header: 'Author',
-                flex: 1,
-                dataIndex: 'author'
+                dataIndex: 'author',
+                flex: 1
             },
             {
                 header: 'Date Created',
-                flex: 1,
-                dataIndex: 'date_created'
+                dataIndex: 'date_created',
+                flex: 1
             },
             {
                 header: 'Date Modified',
-                flex: 1,
-                dataIndex: 'date_modified'
+                dataIndex: 'date_modified',
+                flex: 1
             }
         ];
 

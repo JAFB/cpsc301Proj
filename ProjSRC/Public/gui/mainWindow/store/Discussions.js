@@ -8,17 +8,20 @@ Ext.define('GUI.store.Discussions', {
             direction: 'DESC'
         }
     ],
+
     groupField: 'topic',
-    //fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
+
+    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
     proxy: {
         type: 'rest',
         url : '/discussion',
         model : 'GUI.model.Discussion',
+
         reader: {
             type: 'json',
             root: 'data',
             successProperty: 'success'
-        },
-        simpleSortMode: true
+        }
+        //simpleSortMode: true
     }
 });

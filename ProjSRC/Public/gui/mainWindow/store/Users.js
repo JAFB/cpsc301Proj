@@ -7,7 +7,7 @@
 Ext.define('GUI.store.Users', {
     extend: 'Ext.data.Store',
     autoLoad: true,
-    fields: ['_id','name', 'password','email','admin','description'],
+    //fields: ['_id','name', 'password','email','admin','description'],
     proxy: {
         type: 'rest',
 		url : '/users',

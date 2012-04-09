@@ -40,6 +40,7 @@ Ext.define('GUI.controller.Users',{
 		
 		if(record.data.id == values.id && record.data.email == values.email){
 			record.set(values);
+            console.log(record);
 			userStore.save();
 			win.close();
 		}else if (record.data.id != values.id){
@@ -63,8 +64,8 @@ Ext.define('GUI.controller.Users',{
     },
 
     editUser: function(grid, record) {
-        console.log('user record');
-        console.log(record);
+        //console.log('user record');
+        //console.log(record);
         var view = Ext.widget('useredit');
         view.down('form').loadRecord(record);
 		if(Ext.getCmp("passwordField").getValue() !=""){

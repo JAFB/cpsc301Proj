@@ -149,10 +149,15 @@ expressAppServer.post('/discussion', function(request, response){
 });
 
 expressAppServer.del('/discussion/:id', function(request, response){
-
-    console.log(request.body);
     mongodbServer.remove('discussion', request, response);
 });
+
+expressAppServer.del('/discussion', function(request, response){
+    console.log(request.body);
+    //mongodbServer.remove('discussion', request, response);
+});
+
+
 
 /* Run the server */
 exports.launchExpressServer = function(portNum){

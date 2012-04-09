@@ -5,13 +5,9 @@
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
-    models: [
-        'Discussion'
-    ],
+    models: ['Discussion'],
 
-    stores: [
-        'Discussions'
-    ],
+    stores: ['Discussions', 'DiscussionsManager'],
 
     views: [
         'discussions.CommentForm',
@@ -187,12 +183,12 @@ Ext.define('GUI.controller.Discussions', {
                 author: username,
                 date_created: new Date()
             };
-
             discussion.get('comments').push(newComment);
             discussion.set('date_modified', new Date());
             store.save();
             discussion.commit();
             win.close();
+
         }
 
     }

@@ -18,10 +18,11 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     id: 'discussionsgridpanel',
     store: 'Discussions',
     features: [groupingFeature],
+    /*
     selModel: {
         selType: 'rowmodel',
         mode: 'SINGLE'
-    },
+    },*/
     initComponent: function(){
 
         this.columns = [
