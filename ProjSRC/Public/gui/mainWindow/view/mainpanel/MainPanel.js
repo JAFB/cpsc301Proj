@@ -12,7 +12,7 @@ var panels = [
 		xtype: 'panel',
 		bodyPadding: 10,
 		title: 'Home',
-		html: homeHTML,
+		html: homeHTML
 	},{
 		xtype: 'panel',
         title: 'Discussions',
@@ -54,7 +54,7 @@ var panels = [
 
             }
         ]
-	},{
+	}/*,{
 		xtype: 'panel',
 		title: 'Documents'
 	},{
@@ -69,7 +69,7 @@ var panels = [
 	},{
 		xtype: 'panel',
 		title: 'Profile'
-	}
+	}*/
 ];
 /* view definition starts here */
 Ext.define('GUI.view.mainpanel.MainPanel', {
