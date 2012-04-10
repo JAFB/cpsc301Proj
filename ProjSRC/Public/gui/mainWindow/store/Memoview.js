@@ -1,6 +1,10 @@
+/*
+	store definition for Memo view
+ */
 Ext.define('GUI.store.Memoview', {
     extend: 'Ext.data.Store',
     autoLoad: true,
+	/* Data Address */
     proxy: {
         type: 'rest',
         url : '/memos',

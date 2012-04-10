@@ -1,3 +1,7 @@
+/*
+	HTTP Server and Configuration
+ */
+
 var express = require('express');
 var logfile = require('fs').createWriteStream(process.env['systemRootPath'] + '/SystemLogs/server.log', {flags: 'a'});
 var expressAppServer = express.createServer();
@@ -135,11 +139,9 @@ expressAppServer.put('/discussion/:id', function(request, response){
     console.log(request.body);
     mongodbServer.update('discussion', request, response);
 });
-
 expressAppServer.post('/discussion/:id', function(request, response){
     mongodbServer.insert('discussion', request, response);
 });
-
 expressAppServer.post('/discussion', function(request, response){
     if (request.body['_id'].trim() != ''){
         mongodbServer.update('discussion', request, response);
@@ -147,7 +149,6 @@ expressAppServer.post('/discussion', function(request, response){
         mongodbServer.insert('discussion', request, response);
     }
 });
-
 expressAppServer.del('/discussion/:id', function(request, response){
 
     console.log(request.body);

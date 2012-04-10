@@ -1,15 +1,17 @@
-
+/*
+	View for User editor
+ */
 Ext.define('GUI.view.admin.usermanagement.user.Edit', {
     extend: 'Ext.window.Window',
     alias: 'widget.useredit',
-
+	/* Layout */
     title: 'Edit User',
     layout: 'fit',
     autoShow: true,
 
-    initComponent: function(){
+    initComponent: function(){//List of Items
         this.items = [
-            {
+            {	/* Textfields */
                 xtype: 'form',
 				defaultType:  'textfield',
                 items: [
@@ -30,7 +32,7 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 						id: 'passwordField',
 						allowBlank: false
                     },
-					{
+					{//check box
 						xtype: 'checkbox',
 						boxLabel: 'Make Administrator',
 						name: 'admin',
@@ -45,6 +47,7 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                     }
 
                 ],
+				/* Buttons */
 				buttons: [
 					{
 						text: 'Save',

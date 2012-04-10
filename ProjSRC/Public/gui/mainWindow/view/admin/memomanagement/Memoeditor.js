@@ -1,24 +1,28 @@
+/*
+	View for memo management module
+ */
+
 Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
     extend: "Ext.form.Panel",
     alias: "widget.memoeditor",
     id: 'memoeditor',
     store: 'Memos',
+	
+	/* Layout */
     title: "Calgary Emergency Medicine - Memo Editor",
     bodyStyle: 'padding:5px 5px 0',
     collapsible: true,
-
     collapseDirection: 'top',
-
     fieldDefaults: {
         labelAlign: 'top',
         msgTarget: 'side'
     },
 
-    initComponent: function(){
+    initComponent: function(){//List of Items
         Ext.apply(this, {
 
             items: [
-                {
+                {	/* Textfield for title */
                     xtype: 'container',
                     columnWidth: 0.5,
                     layout: 'anchor',
@@ -34,7 +38,7 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                         }
                     ]
                 },
-                {
+                {	/* Text field for body */
                     xtype: 'htmleditor',
                     id: 'memobodyedit',
 					height: 400,
@@ -51,7 +55,7 @@ Ext.define("GUI.view.admin.memomanagement.Memoeditor",{
                 }
             ],
             dockedItems: [
-                {
+                {/* Submit(post) button */
                     xtype: 'toolbar',
                     dock: 'bottom',
                     layout: {
