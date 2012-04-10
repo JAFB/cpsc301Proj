@@ -31,7 +31,7 @@ Ext.application({
                 {
 					/* Logo space */
                     region: 'north',
-					html: '<img src="img/cemlogo.jpg" alt="cemlogo" height=84>',
+					html: '<img src="images/cemlogo.jpg" alt="cemlogo" height=84>',
 					height: 84
                 },
                 {

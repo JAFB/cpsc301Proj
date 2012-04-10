@@ -1,11 +1,16 @@
+/*
+	View for memo viewing panel
+ */
+
 Ext.define('GUI.view.memoview.MemoviewPanel',{
     extend: 'Ext.panel.Panel',
     alias: 'widget.memoviewpanel',
+	/* Layout */
     width: 200,
     autoScroll: true,
-
     title: 'Memo Title',
-    initComponent: function() {
+	
+    initComponent: function() {//List of Items
         Ext.applyIf(this, {
             items: [
                 this.memoTitleView()
@@ -18,7 +23,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
         )
         this.callParent(arguments);
     },
-
+	/* Definition for memo title view */
     memoTitleView: function(){
         var memoTitleView = this.view = Ext.create('Ext.view.View', {
             store: 'Memoview',
@@ -28,7 +33,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
 
                 listeners: {
                     scope: this,
-                    itemclick: this.onSelectChange
+                    selectionchange: this.onSelectChange
                 }
 
             },
@@ -48,7 +53,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
         memoTitleView.on('render', function(){}, this);
         return this.view;
     },
-
+	/* Definition for memo title list view */
     memoTitleList: function(){
         this.titlelist = Ext.create('widget.menu', {
             items: [{
@@ -67,11 +72,10 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
     onViewReady: function(){
         this.view.getSelectionModel().select(this.view.store.first());
     },
-
     getSelectedItem: function(){
         return this.view.getSelectionModel().getSelection()[0] || null;
     },
-
+	/* change displaying memo as a user changes selection */
     onSelectChange: function(){
         var selected = this.getSelectedItem();
         var displaypanel = Ext.getCmp('memodisplaypanel');

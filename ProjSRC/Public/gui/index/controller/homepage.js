@@ -1,12 +1,13 @@
+/*
+	Homepage module controller
+ */
+
 Ext.define('GUI.controller.homepage', {
     extend: 'Ext.app.Controller',
 	
-    views: [
-	'homepage.homepage'
-    ],
+    views: ['homepage.homepage'],
 	
     init: function() {
-        this.control({
-        });
+		// For future iteration
     }
 });

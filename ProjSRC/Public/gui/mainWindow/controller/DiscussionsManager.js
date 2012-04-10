@@ -1,17 +1,15 @@
+/*
+	Discussion Module Controller
+ */
+
 Ext.define('GUI.controller.DiscussionsManager', {
     extend: 'Ext.app.Controller',
-    stores: [
-        'DiscussionsManager'
-    ],
-    models: [
-        'Discussion'
-    ],
-    views: [
-        'admin.discussionsmanagement.DiscussionsManagement'
-    ],
+    stores: ['DiscussionsManager'],
+    models: ['Discussion'],
+    views: ['admin.discussionsmanagement.DiscussionsManagement'],
 
     init: function() {
-        this.control({
+        this.control({//List of actions
             'discussionsmanagement button[action=removediscussion]': {
                 click: this.removeDiscussion
             }
@@ -23,6 +21,5 @@ Ext.define('GUI.controller.DiscussionsManager', {
         var discussionStore = this.getStore('DiscussionsManager');
         discussionStore.remove(selectedRec);
         discussionStore.save();
-        //console.log(discussionStore);
     }
 })
