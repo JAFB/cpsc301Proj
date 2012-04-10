@@ -1,12 +1,18 @@
+/*
+	Login Module View
+ */
+
 Ext.define('GUI.view.login.Form' ,{
     extend: 'Ext.form.FormPanel',
     alias : 'widget.loginform',
  
+	/* Layouts */
     frame: true,
     title: 'User Login',
     bodyPadding: '5px 5px 0',
     width: 300,
     height: 120,
+	/* Text field settings */
     fieldDefaults: {
         labelWidth: 100,
         msgTarget: 'side',
@@ -19,9 +25,9 @@ Ext.define('GUI.view.login.Form' ,{
     },
     defaultType: 'textfield',
     
-    initComponent: function() {
+    initComponent: function() {//List of Items
         this.buttons = [
-            {
+            {//Button
                 name: 'loginButton',
                 text: 'Login',
                 action: 'login',
@@ -30,7 +36,7 @@ Ext.define('GUI.view.login.Form' ,{
         ];
         
         this.items = [
-            {
+            {//Text field
                 fieldLabel: 'UserID',
                 name: 'userid',
                 id: 'userid',

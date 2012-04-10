@@ -1,8 +1,6 @@
 /*
 	app.js for main page
 		-Add documentation
-			Apr 6 -- Akio
-		-Original -- Brennan
  */
 
 Ext.Loader.setConfig({
@@ -61,7 +59,7 @@ Ext.application({
             items: [
 				{	/* Logo and Logout tool bar */      
                     region: 'north',
-					html: '<img src="img/cemlogo.jpg" alt="cemlogo" height=84>',
+					html: '<img src="image/cemlogo.jpg" alt="cemlogo" height=84>',
 					height: 110,
 					border: false,				
 					dockedItems: [{

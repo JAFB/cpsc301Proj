@@ -1,3 +1,9 @@
+/*
+	Objects for each kind of records
+	Function name must be the same as collection name.
+ */
+
+ /* User Record */
 exports.user = function (){
     return {
         name: null,
@@ -7,7 +13,7 @@ exports.user = function (){
         description: null
     }
 };
-
+/* Memo Record */
 exports.memo = function(){
     return {
         title: null,
@@ -17,7 +23,7 @@ exports.memo = function(){
         author: null
     }
 };
-
+/* Discussion Record*/
 exports.discussion = function(){
     return {
         title: null,
