@@ -28,7 +28,7 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 									width: '100%',
 									id: 'mssgForm',
 									readOnly: true,
-									height: '100%'
+									height: '99%'
 									
 								}
 							]
