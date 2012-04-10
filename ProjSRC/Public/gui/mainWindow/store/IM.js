@@ -1,6 +1,5 @@
 /*
-	Instant Message Store
-	Akio Hoshikawa  -- Apr 5
+	Instant Message Store definition
  */
 /* Store for recent message */
 Ext.define('GUI.store.IM', {

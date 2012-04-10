@@ -1,11 +1,7 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 07/04/12
- * Time: 1:09 AM
- * To change this template use File | Settings | File Templates.
+/*
+	View for discussion grid panel
  */
-
+/* Definition for grouping */
 var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
     groupHeaderTpl: '{name} ({rows.length} Discussion{[values.rows.length > 1 ? "s" : ""]})'
 });
@@ -13,8 +9,7 @@ var groupingFeature = Ext.create('Ext.grid.feature.Grouping',{
 Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.discussionsgridpanel',
-    width: '40%',
-    title: 'Topics',
+	title: 'Topics',
     id: 'discussionsgridpanel',
     store: 'Discussions',
     features: [groupingFeature],
@@ -22,16 +17,19 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
         selType: 'rowmodel',
         mode: 'SINGLE'
     },
-    initComponent: function(){
+	width: '40%',
+	
+    initComponent: function(){//List of Items
 
         this.columns = [
-            {
+            {	/* List of Discussion */
                 header: '',
                 flex: 1,
                 dataIndex: 'title'
             }
         ];
         this.dockedItems =  [{
+			/* Button for new thread */
             xtype: 'toolbar',
             dock: 'bottom',
             layout: {

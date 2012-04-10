@@ -1,9 +1,11 @@
-
+/*
+	Login Module Controller
+ */
 Ext.define('GUI.controller.Login',{
     extend: 'Ext.app.Controller',
 
     views: ['login.Form'],
-	
+	/* Create Reference */
 	refs: [
         {
            ref: 'loginForm',
@@ -19,11 +21,11 @@ Ext.define('GUI.controller.Login',{
     init: function(){
         this.control({/* Event handlers */
 			'loginform button[action=login]': {
-				click: this.login   //mouse click event
+				click: this.login   			//mouse click event
             },
 
             'loginform textfield': {
-                keypress: this.login_keypress // keypress Event
+                keypress: this.login_keypress 	// keypress Event
             }
 
         });
@@ -36,7 +38,7 @@ Ext.define('GUI.controller.Login',{
     },
 
     login: function(){
-        this.getLoginForm().form.submit({
+        this.getLoginForm().form.submit({//Submit data to server
             waitMsg:'Loging in...',
             url: 'login',
             method: 'POST',
@@ -47,13 +49,13 @@ Ext.define('GUI.controller.Login',{
         });
     },
 
-    loginSuccess: function(form,action) {
+    loginSuccess: function(form,action) {//Action for success
         console.log("Success");
         var redirect = '/main';
         window.location = redirect;
     },
 
-    loginFailure: function(form,action){
+    loginFailure: function(form,action){//Action for failure
         Ext.MessageBox.alert('Error', "Invalid username/password");
     }
 });

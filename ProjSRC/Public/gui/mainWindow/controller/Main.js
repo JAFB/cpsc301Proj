@@ -1,20 +1,14 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 23/03/12
- * Time: 6:37 PM
- * To change this template use File | Settings | File Templates.
+/*
+	Main Panel Controller
  */
 
 Ext.define('GUI.controller.Main', {
     extend: 'Ext.app.Controller',
 
-    views: [
-        'mainpanel.MainPanel'
-    ],
+    views: ['mainpanel.MainPanel'],
 
     init: function() { 
-		this.control({
+		this.control({//List of Actions
             'panel button[action=logout]':{
 				click: this.logout
 			}
@@ -22,6 +16,7 @@ Ext.define('GUI.controller.Main', {
 	},
 	
 	logout: function(){
+		/* Send logout request */
 		Ext.Ajax.request({
 			url: '/logout',
 			success: function (){

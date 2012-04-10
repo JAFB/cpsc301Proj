@@ -1,16 +1,15 @@
+/*
+	Memo Module Controller
+ */
+
 Ext.define('GUI.controller.Memos', {
     extend: Ext.app.Controller,
-    views: [
-        'admin.memomanagement.Memoeditor'
-    ],
-    models: [
-        'Memo'
-    ],
-    stores: [
-        'Memos'
-    ],
+    views: ['admin.memomanagement.Memoeditor'],
+    models: ['Memo'],
+    stores: ['Memos'],
+	
     init: function(){
-        this.control({
+        this.control({//List of actions
             'form toolbar button[action=postmemo]': {
                 click: this.create_post_memo
             }
@@ -18,10 +17,7 @@ Ext.define('GUI.controller.Memos', {
     },
 
     create_post_memo: function(){
-        /*
-            to validate Memo body and Memo title
-         */
-
+        /* to validate Memo body and Memo title */
 		var topicValid = this.validate_memotopic(Ext.getCmp('memotopic').getValue().trim())
         var bodyValid = this.validate_memobody(Ext.getCmp('memobodyedit').getValue().trim())
 
@@ -29,7 +25,6 @@ Ext.define('GUI.controller.Memos', {
            // Ext.MessageBox.alert('Error', "Memo must have title and body !!!");
 			if( !topicValid )
 				Ext.MessageBox.alert('Error', "Memo topic is invalid");
-				
 			else if( !bodyValid )
 				Ext.MessageBox.alert('Error', "Memo body is invalid");
 
