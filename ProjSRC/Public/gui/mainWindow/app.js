@@ -59,7 +59,7 @@ Ext.application({
             items: [
 				{	/* Logo and Logout tool bar */      
                     region: 'north',
-					html: '<img src="image/cemlogo.jpg" alt="cemlogo" height=84>',
+					html: '<img src="images/cemlogo.jpg" alt="cemlogo" height=84>',
 					height: 110,
 					border: false,				
 					dockedItems: [{
