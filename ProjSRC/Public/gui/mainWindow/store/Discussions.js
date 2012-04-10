@@ -1,4 +1,6 @@
-
+/*
+	store definition for discussions
+ */
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
@@ -8,10 +10,8 @@ Ext.define('GUI.store.Discussions', {
             direction: 'DESC'
         }
     ],
-
     groupField: 'topic',
-
-    fields: ['_id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
+	/* Data Address */
     proxy: {
         type: 'rest',
         url : '/discussion',

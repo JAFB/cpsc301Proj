@@ -1,9 +1,5 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 29/03/12
- * Time: 11:41 AM
- * To change this template use File | Settings | File Templates.
+/*
+	View for post new thread window
  */
 
 Ext.define('GUI.view.discussions.PostThreadWindow', {
@@ -11,17 +7,18 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
     alias: 'widget.postthreadwindow',
     id: 'postthreadwindow',
     title: 'New Discussion Thread',
+	/* Layout */
     layout: 'fit',
     autoShow: true,
     closable: false,
     width: 600,
 
-    initComponent: function() {
+    initComponent: function() {// List of Items
         this.items = [
             {
                 xtype: 'form',
                 items : [
-                    {
+                    {	/* Textfield for title */
                         xtype: 'textfield',
                         name: 'title',
                         id: 'post_thread_title',
@@ -31,7 +28,7 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         maxLength: 10,
                         anchor: '100%'
                     },
-                    {
+                    {	/* Text field for topic */
                         xtype: 'textfield',
                         name: 'topic',
                         id: 'post_thread_topic',
@@ -41,7 +38,7 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         maxLength: 100,
                         anchor: '100%'
                     },
-                    {
+                    {	/* Text field for body */
                         xtype: 'textareafield',
                         name: 'body',
                         id: 'post_thread_body',
@@ -55,7 +52,7 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                 ]
             }
         ];
-
+		/* Buttons */
         this.buttons = [
             {
                 text: 'Submit',

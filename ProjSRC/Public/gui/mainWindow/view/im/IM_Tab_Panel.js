@@ -1,12 +1,10 @@
 /*
 	IM view definitions
-		Add documentation
-			Apr 6 -- Akio
  */
 Ext.define('GUI.view.im.IM_Tab_Panel', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.impanel',
-	
+	/* Layout */
     width: 280,
     activeTab: 0,
     title: 'Instant Messaging',

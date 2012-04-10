@@ -1,5 +1,5 @@
 /*
-	
+	User Management Module Controller
  */
 Ext.define('GUI.controller.Users',{
     extend: 'Ext.app.Controller',
@@ -12,7 +12,7 @@ Ext.define('GUI.controller.Users',{
     ],
 
     init: function(){
-        this.control({
+        this.control({//List of Actions
             'panel userlist' : {
                 itemdblclick: this.editUser
             },
@@ -31,6 +31,7 @@ Ext.define('GUI.controller.Users',{
         });
     },
 
+	/* Modify user profile */
     updateUser: function(button){
         var userStore = this.getStore("Users");
         var win = button.up('window');
@@ -38,19 +39,20 @@ Ext.define('GUI.controller.Users',{
         var record = form.getRecord();
         var values = form.getValues();
 		
-		if(record.data.id == values.id && record.data.email == values.email){
+		//if(record.data.id == values.id && record.data.email == values.email){
+		if(record.data.email == values.email){
 			record.set(values);
             console.log(record);
 			userStore.save();
 			win.close();
-		}else if (record.data.id != values.id){
+		/*}else if (record.data.id != values.id){
 			if(userStore.find('id',values.id) == -1){
 				record.set(values);
 				userStore.save();
 				win.close();
 			}else{
 				Ext.MessageBox.alert('Error', "Invalid Data: Duplicate ID");
-			}
+			}*/
 		}else{
 			if(userStore.findExact('email',values.email) == -1){
 				record.set(values);
@@ -63,9 +65,8 @@ Ext.define('GUI.controller.Users',{
 	
     },
 
+	/* Open user profile editor */
     editUser: function(grid, record) {
-        //console.log('user record');
-        //console.log(record);
         var view = Ext.widget('useredit');
         view.down('form').loadRecord(record);
 		if(Ext.getCmp("passwordField").getValue() !=""){
@@ -73,6 +74,7 @@ Ext.define('GUI.controller.Users',{
 		}
     },
 
+	/* Add new user and open editor */
     addNewUser: function(){
         var userStore = this.getStore("Users");
         var newuser = Ext.create('GUI.model.User', {name: 'new user name'});
@@ -80,7 +82,7 @@ Ext.define('GUI.controller.Users',{
 		var view = Ext.widget('useredit');
         view.down('form').loadRecord(newuser);
     },
-
+	/* Remove selected user */
     removeUser: function(){
         var selectedRec = Ext.getCmp('userlist').getSelectionModel().getSelection();
         var userStore = this.getStore('Users');

@@ -1,7 +1,5 @@
  /*
 	Instant Message controller
-		Brennan Jones  -- Mar 26
-		Akio Hoshikawa -- Apr 5
   */
 
 Ext.define('GUI.controller.IM', {
@@ -35,7 +33,7 @@ Ext.define('GUI.controller.IM', {
 						Ext.getCmp('mssgForm').setValue(IMStore.proxy.reader.jsonData.data.mssgForm);
 					}
 				})
-		},10000);//10 sec interval
+		},5000);//5 sec interval
     },
 	
 	onIMPanelRender: function() {

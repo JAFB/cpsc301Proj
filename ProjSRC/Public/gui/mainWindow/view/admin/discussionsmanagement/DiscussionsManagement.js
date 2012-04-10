@@ -1,9 +1,5 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 07/04/12
- * Time: 5:05 PM
- * To change this template use File | Settings | File Templates.
+/*
+	View for discussion management module
  */
 
 Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
@@ -13,7 +9,7 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
     title: 'Calgary Emergency Medicine - Discussions Manager',
     store: 'DiscussionsManager',
 
-    initComponent: function() {
+    initComponent: function() {//List of Items
         this.columns = [
             {
                 header: 'Title',
@@ -38,6 +34,7 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
         ];
 
         this.dockedItems = [{
+			/* Remove button */
             xtype: 'toolbar',
             dock: 'bottom',
             layout: {

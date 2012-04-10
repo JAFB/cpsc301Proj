@@ -1,9 +1,5 @@
-/**
- * Created by JetBrains WebStorm.
- * User: Brennan Jones
- * Date: 07/04/12
- * Time: 2:52 AM
- * To change this template use File | Settings | File Templates.
+/*
+	View for comment form
  */
 
 Ext.define('GUI.view.discussions.CommentForm', {
@@ -11,18 +7,19 @@ Ext.define('GUI.view.discussions.CommentForm', {
     alias: 'widget.commentform',
     id: 'commentform',
     title: 'Add comment',
+	/* Layout */
     layout: 'fit',
     autoShow: true,
     closable: false,
     store: 'Discussions',
     width: 400,
 
-    initComponent: function() {
+    initComponent: function() {//List of Items
         this.items = [
             {
                 xtype: 'form',
                 items : [
-                    {
+                    {	/* Textfield for comment */
                         xtype: 'textareafield',
                         name: 'body',
                         id: 'comment_body',
@@ -35,7 +32,7 @@ Ext.define('GUI.view.discussions.CommentForm', {
                 ]
             }
         ];
-
+		/* Buttons */
         this.buttons = [
             {
                 text: 'Submit',
