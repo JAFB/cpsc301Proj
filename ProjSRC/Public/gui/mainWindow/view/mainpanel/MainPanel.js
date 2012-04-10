@@ -1,12 +1,18 @@
 /*
 	View for Main panel
  */
+
+var homeHTML =  "Welcome <b>" + username + "</b>!<br><br>"+
+				"Select menu on the top." +
+				'<img src="images/hospital.jpg" height="315" width="550" alt="Picture" align="right"/>';
+				
  /* Common panels definition */
 var panels = [
 	{
 		xtype: 'panel',
+		bodyPadding: 10,
 		title: 'Home',
-		html: '<img src="images/hospital.jpg" height="315" width="550" />'
+		html: homeHTML,
 	},{
 		xtype: 'panel',
         title: 'Discussions',
