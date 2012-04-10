@@ -33,7 +33,7 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
 
                 listeners: {
                     scope: this,
-                    itemclick: this.onSelectChange
+                    selectionchange: this.onSelectChange
                 }
 
             },
