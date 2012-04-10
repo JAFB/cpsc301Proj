@@ -11,6 +11,9 @@ Ext.define('GUI.controller.Main', {
 		this.control({//List of Actions
             'panel button[action=logout]':{
 				click: this.logout
+			},
+			'panel[name=memopanel]':{
+				activate: this.loadMemo
 			}
         });
 	},
@@ -27,5 +30,9 @@ Ext.define('GUI.controller.Main', {
 				Ext.MessageBox.alert('Error', "Failed to log out");
 			}
 		});
-    }
+    },
+	/* Load memo list */
+	loadMemo: function(){
+		Ext.getStore('Memoview').load();
+	}
 });
