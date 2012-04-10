@@ -44,14 +44,6 @@ Ext.define('GUI.controller.Users',{
 			record.set(values);
 			userStore.save();
 			win.close();
-		/*}else if (record.data.id != values.id){
-			if(userStore.find('id',values.id) == -1){
-				record.set(values);
-				userStore.save();
-				win.close();
-			}else{
-				Ext.MessageBox.alert('Error', "Invalid Data: Duplicate ID");
-			}*/
 		}else{
 			if(userStore.findExact('email',values.email) == -1){
 				record.set(values);
