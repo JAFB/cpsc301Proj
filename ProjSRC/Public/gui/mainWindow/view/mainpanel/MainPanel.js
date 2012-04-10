@@ -89,6 +89,7 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 					,{
 						xtype: 'panel',
 						title: 'Admin',
+						name: 'adminpanel',
                         layout:{type: 'accordion'},
                         items:[
                             {xtype: 'userlist'},

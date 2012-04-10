@@ -14,6 +14,9 @@ Ext.define('GUI.controller.Main', {
 			},
 			'panel[name=memopanel]':{
 				activate: this.loadMemo
+			},
+			'panel[name=adminpanel]':{
+				activate: this.loadAdmin
 			}
         });
 	},
@@ -34,5 +37,9 @@ Ext.define('GUI.controller.Main', {
 	/* Load memo list */
 	loadMemo: function(){
 		Ext.getStore('Memoview').load();
+	},
+	
+	loadAdmin: function(){
+		Ext.getStore('Users').load();
 	}
 });
