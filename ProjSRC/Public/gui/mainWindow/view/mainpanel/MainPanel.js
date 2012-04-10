@@ -27,6 +27,7 @@ var panels = [
 	},{
 		xtype: 'panel',
 		title: 'Memos',
+		name: 'memopanel',
         layout: {
             type: 'border'
         },
