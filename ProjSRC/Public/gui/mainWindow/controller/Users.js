@@ -16,15 +16,12 @@ Ext.define('GUI.controller.Users',{
             'panel userlist' : {
                 itemdblclick: this.editUser
             },
-
             'panel userlist toolbar button[action="addnewuser"]' : {
                 click: this.addNewUser
             },
-
             'panel userlist toolbar button[action="removeuser"]' : {
                 click: this.removeUser
             },
-
             'useredit button[action="save"]' : {
                 click: this.updateUser
             }
@@ -39,7 +36,7 @@ Ext.define('GUI.controller.Users',{
         var record = form.getRecord();
         var values = form.getValues();
 		
-		//if(record.data.id == values.id && record.data.email == values.email){
+		/* Validation check */
 		if(record.data.email == values.email){
 			record.set(values);
 			userStore.save();
