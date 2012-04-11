@@ -29,7 +29,7 @@ exports.discussion = function(){
         title: null,
         topic: null,
         body: null,
-        comments: null,
+        comments: [],
         author: null,
         date_created: null,
         date_modified: null
