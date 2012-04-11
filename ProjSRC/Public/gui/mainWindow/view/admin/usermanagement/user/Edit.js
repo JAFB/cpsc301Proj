@@ -4,6 +4,7 @@
 Ext.define('GUI.view.admin.usermanagement.user.Edit', {
     extend: 'Ext.window.Window',
     alias: 'widget.useredit',
+	id: 'useredit',
 	/* Layout */
     title: 'Edit User',
     layout: 'fit',
@@ -71,6 +72,7 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 						text: 'Cancel',
 						scope: this,
 						handler: this.close,
+						action: 'cancel',
                         tooltip: 'Click me - Cancel Changes!'
 					}
 				]

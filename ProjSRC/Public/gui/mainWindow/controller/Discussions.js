@@ -48,6 +48,7 @@ Ext.define('GUI.controller.Discussions', {
     },
 	/* Open Editor */
     showNewThreadWindow: function() {
+		if(Ext.getCmp('postthreadwindow')) return;
         var view = Ext.widget('postthreadwindow');
         view.down('postthreadwindow');
     },
