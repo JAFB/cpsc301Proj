@@ -16,6 +16,7 @@ var panels = [
 	},{
 		xtype: 'panel',
         title: 'Discussions',
+		name: 'discussionpanel',
         layout: {type: 'border'},
         defaults: {split: true},
         items: [
