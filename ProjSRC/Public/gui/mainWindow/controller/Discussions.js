@@ -17,7 +17,7 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     init: function() {//List of action
-        this.getStore('Discussions').addListener('load', this.refreshTab, this);
+        //this.getStore('Discussions').addListener('load', this.refreshTab, this);
         this.control({
             'commentform button[action=submitcomment]': {
                 click: this.addComment
@@ -34,6 +34,7 @@ Ext.define('GUI.controller.Discussions', {
             'panel discussionsgridpanel' : {
                 itemclick: this.openDiscussion
             }
+            
         });
 		
         var runner = new Ext.util.TaskRunner();
@@ -194,10 +195,12 @@ Ext.define('GUI.controller.Discussions', {
 			this.openDiscussion(null,discussion);
         }
 
-    },
+    }
+    /*
     refreshTab: function() {
         if (this.discussionRec){
             this.openDiscussion(null, this.discussionRec);
         }
     }
+    */
 })
