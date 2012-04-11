@@ -22,6 +22,9 @@ Ext.define('GUI.controller.Users',{
             'panel userlist toolbar button[action="removeuser"]' : {
                 click: this.removeUser
             },
+            'useredit button[action="cancel"]' : {
+                click: this.cancelEdit
+            },
             'useredit button[action="save"]' : {
                 click: this.updateUser
             }
@@ -41,6 +44,7 @@ Ext.define('GUI.controller.Users',{
 			record.set(values);
 			userStore.save();
 			win.close();
+			 Ext.MessageBox.alert('Add/Update', "Successfully Update/Add User record!");
 		}else{
 			if(userStore.findExact('email',values.email) == -1){
 				record.set(values);
@@ -56,6 +60,7 @@ Ext.define('GUI.controller.Users',{
 
 	/* Open user profile editor */
     editUser: function(grid, record) {
+		if(Ext.getCmp('useredit')) return;
         var view = Ext.widget('useredit');
         view.down('form').loadRecord(record);
 		if(Ext.getCmp("passwordField").getValue() !=""){
@@ -65,6 +70,7 @@ Ext.define('GUI.controller.Users',{
 
 	/* Add new user and open editor */
     addNewUser: function(){
+		if(Ext.getCmp('useredit')) return;
         var userStore = this.getStore("Users");
         var newuser = Ext.create('GUI.model.User', {name: 'new user name'});
         userStore.add(newuser);
@@ -82,5 +88,16 @@ Ext.define('GUI.controller.Users',{
 			userStore.remove(selectedRec);
 			userStore.save();
 		}
-    }
+    },
+	
+	cancelEdit: function(button){
+        var userStore = this.getStore("Users");
+        var win = button.up('window');
+        var form = win.down('form');
+        var record = form.getRecord();
+        var values = form.getValues();
+		if(values.email=='' && values.password=='')
+			userStore.remove(record);
+		
+	}
 });

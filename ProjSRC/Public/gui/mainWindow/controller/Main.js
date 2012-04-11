@@ -17,6 +17,9 @@ Ext.define('GUI.controller.Main', {
 			},
 			'panel[name=adminpanel]':{
 				activate: this.loadAdmin
+			},
+			'panel[name=discussionpanel]':{
+				activate: this.loadDiscussion
 			}
         });
 	},
@@ -41,5 +44,8 @@ Ext.define('GUI.controller.Main', {
 	
 	loadAdmin: function(){
 		Ext.getStore('Users').load();
+	},
+	loadDiscussion: function(){
+		Ext.getStore('Discussions').load();
 	}
 });
