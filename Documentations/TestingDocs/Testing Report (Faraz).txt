@@ -1,0 +1,33 @@
+301 testing
+
+Enter long text into memo title
+	memo is posted with a very long title, unacceptable
+	
+Enter log user description for admin adding user
+	if long enough, send message cannot be found. Height of window should not be too dynamic. Happened when pasting a youtube page.
+	
+When adding a user ID that is the same as another user, the other user is overwritten
+this is very bad when there is only 1 admin and the admin deletes themself
+
+When adding 2 users of different ID but same name and email but different password. They are both accepted but only the first one on the list accepts the password.
+
+When copying and pasting youtube page into ID feild for adding user, it is initially accepted but when logging out and in, it does not exist anymore.
+this is good...in a sense
+
+however '.' is accepted into the ID field and should not be accepted.
+
+is it possible to delete every user and then log out? if so this is a problem.
+
+in htmleditor for memo:
+	typing orange text will not be rendered  orange in the actual memo.
+	
+	when minimizing text area to smallest, cannot reopen text area
+
+When viewing memos, if different tab is clicked the memo page changes but the selected memo stays the same
+update: fixed in a sense	
+
+When logging in as a user, the accepted string is strict:
+-the email is case sensitive( which is okay )
+-if space are entered, the login is incorrect if the intended login has no spaces( this is not as user friendly )
+
+However login can handle extremely large inputs and catches when no string is entered for either email or password.
