@@ -46,6 +46,7 @@ Ext.define('GUI.controller.Users',{
 				record.set(values);
 				userStore.save();
 				win.close();
+                Ext.MessageBox.alert('Add/Update', "Successfully Update/Add User record!");
 			}else{
 				Ext.MessageBox.alert('Error', "Invalid Data: Duplicate Email");
 			}
@@ -77,6 +78,7 @@ Ext.define('GUI.controller.Users',{
 		if(useremail == selectedRec[0].data.email){
 			Ext.MessageBox.alert('Error', "Invalid Request: You cannot remove yourself");
 		}else{
+            Ext.MessageBox.alert('Remove', "User record is removed!" )
 			userStore.remove(selectedRec);
 			userStore.save();
 		}

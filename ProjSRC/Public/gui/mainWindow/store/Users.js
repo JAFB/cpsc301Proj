@@ -4,6 +4,7 @@
 Ext.define('GUI.store.Users', {
     extend: 'Ext.data.Store',
 	/* Data Address */
+
     proxy: {
         type: 'rest',
 		url : '/users',

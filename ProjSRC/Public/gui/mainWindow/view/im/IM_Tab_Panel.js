@@ -47,7 +47,8 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
 								},'->',
 								{
 									text: 'Send',
-									action: 'send'
+									action: 'send',
+                                    tooltip: 'Click me - Send message'
 								}
 							]
 						}  
@@ -55,9 +56,9 @@ Ext.define('GUI.view.im.IM_Tab_Panel', {
                 },
                 {	/* Last day message panel */
                     xtype: 'panel',
-                    title: 'Last day',
+                    title: 'Yesterday',
 					name: 'lastdaypanel',
-
+                    tooltip: 'Yesterday chatting history',
                     items: [
                         {
                             xtype: 'form',

@@ -21,5 +21,6 @@ Ext.define('GUI.controller.DiscussionsManager', {
         var discussionStore = this.getStore('Discussions');
         discussionStore.remove(selectedRec);
         discussionStore.save();
+        Ext.MessageBox('Remove', "Discussion Record is removed !")
     }
 })

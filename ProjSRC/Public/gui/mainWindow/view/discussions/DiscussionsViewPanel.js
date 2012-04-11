@@ -26,6 +26,16 @@ Ext.define('GUI.view.discussions.DiscussionsViewPanel', {
                                 dataIndex: 'title'
                             },
                             {
+                                header: 'Topic',
+                                flex: 1,
+                                dataIndex: 'topic'
+                            },
+                            {
+                                header: 'Author',
+                                flex: 1,
+                                dataIndex: 'author'
+                            },
+                            {
                                 header: 'Date Created',
                                 flex: 1,
                                 dataIndex: 'date_created'

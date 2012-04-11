@@ -36,12 +36,14 @@ Ext.define('GUI.view.discussions.CommentForm', {
         this.buttons = [
             {
                 text: 'Submit',
-                action: 'submitcomment'
+                action: 'submitcomment',
+                tooltip: 'Click me - Submit comment'
             },
             {
                 text: 'Cancel',
                 scope: this,
-                handler: this.close // to use handler to close the form self
+                handler: this.close, // to use handler to close the form self
+                tooltip: 'Click me - Cancel comment'
             }
         ];
 

@@ -106,8 +106,9 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
     
     contentRender: function(record){
         var renderedStr = '<div class="topic"><h5> title: {0} </h5>' +
-            '<div><p>{1}</p></div> <div><span class="author">author: {2} </span></div> </div>';
-        return Ext.String.format(renderedStr,record.get('title'), record.get('content'), record.get('author'));
+            '<div><br><p>{1}</p></br></div></div> <div><h5>Author: {2} ; '+
+            'Date created: {3} </h5></div></div>';
+        return Ext.String.format(renderedStr,record.get('title'), record.get('content'), record.get('author'), record.get('date_created'));
     },
 	
 	checkTabs: function()

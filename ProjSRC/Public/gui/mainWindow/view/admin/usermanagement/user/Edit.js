@@ -20,14 +20,16 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                         fieldLabel: 'Name',
 						allowBlank: false,
 						enforceMaxLength: true,
-						maxLength: 50,
+                        emptyText: 'User name',
+						maxLength: 50
                     },
                     {
                         name: 'email',
                         fieldLabel: 'Email',
 						allowBlank: false,
 						enforceMaxLength: true,
-						maxLength: 50,
+                        emptyText: 'Email address',
+						maxLength: 50
                     },
                     {
                         name: 'password',
@@ -36,7 +38,7 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 						id: 'passwordField',
 						allowBlank: false,
 						enforceMaxLength: true,
-						maxLength: 50,
+						maxLength: 50
                     },
 					{//check box
 						xtype: 'checkbox',
@@ -51,7 +53,9 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                         fieldLabel: 'User Description',
                         autoScroll: true,
 						enforceMaxLength: true,
-						maxLength: 500,
+                        resizable: true,
+                        emptyText: 'Brief User Description ',
+						maxLength: 500
                     }
 
                 ],
@@ -60,12 +64,14 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
 					{
 						text: 'Save',
 						formBind: true,
-						action: 'save'
+						action: 'save',
+                        tooltip: 'Click me - Save Changes'
 					},
 					{
 						text: 'Cancel',
 						scope: this,
-						handler: this.close
+						handler: this.close,
+                        tooltip: 'Click me - Cancel Changes!'
 					}
 				]
 
