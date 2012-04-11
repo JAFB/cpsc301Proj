@@ -18,19 +18,25 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                     {
                         name: 'name',
                         fieldLabel: 'Name',
-						allowBlank: false
+						allowBlank: false,
+						enforceMaxLength: true,
+						maxLength: 50,
                     },
                     {
                         name: 'email',
                         fieldLabel: 'Email',
-						allowBlank: false
+						allowBlank: false,
+						enforceMaxLength: true,
+						maxLength: 50,
                     },
                     {
                         name: 'password',
                         fieldLabel: 'Password',
 						inputType: 'password',
 						id: 'passwordField',
-						allowBlank: false
+						allowBlank: false,
+						enforceMaxLength: true,
+						maxLength: 50,
                     },
 					{//check box
 						xtype: 'checkbox',
@@ -43,7 +49,9 @@ Ext.define('GUI.view.admin.usermanagement.user.Edit', {
                         xtype: 'textareafield',
                         name: 'description',
                         fieldLabel: 'User Description',
-                        autoScroll: true
+                        autoScroll: true,
+						enforceMaxLength: true,
+						maxLength: 500,
                     }
 
                 ],
