@@ -17,7 +17,6 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
             ]
         });
 		
-        this.memoTitleList();
         this.addEvents(
             'memotitleselect'
         )
@@ -52,21 +51,6 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
         });
         memoTitleView.on('render', function(){}, this);
         return this.view;
-    },
-	/* Definition for memo title list view */
-    memoTitleList: function(){
-        this.titlelist = Ext.create('widget.menu', {
-            items: [{
-                scope: this,
-                handler: this.onLoadClick,
-                text: 'Load Memo'
-            }],
-            listeners: {
-                hide: function(c){
-                    c.activeMemoTitle = null;
-                }
-            }
-        })
     },
 
     onViewReady: function(){
@@ -121,7 +105,11 @@ Ext.define('GUI.view.memoview.MemoviewPanel',{
 		var currentTabid = displaypanel.getActiveTab().id;
 		if (this.getSelectedItem().get('_id').toString().trim() != currentTabid){
 			var memopanel = Ext.getCmp(this.getSelectedItem().get('_id').toString().trim());
-			displaypanel.setActiveTab(memopanel);
+			if(memopanel){
+				displaypanel.setActiveTab(memopanel);
+			}else{
+				this.onSelectChange();
+			}
 		}	
 	},
 
