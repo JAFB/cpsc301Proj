@@ -66,7 +66,6 @@ Ext.define('GUI.controller.Discussions', {
     },
 	/* Create new thread */
     submitThread: function(button) {
-        console.log("button clicked");
         var win = button.up('postthreadwindow');
         var topic = Ext.getCmp('post_thread_topic').getValue().trim();
         var title = Ext.getCmp('post_thread_title').getValue().trim();

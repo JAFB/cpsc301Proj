@@ -41,6 +41,7 @@ Ext.define('GUI.controller.Users',{
 			record.set(values);
 			userStore.save();
 			win.close();
+			 Ext.MessageBox.alert('Add/Update', "Successfully Update/Add User record!");
 		}else{
 			if(userStore.findExact('email',values.email) == -1){
 				record.set(values);
