@@ -27,7 +27,6 @@ Ext.define('GUI.controller.Memos', {
 				Ext.MessageBox.alert('Error', "Memo topic is invalid");
 			else if( !bodyValid )
 				Ext.MessageBox.alert('Error', "Memo body is invalid");
-
         } else {
             var date = new Date();
             var newMemoRec = Ext.create('GUI.model.Memo', {
@@ -35,17 +34,16 @@ Ext.define('GUI.controller.Memos', {
                 content: Ext.getCmp('memobodyedit').getValue(),
                 date_created: date,
                 date_modified: date,
-                author: useremail
+                author: username
             });
             var memoStore = this.getStore('Memos');
             memoStore.add(newMemoRec);
-            console.log(newMemoRec);
             memoStore.save();
-
             newMemoRec.commit(); // commit the new record into local store object.
 
             Ext.getCmp('memotopic').setValue('');
             Ext.getCmp('memobodyedit').setValue('');
+            Ext.MessageBox.alert('Memo', "Successfully create a new Memo !");
         }
     },
 	

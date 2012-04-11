@@ -56,12 +56,14 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
         this.buttons = [
             {
                 text: 'Submit',
-                action: 'submitthread'
+                action: 'submitthread',
+                tooltip: 'Click me - Submit Discussion Thread'
             },
             {
                 text: 'Cancel',
                 scope: this,
-                handler: this.close
+                handler: this.close,
+                tooltip: 'Click me - Cancel Discussion Thread'
             }
         ];
 

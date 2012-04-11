@@ -17,6 +17,7 @@ Ext.define('GUI.store.Discussions', {
         type: 'rest',
         url : '/discussion',
         model : 'GUI.model.Discussion',
+
         reader: {
             type: 'json',
             root: 'data',

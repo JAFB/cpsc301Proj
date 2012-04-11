@@ -24,7 +24,7 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
             {
                 header: 'Date Created',
                 dataIndex: 'date_created',
-				
+
             },
             {
                 header: 'Date Modified',
@@ -45,7 +45,8 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
                 {
                     xtype:  'button',
                     text:   'Remove Discussion',
-                    action: 'removediscussion'
+                    action: 'removediscussion',
+                    tooltip: 'Click me - Remove Discussion record!'
                 }
             ]
         }];

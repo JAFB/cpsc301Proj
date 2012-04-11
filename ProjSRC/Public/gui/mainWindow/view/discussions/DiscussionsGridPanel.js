@@ -14,7 +14,6 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     store: 'Discussions',
     features: [groupingFeature],
 	width: '40%',
-	
     initComponent: function(){//List of Items
         this.columns = [
             {	/* List of Discussion */
@@ -35,7 +34,8 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
                 {
                     xtype:  'button',
                     text:   'New Discussion Thread',
-                    action: 'newthread'
+                    action: 'newthread',
+                    tooltip: 'Click me - Create a new Discussion Thread'
                 }
             ]
         }];
