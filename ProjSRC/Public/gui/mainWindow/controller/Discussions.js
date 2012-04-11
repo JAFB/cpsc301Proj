@@ -170,6 +170,8 @@ Ext.define('GUI.controller.Discussions', {
         var win = button.up('commentform');
         var store = this.getStore('Discussions');
         var discussion = win.record;
+		var viewpanel = Ext.getCmp('discussionsviewpanel');
+        var tabcomponentID = discussion.get('_id').toString().trim();
 
         if (!this.validateCommentsInputs())
             Ext.MessageBox.alert('Error', "Please enter the required field or your inputs are too long to handle");
@@ -182,14 +184,14 @@ Ext.define('GUI.controller.Discussions', {
             };
 
 			/* Send a new comment to database */
-
             discussion.get('comments').push(newComment);
             discussion.set('date_modified', new Date());
             store.save();
             discussion.commit();
             win.close();
 			
-			Ext.getStore('Discussions').load();
+			viewpanel.remove(tabcomponentID);
+			this.openDiscussion(null,discussion);
         }
 
     },
