@@ -4,6 +4,7 @@
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
+    id: 'discussionStore',
     sorters: [
         {
             property: 'date_created',
@@ -21,7 +22,15 @@ Ext.define('GUI.store.Discussions', {
             type: 'json',
             root: 'data',
             successProperty: 'success'
+        },
+        simpleSortMode: true
+    }/*,
+
+    listeners: {
+        load: function(){
+            //this.fireEvent('itemClick', Ext.getCmp(''))
+            console.log("discussion is loaded")
         }
-        //simpleSortMode: true
     }
+    */
 });

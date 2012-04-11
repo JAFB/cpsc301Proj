@@ -9,6 +9,7 @@ Ext.define('GUI.view.discussions.DiscussionsViewPanel', {
 	/* Layout */
     width: '60%',
     activeTab: 0,
+
     initComponent: function() {//List of Items
         this.items = [
             {
