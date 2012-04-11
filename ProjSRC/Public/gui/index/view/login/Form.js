@@ -42,14 +42,18 @@ Ext.define('GUI.view.login.Form' ,{
                 id: 'userid',
                 inputType: 'text',
                 emptyText: 'Enter email address',
-                enableKeyEvents: true
+                enableKeyEvents: true,
+				enforceMaxLength: true,
+				maxLength: 50,
             },
             {
                 fieldLabel: 'Password',
                 name: 'password',
                 id: 'pwd',
                 emptyText: 'Enter password',
-                enableKeyEvents: true
+                enableKeyEvents: true,
+				enforceMaxLength: true,
+				maxLength: 50,
             }
         ];
         
