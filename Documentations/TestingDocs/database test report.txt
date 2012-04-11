@@ -1,0 +1,21 @@
+Test report for database.js
+
+  Use a following object to test all functions in database.js
+  docs = [
+	{"author" : "John",
+	"title" : "Subject",
+	"created_at" : new Date(),
+	"body" : "Test string",
+	"comments" : []},
+	
+	{"author" : "Alex",
+	"title" : "Second Subject",
+	"created_at" : new Date(),
+	"body" : "Example body",
+	 "comments" : []}
+  ];
+
+- All functions in testDatabase.js work
+
+- When you append something, target field has to have an array before you call function.
+- Object ID has to be Hex string, instead of ObjectID object (the function creates it for you).

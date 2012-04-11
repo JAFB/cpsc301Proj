@@ -133,7 +133,7 @@ Ext.define('GUI.controller.Discussions', {
         if(viewpanel.getComponent(tabcomponentID) != null){ // check if the tabpanel is created, close it
             newpanel.close();
         }
-        newpanel = this.newdiscussionTab(this.getStore('DiscussionsManager') ,record);
+        newpanel = this.newdiscussionTab(this.getStore('Discussions') ,record);
         newpanel['html'] = this.bodyRender(record) + this.commentRender(record);
         viewpanel.add(newpanel);
 
@@ -194,6 +194,8 @@ Ext.define('GUI.controller.Discussions', {
             store.save();
             discussion.commit();
             win.close();
+			
+			Ext.getStore('Discussions').load();
         }
 
     },

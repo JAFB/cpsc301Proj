@@ -4,7 +4,7 @@
 
 Ext.define('GUI.controller.DiscussionsManager', {
     extend: 'Ext.app.Controller',
-    stores: ['DiscussionsManager'],
+    stores: ['Discussions'],
     models: ['Discussion'],
     views: ['admin.discussionsmanagement.DiscussionsManagement'],
 
@@ -18,8 +18,7 @@ Ext.define('GUI.controller.DiscussionsManager', {
 
     removeDiscussion: function() {
         var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection()[0];
-        var discussionStore = this.getStore('DiscussionsManager');
-
+        var discussionStore = this.getStore('Discussions');
         discussionStore.remove(selectedRec);
         discussionStore.save();
     }

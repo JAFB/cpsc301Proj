@@ -7,7 +7,7 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
     alias: 'widget.discussionsmanagement',
     id: 'discussionsmanagement',
     title: 'Calgary Emergency Medicine - Discussions Manager',
-    store: 'DiscussionsManager',
+    store: 'Discussions',
 
     initComponent: function() {//List of Items
         this.columns = [
@@ -19,17 +19,17 @@ Ext.define('GUI.view.admin.discussionsmanagement.DiscussionsManagement', {
             {
                 header: 'Author',
                 dataIndex: 'author',
-                flex: 1
+				flex: 1
             },
             {
                 header: 'Date Created',
                 dataIndex: 'date_created',
-                flex: 1
+
             },
             {
                 header: 'Date Modified',
                 dataIndex: 'date_modified',
-                flex: 1
+				flex: 1
             }
         ];
 

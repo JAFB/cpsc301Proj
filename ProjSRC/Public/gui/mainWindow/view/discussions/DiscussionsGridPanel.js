@@ -15,7 +15,6 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
     features: [groupingFeature],
 	width: '40%',
     initComponent: function(){//List of Items
-
         this.columns = [
             {	/* List of Discussion */
                 header: '',

@@ -1,3 +1,4 @@
 require("./config.js")
 var expressServer = require("./HttpServer/expressServer.js");
-expressServer.launchExpressServer(13910);
+var port = process.argv[2] || 13910;
+expressServer.launchExpressServer(port);
