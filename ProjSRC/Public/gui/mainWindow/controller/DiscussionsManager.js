@@ -17,7 +17,7 @@ Ext.define('GUI.controller.DiscussionsManager', {
     },
 
     removeDiscussion: function() {
-        var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection();
+        var selectedRec = Ext.getCmp('discussionsmanagement').getSelectionModel().getSelection()[0];
         var discussionStore = this.getStore('Discussions');
         discussionStore.remove(selectedRec);
         discussionStore.save();

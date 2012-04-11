@@ -4,6 +4,7 @@
 Ext.define('GUI.store.Discussions', {
     extend: 'Ext.data.Store',
     autoLoad: true,
+	id: 'discussionStore',
     sorters: [
         {
             property: 'date_created',
@@ -11,7 +12,6 @@ Ext.define('GUI.store.Discussions', {
         }
     ],
     groupField: 'topic',
-    fields: ['_id','id', 'title', 'topic', 'body', 'comments', 'author', 'date_created', 'date_modified'],
 	/* Data Address */
     proxy: {
         type: 'rest',

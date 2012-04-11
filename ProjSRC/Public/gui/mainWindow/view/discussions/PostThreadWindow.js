@@ -25,7 +25,7 @@ Ext.define('GUI.view.discussions.PostThreadWindow', {
                         fieldLabel: 'Title',
                         enforceLength: true,
                         allowBlank: false,
-                        maxLength: 10,
+                        maxLength: 100,
                         anchor: '100%'
                     },
                     {	/* Text field for topic */
