@@ -44,9 +44,7 @@ var panels = [
             {
                 region: 'west',
                 xtype: 'memoviewpanel',
-
                 collapsible: true
-
             },
             {
                 region: 'center',
@@ -91,6 +89,7 @@ Ext.define('GUI.view.mainpanel.MainPanel', {
 						title: 'Admin',
 						name: 'adminpanel',
                         layout:{type: 'accordion'},
+                        tabTip: 'Administrator Section',
                         items:[
                             {xtype: 'userlist'},
                             {xtype: 'memoeditor'},

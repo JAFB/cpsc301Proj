@@ -67,8 +67,9 @@ Ext.application({
 						xtype: 'toolbar',
 						items: ["Welcome ",username,'->',
 						{
-						  text: 'Log out',
-						  action: 'logout'
+						    text: 'Log out',
+						    action: 'logout',
+                            tooltip: 'Click me - Log out '
 						}
 						]
 					}]

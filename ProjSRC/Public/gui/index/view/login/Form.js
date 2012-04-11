@@ -37,14 +37,14 @@ Ext.define('GUI.view.login.Form' ,{
         
         this.items = [
             {//Text field
-                fieldLabel: 'UserID',
+                fieldLabel: 'User Email',
                 name: 'userid',
                 id: 'userid',
                 inputType: 'text',
                 emptyText: 'Enter email address',
                 enableKeyEvents: true,
 				enforceMaxLength: true,
-				maxLength: 50,
+				maxLength: 50
             },
             {
                 fieldLabel: 'Password',
@@ -53,7 +53,7 @@ Ext.define('GUI.view.login.Form' ,{
                 emptyText: 'Enter password',
                 enableKeyEvents: true,
 				enforceMaxLength: true,
-				maxLength: 50,
+				maxLength: 50
             }
         ];
         

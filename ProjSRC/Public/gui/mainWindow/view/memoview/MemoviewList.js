@@ -7,7 +7,6 @@ Ext.define('GUI.view.memoview.MemoviewList',{
     alias: 'widget.memoviewlist',
     id: 'memodisplaypanel',
     autoScroll: true,
-	
     initComponent: function(){//List of Items
         this.items = [
             {

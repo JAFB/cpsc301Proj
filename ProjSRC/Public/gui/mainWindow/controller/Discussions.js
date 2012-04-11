@@ -1,9 +1,6 @@
 /*
 	Discussion Module Controller
  */
-//var winOpen = false;
-//var commentFormOpen = false;
-
 Ext.define('GUI.controller.Discussions', {
     extend: 'Ext.app.Controller',
 
@@ -35,11 +32,8 @@ Ext.define('GUI.controller.Discussions', {
                 click: this.submitThread
             },
             'panel discussionsgridpanel' : {
-                itemdblclick: this.openDiscussion
-            }/*,
-            'discussionStore': {
-                load: this.refreshTab()
-            }*/
+                itemclick: this.openDiscussion
+            }
         });
 		
         var runner = new Ext.util.TaskRunner();

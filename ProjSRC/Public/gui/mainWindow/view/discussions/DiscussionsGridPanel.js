@@ -34,7 +34,8 @@ Ext.define('GUI.view.discussions.DiscussionsGridPanel', {
                 {
                     xtype:  'button',
                     text:   'New Discussion Thread',
-                    action: 'newthread'
+                    action: 'newthread',
+                    tooltip: 'Click me - Create a new Discussion Thread'
                 }
             ]
         }];
