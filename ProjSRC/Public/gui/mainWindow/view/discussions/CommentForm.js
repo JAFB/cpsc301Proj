@@ -11,6 +11,7 @@ Ext.define('GUI.view.discussions.CommentForm', {
     layout: 'fit',
     autoShow: true,
     closable: false,
+	store: 'Discussions',
     width: 400,
 
     initComponent: function() {//List of Items

@@ -11,33 +11,30 @@ Ext.define('GUI.view.discussions.DiscussionsViewPanel', {
     activeTab: 0,
 
     initComponent: function() {//List of Items
-        Ext.applyIf(this, {
-            items: [
-                {
-                    xtype: 'panel',
-                    title: 'Latest Discussions',
-                    items: [
-                        {	/* Discussion List */
-                            xtype: 'gridpanel',
-                            store: 'Discussions',
-
-                            columns: [
-                                {
-                                    header: 'Title',
-                                    flex: 1,
-                                    dataIndex: 'title'
-                                },
-                                {
-                                    header: 'Date Created',
-                                    flex: 1,
-                                    dataIndex: 'date_created'
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        });
+        this.items = [
+            {
+                xtype: 'panel',
+                title: 'Latest Discussions',
+                items: [
+                    {
+                        xtype: 'gridpanel',
+                        store: 'Discussions',
+                        columns: [
+                            {
+                                header: 'Title',
+                                flex: 1,
+                                dataIndex: 'title'
+                            },
+                            {
+                                header: 'Date Created',
+                                flex: 1,
+                                dataIndex: 'date_created'
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
 
         this.callParent(arguments);
     }

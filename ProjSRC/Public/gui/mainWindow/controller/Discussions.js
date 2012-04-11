@@ -20,6 +20,7 @@ Ext.define('GUI.controller.Discussions', {
     ],
 
     init: function() {//List of action
+        this.getStore('Discussions').addListener('load', this.refreshTab, this);
         this.control({
             'commentform button[action=submitcomment]': {
                 click: this.addComment
@@ -35,7 +36,10 @@ Ext.define('GUI.controller.Discussions', {
             },
             'panel discussionsgridpanel' : {
                 itemdblclick: this.openDiscussion
-            }
+            }/*,
+            'discussionStore': {
+                load: this.refreshTab()
+            }*/
         });
 		
         var runner = new Ext.util.TaskRunner();
@@ -95,7 +99,7 @@ Ext.define('GUI.controller.Discussions', {
         }
     },
 	/* Open new tab */
-    newdiscussionTab: function(record){
+    newdiscussionTab: function(store, record){
         var newpanel = Ext.create('Ext.panel.Panel', {
             title: record.get('title'),
             id: record.get('_id').toString().trim(),
@@ -126,14 +130,16 @@ Ext.define('GUI.controller.Discussions', {
         var tabcomponentID = record.get('_id').toString().trim();
         var newpanel =  viewpanel.getComponent(tabcomponentID);
 
-        if(viewpanel.getComponent(tabcomponentID) == null){ // check if the tabpanel is created
-            newpanel = this.newdiscussionTab(record);
-            newpanel['html'] = this.bodyRender(record) + this.commentRender(record);
-            viewpanel.add(newpanel);
-            viewpanel.setActiveTab(newpanel);
-        } else {
-            viewpanel.setActiveTab(newpanel);
+        if(viewpanel.getComponent(tabcomponentID) != null){ // check if the tabpanel is created, close it
+            newpanel.close();
         }
+        newpanel = this.newdiscussionTab(this.getStore('Discussions') ,record);
+        newpanel['html'] = this.bodyRender(record) + this.commentRender(record);
+        viewpanel.add(newpanel);
+
+        viewpanel.setActiveTab(newpanel);
+        this.discussionRec = record;
+
     },
 
 	/* Render the body of discussion for a new tab */
@@ -180,13 +186,21 @@ Ext.define('GUI.controller.Discussions', {
                 author: username,
                 date_created: new Date()
             };
+
 			/* Send a new comment to database */
             discussion.get('comments').push(newComment);
             discussion.set('date_modified', new Date());
             store.save();
             discussion.commit();
             win.close();
+			
+			Ext.getStore('Discussions').load();
         }
 
+    },
+    refreshTab: function() {
+        if (this.discussionRec){
+            this.openDiscussion(null, this.discussionRec);
+        }
     }
-});
+})
