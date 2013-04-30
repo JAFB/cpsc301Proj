@@ -3,7 +3,9 @@
  */
 var express = require('express');
 var logfile = require('fs').createWriteStream(process.env['systemRootPath'] + '/SystemLogs/server.log', {flags: 'a'});
-var expressAppServer = express.createServer();
+//var expressAppServer = express.createServer(); //
+var expressAppServer = express(); // create a application object 
+
 var mongodbServer = require('./mongodbServer.js');
 
 /* Express configurations */
